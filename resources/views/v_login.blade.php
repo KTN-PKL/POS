@@ -12,7 +12,7 @@
 #login .container #login-row #login-column #login-box {
   margin-top: 120px;
   max-width: 600px;
-  height: 320px;
+  height: auto;
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
 }
@@ -32,13 +32,14 @@
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-4">
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger custom-alert"><b>Warning!</b> {{session('error')}}</div>
+                    @endif
                     <div id="login-box" class="col-md-12">
-                        @if(session()->has('error'))
-                        <div class="alert alert-danger custom-alert">{{session('error')}}</div>
-                        @endif
+                      
                         <form id="login-form" class="form" action="{{route('login.check')}}" method="POST">
                             @csrf
-                            <h3 class="text-center text-info">POSCAFE AND RESTO</h3>
+                            <h3 class="text-center text-info">POSCAFE & RESTO</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
                                 <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror">
@@ -57,7 +58,7 @@
                                 </span>
                               @enderror
                             </div>
-                            <div class="form-group">
+                            <div style="margin-bottom: 2em" class="form-group">
         
                                 <input  type="submit" name="submit" class="btn btn-info btn-md float-right" value="Login">
                             </div>
