@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\c_kategori;
 use App\Http\Controllers\c_login;
+use App\Http\Controllers\CrudController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,17 @@ Route::post('/', [App\Http\Controllers\c_login::class, 'logout'])->name('user.lo
 
 Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori', 'index')->name('kategori');
+    Route::get('/kategori/read', 'read')->name('kategori.read');
+    Route::get('/kategori/store', 'store')->name('kategori.store');
+    Route::get('/kategori/create', 'create')->name('kategori.create');
+    Route::get('/kategori/show/{id}', 'show')->name('kategori.show');
+    Route::get('/kategori/update/{id}', 'update')->name('kategori.update');
 });
 
 Route::get('/test', function () {
-    return view('layout.template');
+    return view('kategori.index');
 });
 
+Route::get('/update/{id}',[c_kategori::class,'update']);
+Route::get('/destroy/{id}',[c_kategori::class,'destroy']);
 

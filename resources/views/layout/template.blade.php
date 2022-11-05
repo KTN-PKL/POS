@@ -194,7 +194,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('template2') }}/dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
+{{-- <script>
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
@@ -279,8 +279,8 @@
   Dropzone.autoDiscover = false
 
   // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-  var previewNode = document.querySelector("#template")
-  previewNode.id = ""
+  // var previewNode = document.querySelector("#template")
+  // previewNode.id = ""
   var previewTemplate = previewNode.parentNode.innerHTML
   previewNode.parentNode.removeChild(previewNode)
 
@@ -327,18 +327,10 @@
     myDropzone.removeAllFiles(true)
   }
   // DropzoneJS Demo Code End
-</script>
+</script> --}}
 @stack('scripts')
 
-<script>
-  function storeKategori(){
-    var kategori= $("#kategori").val();
-    $.ajax({
-      type:"get",
-      url:
-    })
-  }
-</script>
+
 </body>
 </body>
 

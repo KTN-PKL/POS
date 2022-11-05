@@ -18,4 +18,16 @@ class kategori extends Model
     {
         DB::table('kategoris')->insert($data);
     }
+    public function detailData($id_kategori)
+    {
+        return DB::table('kategoris')->where('id_kategori', $id_kategori)->first();
+    }
+    public function editData($id_kategori, $data)
+    {
+        return DB::table('kategoris')->where('id_kategori', $id_kategori)->update($data);
+    }
+    public function deleteData($id_kategori)
+    {
+        return DB::table('kategoris')->where('id_kategori', $id_kategori)->delete();
+    }
 }
