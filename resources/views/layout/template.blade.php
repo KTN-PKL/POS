@@ -75,38 +75,52 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
     
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{{ asset('template') }}/assets/img/logo.png" alt="">
-        <span>FlexStart</span>
+      <a href="index.html" style="text-decoration: none" class="logo d-flex align-items-center">
+        <span>POS RESTO</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="#hero">HOME</a></li>
+          <li class="dropdown"><a href="#"><span>DATA MASTER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a style="text-decoration: none" href="#">Menu</a></li>
+              <li><a style="text-decoration: none"  href="#">Kategori</a></li>
+              <li><a style="text-decoration: none"  href="#">Customer</a></li>
+              <li><a style="text-decoration: none" href="#">Pengguna</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="nav-link scrollto" href="#services">STOK</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">KASIR</a></li>
+          <li class="dropdown"><a style="text-decoration: none"  href="#"><span>ORDER</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a style="text-decoration: none"  href="#">All Order</a></li>
+              <li><a style="text-decoration: none"  href="#">Ditempat</a></li>
+              <li><a style="text-decoration: none"  href="#">Booking</a></li>
+              <li><a style="text-decoration: none"  href="#">Delivery</a></li>
+              <li><a style="text-decoration: none"  href="#">Blm Lunas</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a style="text-decoration: none"  href="#"><span>AKUNTANSI</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a style="text-decoration: none"  href="#">Akun</a></li>
+              <li><a style="text-decoration: none"  href="#">Keuangan Lainnya</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a style="text-decoration: none"  href="#"><span>LAPORAN</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a  style="text-decoration: none" href="#">Transaksi Penjualan</a></li>
+              <li><a  style="text-decoration: none" href="#">History Per Menu</a></li>
+              <li><a  style="text-decoration: none" href="#">Cash Flow</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a style="text-decoration: none"  href="#"><span>User</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a style="text-decoration: none"  href="#">Pengaturan Toko</a></li>
+              <li><a style="text-decoration: none"  href="#">Profil</a></li>
+              <li><a style="text-decoration: none"  href="{{route('user.logout')}}">Keluar</a></li>
+            </ul>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
