@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\c_kategori;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\c_login::class, 'index'])->name('az');
 Route::post('/check', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
+
+Route::controller(c_kategori::class)->group(function () {
+    Route::get('/kategori', 'index')->name('kategori');
+});
 
 Route::get('/test', function () {
     return view('layout.template');

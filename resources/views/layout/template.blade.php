@@ -27,6 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('template') }}/assets/css/style.css" rel="stylesheet">
+  <link href="{{ asset('template') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: FlexStart - v1.11.1
@@ -41,6 +42,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    
 
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{ asset('template') }}/assets/img/logo.png" alt="">
@@ -84,6 +86,9 @@
   <!-- ======= Hero Section ======= -->
   
 <body>
+<br>
+<br>
+<br>
 @yield('content')
     <div class="container">
       <div class="copyright">
@@ -112,7 +117,10 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('template') }}/assets/js/main.js"></script>
+  <script src="{{ asset('template') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
 
+</body>
 </body>
 
 </html>

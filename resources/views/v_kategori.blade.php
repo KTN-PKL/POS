@@ -1,3 +1,4 @@
+@extends('layout.template')
 @section('content')
 
 <h2 style="margin-left: 1em" ><b>Kategori</h2>
