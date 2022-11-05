@@ -13,6 +13,13 @@ class c_login extends Controller
 
     public function check(Request $request)
     {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ],[
+            'username.required'=>'Username wajib terisi',
+            'password.required'=>'Password wajib terisi',
+        ]);
         $user = $request->username;
         $pass = $request->password;
 
@@ -23,7 +30,7 @@ class c_login extends Controller
         else
         {
             session()->flash('error', 'Username atau password salah');
-            return view('v_login');
+            return redirect()->back();
         }
     }
 
