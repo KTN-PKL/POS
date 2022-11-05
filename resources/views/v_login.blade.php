@@ -16,12 +16,13 @@
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
 }
-#login .container #login-row #login-column #login-box #login-form {
+#login .container #login-row #login-column #login-box #login-form  {
   padding: 20px;
 }
-#login .container #login-row #login-column #login-box #login-form #register-link {
+#login .container #login-row #login-column #login-box #login-form #register-link #login-alert{
   margin-top: -85px;
 }
+
 </style>
 <body>
 
@@ -32,12 +33,13 @@
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-4">
-                    @if(session()->has('error'))
-                    <div class="alert alert-danger custom-alert"><b>Warning!</b> {{session('error')}}</div>
-                    @endif
+                 
                     <div id="login-box" class="col-md-12">
                       
                         <form id="login-form" class="form" action="{{route('login.check')}}" method="POST">
+                            @if(session()->has('error'))
+                            <div id="login-alert" class="alert alert-danger custom-alert col-md-12"><b>Warning!</b> {{session('error')}}</div>
+                            @endif
                             @csrf
                             <h3 class="text-center text-info">POSCAFE & RESTO</h3>
                             <div class="form-group">
@@ -83,9 +85,7 @@
   </script> --}}
 
 <script> window.setTimeout(function() {
-    //$(".custom-alert").alert('close'); <--- Do not use this
-  
-    $(".custom-alert").slideUp(1000, function() {
+    $(".custom-alert").slideUp(2000, function() {
         $(this).remove();
     });
 }, 2000);</script>
