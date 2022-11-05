@@ -25,17 +25,32 @@
             <div id="alert"></div>
             <div class="mb-3">
               <label class="form-label">Kategori</label>
-              <input type="text" class="form-control" name="kategori" placeholder="Masukan Kategori">
+              <input id="kategori" type="text" class="form-control" name="kategori" placeholder="Masukan Kategori">
             </div>
             
           </div>
           <div class="modal-footer">
             {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
             <div id="tombol_login">
-              <input class="btn btn-primary" type="submit" value="Tambah">
+              <input class="btn btn-primary" type="submit" value="Tambah" onclick="storeKategori()">
             </div>
           </div>
         </div>
         <!-- /.modal-content -->
     </div>
   </div>
+
+  <script>
+    
+    function storeKategori(){
+      var kategori = $("#kategori").val();
+      $.ajax({
+        type: "get",
+        url: "{{ url('kategori/store') }}",
+        data: "kategori=" + kategori, 
+        success: function(data) {
+          $(".close").click();
+        }
+      });
+    }
+  </script>
