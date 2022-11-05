@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\kategori;
+use App\Models\item;
+use App\Models\stok;
 
-
-
-class c_kategori extends Controller
+class c_item extends Controller
 {
+
     public function __construct()
     {
-        $this->kategori = new kategori();
+        $this->item = new item();
+        $this->stok = new stok();
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,16 +21,9 @@ class c_kategori extends Controller
      */
     public function index()
     {
-        return view('kategori.index');
+        return view('item.index');
     }
 
-    public function read()
-    {
-        $data = [
-            'kategori' => $this->kategori->allData(),
-        ];
-        return view('kategori.read', $data);
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +31,15 @@ class c_kategori extends Controller
      */
     public function create()
     {
-        return view('kategori.create');
+        return view('item.create');
+    }
+
+    public function read()
+    {
+        $data = [
+            'item' => $this->item->allData(),
+        ];
+        return view('item.read', $data);
     }
 
     /**
@@ -49,10 +50,7 @@ class c_kategori extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'kategori' => $request->kategori,
-        ];
-        $this->kategori->addData($data);
+        //
     }
 
     /**
@@ -63,10 +61,7 @@ class c_kategori extends Controller
      */
     public function show($id)
     {
-        $data = [
-            'kategori' => $this->kategori->detailData($id),
-        ];
-        return view('kategori.edit', $data);
+        //
     }
 
     /**
@@ -77,7 +72,7 @@ class c_kategori extends Controller
      */
     public function edit($id)
     {
-      
+        //
     }
 
     /**
@@ -89,10 +84,7 @@ class c_kategori extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'kategori' => $request->kategori,
-        ];
-        $this->kategori->editData($id, $data);
+        //
     }
 
     /**
@@ -103,6 +95,6 @@ class c_kategori extends Controller
      */
     public function destroy($id)
     {
-        $this->kategori->deleteData($id);
+        //
     }
 }

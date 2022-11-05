@@ -30,12 +30,10 @@ Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori/create', 'create')->name('kategori.create');
     Route::get('/kategori/show/{id}', 'show')->name('kategori.show');
     Route::get('/kategori/update/{id}', 'update')->name('kategori.update');
+    Route::get('/kategori/destroy/{id}', 'destroy')->name('kategori.destroy');
 });
 
 Route::get('/test', function () {
     return view('kategori.index');
 });
-
-Route::get('/update/{id}',[c_kategori::class,'update']);
-Route::get('/destroy/{id}',[c_kategori::class,'destroy']);
 
