@@ -24,6 +24,12 @@
 }
 </style>
 <body>
+
+    @if(session()->has('error'))
+    <div class="alert alert-danger">{{session('error')}}
+    @endif
+    </div>
+
     <div id="login">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
@@ -38,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
