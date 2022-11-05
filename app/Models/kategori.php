@@ -9,5 +9,12 @@ class kategori extends Model
 {
     use HasFactory;
 
-    
+    public function allData()
+    {
+        return DB::table('kategoris')->get();
+    }
+    public function addData($data)
+    {
+        DB::table('kategoris')->insert($data);
+    }
 }
