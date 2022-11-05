@@ -18,12 +18,19 @@ class c_login extends Controller
 
         if(auth()->attempt(array('name'=>$user,'password'=>$pass)))
         {
-            return view('test');
+            return view('v_');
         }
         else
         {
             session()->flash('error', 'Username atau password salah');
-            return redirect()->name('azz');
+            return redirect()->name('user.login');
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        $request->session()->flush();
+        return redirect()->route('user.login');
     }
 }
