@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\c_login::class, 'index']);
+Route::get('/', [App\Http\Controllers\c_login::class, 'index'])->name('az');
 Route::post('/check', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
 
 Route::get('/test', function () {
