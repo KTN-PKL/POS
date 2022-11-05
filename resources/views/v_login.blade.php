@@ -25,30 +25,41 @@
 </style>
 <body>
 
-    @if(session()->has('error'))
-    <div class="alert alert-danger">{{session('error')}}
-    @endif
-    </div>
+   
+  
 
     <div id="login">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
+                <div id="login-column" class="col-md-4">
                     <div id="login-box" class="col-md-12">
+                        @if(session()->has('error'))
+                        <div class="alert alert-danger custom-alert">{{session('error')}}</div>
+                        @endif
                         <form id="login-form" class="form" action="{{route('login.check')}}" method="POST">
                             @csrf
-                            <h3 class="text-center text-info">Login</h3>
+                            <h3 class="text-center text-info">POSCAFE AND RESTO</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror">
+                            @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                              @enderror
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
-                                <input type="password" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" autocomplete="on">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                              @enderror
                             </div>
                             <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+        
+                                <input  type="submit" name="submit" class="btn btn-info btn-md float-right" value="Login">
                             </div>
 
                         </form>
@@ -58,3 +69,23 @@
         </div>
     </div>
 </body>
+{{-- <script type="text/javascript">
+
+    $("document").ready(function()
+    {
+      setTimeout(function()
+      {
+        $("div.alert").slideup();
+      }, 2000);
+    });
+
+  </script> --}}
+
+<script> window.setTimeout(function() {
+    //$(".custom-alert").alert('close'); <--- Do not use this
+  
+    $(".custom-alert").slideUp(1000, function() {
+        $(this).remove();
+    });
+}, 2000);</script>
+ 
