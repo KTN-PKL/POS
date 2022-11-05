@@ -27,7 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('template') }}/assets/css/style.css" rel="stylesheet">
-  <link href="{{ asset('template') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
 
   <!-- =======================================================
   * Template Name: FlexStart - v1.11.1
@@ -117,8 +117,6 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('template') }}/assets/js/main.js"></script>
-  <script src="{{ asset('template') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery.js"></script>
 
 </body>
 </body>
