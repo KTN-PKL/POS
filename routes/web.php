@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\c_kategori;
+use App\Http\Controllers\c_login;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,12 @@ use App\Http\Controllers\c_kategori;
 |
 */
 
-Route::get('/', [App\Http\Controllers\c_login::class, 'index'])->name('az');
-Route::post('/check', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
+// Login Logout
+Route::get('/', [App\Http\Controllers\c_login::class, 'index']);
+Route::post('/dashboard', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
+Route::post('/', [App\Http\Controllers\c_login::class, 'logout'])->name('user.logout');
+
+
 
 Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori', 'index')->name('kategori');

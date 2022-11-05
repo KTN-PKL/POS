@@ -1,1 +1,2 @@
-Berhasil Login z
+
+<a href="{{route('user.logout')}}">Logoutt</a>
