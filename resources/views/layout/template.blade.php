@@ -84,9 +84,7 @@
   <!-- ======= Hero Section ======= -->
   
 <body>
-<br>
-<br>
-<br>
+@yield('content')
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
