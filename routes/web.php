@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\c_login::class, 'index']);
-Route::post('/check', [App\Http\Controllers\c_login::class, 'check']);
+Route::post('/check', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
 
 Route::get('/test', function () {
     return view('layout.template');
