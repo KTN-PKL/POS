@@ -329,6 +329,16 @@
   // DropzoneJS Demo Code End
 </script>
 @stack('scripts')
+
+<script>
+  function storeKategori(){
+    var kategori= $("#kategori").val();
+    $.ajax({
+      type:"get",
+      url:
+    })
+  }
+</script>
 </body>
 </body>
 
