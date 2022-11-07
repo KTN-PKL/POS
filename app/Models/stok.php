@@ -12,22 +12,22 @@ class stok extends Model
 
     public function allData()
     {
-        return DB::table('kategoris')->get();
+        return DB::table('stoks')->get();
     }
     public function addData($data)
     {
-        DB::table('kategoris')->insert($data);
+        DB::table('stoks')->insert($data);
     }
-    public function detailData($id_kategori)
+    public function detailData($id_stok)
     {
-        return DB::table('kategoris')->where('id_kategori', $id_kategori)->first();
+        return DB::table('stoks')->where('id_stok', $id_stok)->first();
     }
-    public function editData($id_kategori, $data)
+    public function editData($id_stok, $data)
     {
-        return DB::table('kategoris')->where('id_kategori', $id_kategori)->update($data);
+        return DB::table('stoks')->where('id_stok', $id_stok)->update($data);
     }
-    public function deleteData($id_kategori)
+    public function deleteData($id_stok)
     {
-        return DB::table('kategoris')->where('id_kategori', $id_kategori)->delete();
+        return DB::table('stoks')->where('id_stok', $id_stok)->delete();
     }
 }

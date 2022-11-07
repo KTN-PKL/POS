@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('stoks', function (Blueprint $table) {
             $table->id('id_stok');
             $table->string('id_item');
-            $table->string('stok');
+            $table->string('stok')->nullabel();
             $table->string('minim');
             $table->timestamps();
         });

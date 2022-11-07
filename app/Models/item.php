@@ -12,8 +12,24 @@ class item extends Model
 
     public function allData()
     {
-        return DB::table('items')->get();
+        return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->get();
     }
+
+    public function id()
+    {
+        $data = DB::table('items')->orderBy('id_item', 'DESC')->first();
+        if ($data == null) {
+            $urutan = 0;
+        } else {
+            $kode = $data->id_item;
+            $urutan = (int) substr($kode, 3, 3);
+        }
+        $urutan++;
+        $huruf = "ITM";
+        $id_item = $huruf . sprintf("%03s", $urutan);
+        return $id_item;
+    }
+
     public function addData($data)
     {
         DB::table('items')->insert($data);

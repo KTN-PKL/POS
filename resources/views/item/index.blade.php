@@ -78,6 +78,7 @@
             var id_kategori = $("#id_kategori").val();
             var beli = $("#beli").val();
             var jual = $("#jual").val();
+            var minim = $("#minim").val();
             var files = $("#foto")[0].files;
             var datas = new FormData();
             datas.append('foto',files[0]);
@@ -85,6 +86,7 @@
             datas.append('id_kategori',id_kategori);
             datas.append('beli',beli);
             datas.append('jual',jual);
+            datas.append('minim',minim);
             datas.append('_token',CSRF_TOKEN);
             $.ajax({
                  url: "{{route('item.store')}}",

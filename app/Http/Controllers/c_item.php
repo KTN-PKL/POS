@@ -55,9 +55,9 @@ class c_item extends Controller
      */
     public function store(Request $request)
     {
-        $id = "cek";
+        $id = $this->item->id();
         $file  = $request->foto;
-        $filename = "Logo".'.'.$file->extension();
+        $filename = $id.'.'.$file->extension();
         $file->move(public_path('logo'),$filename);
         $data = [
             'id_item' => $id,
@@ -68,6 +68,12 @@ class c_item extends Controller
             'foto' => $filename,
         ];
         $this->item->addData($data);
+        $data = [
+            'id_item' => $id,
+            'stok' => 0,
+            'minim' => $request->minim,
+        ];
+        $this->stok->addData($data);
         $data['success'] = 1;
         return response()->json($data);
     }
