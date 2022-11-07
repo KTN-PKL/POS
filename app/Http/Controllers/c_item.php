@@ -86,7 +86,11 @@ class c_item extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'item' => $this->item->detailData($id),
+            'kategori' => $this->kategori->allData(),
+        ];
+        return view('item.edit', $data);
     }
 
     /**
