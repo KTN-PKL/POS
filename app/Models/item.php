@@ -12,22 +12,22 @@ class item extends Model
 
     public function allData()
     {
-        return DB::table('kategoris')->get();
+        return DB::table('items')->get();
     }
     public function addData($data)
     {
-        DB::table('kategoris')->insert($data);
+        DB::table('items')->insert($data);
     }
-    public function detailData($id_kategori)
+    public function detailData($id_item)
     {
-        return DB::table('kategoris')->where('id_kategori', $id_kategori)->first();
+        return DB::table('items')->where('id_item', $id_item)->first();
     }
-    public function editData($id_kategori, $data)
+    public function editData($id_item, $data)
     {
-        return DB::table('kategoris')->where('id_kategori', $id_kategori)->update($data);
+        return DB::table('items')->where('id_item', $id_item)->update($data);
     }
-    public function deleteData($id_kategori)
+    public function deleteData($id_item)
     {
-        return DB::table('kategoris')->where('id_kategori', $id_kategori)->delete();
+        return DB::table('items')->where('id_item', $id_item)->delete();
     }
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CRUD Laravel 8</title>
 
@@ -26,7 +26,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -58,14 +58,14 @@
         });
         // Read Database
         function read() {
-            $.get("{{ url('kategori/read') }}", {}, function(data, status) {
+            $.get("{{ url('item/read') }}", {}, function(data, status) {
                 $("#read").html(data);
             });
         }
         // Untuk modal halaman create
         function create() {
-            $.get("{{ route('kategori.create') }}", {}, function(data, status) {
-                $("#exampleModalLabel").html('Create Product')
+            $.get("{{ route('item.create') }}", {}, function(data, status) {
+                $("#exampleModalLabel").html('Tambah Item')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
@@ -73,14 +73,31 @@
 
         // untuk proses create data
         function store() {
-            var kategori = $("#kategori").val();
+            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+            var item = $("#item").val();
+            var id_kategori = $("#id_kategori").val();
+            var beli = $("#beli").val();
+            var jual = $("#jual").val();
+            var files = $("#foto")[0].files;
+            var datas = new FormData();
+            datas.append('foto',files[0]);
+            datas.append('item',item);
+            datas.append('id_kategori',id_kategori);
+            datas.append('beli',beli);
+            datas.append('jual',jual);
+            datas.append('_token',CSRF_TOKEN);
             $.ajax({
-                type: "get",
-                url: "{{ url('kategori/store') }}",
-                data: "kategori=" + kategori,
-                success: function(data) {
+                 url: "{{route('item.store')}}",
+                 method: 'post',
+                 data: datas,
+                 contentType: false,
+                 processData: false,
+                 dataType: 'json',
+            success: function(response) {
+                if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                }
                 }
             });
         }

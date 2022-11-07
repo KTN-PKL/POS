@@ -65,7 +65,7 @@
         // Untuk modal halaman create
         function create() {
             $.get("{{ route('kategori.create') }}", {}, function(data, status) {
-                $("#exampleModalLabel").html('Create Product')
+                $("#exampleModalLabel").html('Tambah Kategori')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });

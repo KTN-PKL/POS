@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\c_kategori;
+use App\Http\Controllers\c_item;
 use App\Http\Controllers\c_login;
 use App\Http\Controllers\CrudController;
 
@@ -32,6 +33,17 @@ Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori/update/{id}', 'update')->name('kategori.update');
     Route::get('/kategori/destroy/{id}', 'destroy')->name('kategori.destroy');
 });
+
+Route::controller(c_item::class)->group(function () {
+    Route::get('/item', 'index')->name('item');
+    Route::get('/item/read', 'read')->name('item.read');
+    Route::post('/item/store', 'store')->name('item.store');
+    Route::get('/item/create', 'create')->name('item.create');
+    Route::get('/item/show/{id}', 'show')->name('item.show');
+    Route::get('/item/update/{id}', 'update')->name('item.update');
+    Route::get('/item/destroy/{id}', 'destroy')->name('item.destroy');
+});
+
 
 Route::get('/test', function () {
     return view('kategori.index');

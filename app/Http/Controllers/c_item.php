@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\item;
+use App\Models\kategori;
 use App\Models\stok;
 
 class c_item extends Controller
@@ -12,6 +13,7 @@ class c_item extends Controller
     public function __construct()
     {
         $this->item = new item();
+        $this->kategori = new kategori();
         $this->stok = new stok();
     }
     /**
@@ -31,7 +33,10 @@ class c_item extends Controller
      */
     public function create()
     {
-        return view('item.create');
+        $data = [
+            'kategori' => $this->kategori->allData(),
+        ];
+        return view('item.create', $data);
     }
 
     public function read()
@@ -50,7 +55,21 @@ class c_item extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = "cek";
+        $file  = $request->foto;
+        $filename = "Logo".'.'.$file->extension();
+        $file->move(public_path('logo'),$filename);
+        $data = [
+            'id_item' => $id,
+            'item' => $request->item,
+            'id_kategori' => $request->id_kategori,
+            'beli' => $request->beli,
+            'jual' => $request->jual,
+            'foto' => $filename,
+        ];
+        $this->item->addData($data);
+        $data['success'] = 1;
+        return response()->json($data);
     }
 
     /**
