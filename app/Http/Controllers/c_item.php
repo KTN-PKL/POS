@@ -58,7 +58,7 @@ class c_item extends Controller
         $id = $this->item->id();
         $file  = $request->foto;
         $filename = $id.'.'.$file->extension();
-        $file->move(public_path('logo'),$filename);
+        $file->move(public_path('foto'),$filename);
         $data = [
             'id_item' => $id,
             'item' => $request->item,
@@ -86,8 +86,10 @@ class c_item extends Controller
      */
     public function show($id)
     {
+        $huruf = "ITM";
+        $id_item = $huruf . sprintf("%03s", $id);
         $data = [
-            'item' => $this->item->detailData($id),
+            'item' => $this->item->detailData($id_item),
             'kategori' => $this->kategori->allData(),
         ];
         return view('item.edit', $data);
@@ -99,9 +101,9 @@ class c_item extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+       
     }
 
     /**
@@ -113,7 +115,34 @@ class c_item extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $huruf = "ITM";
+        $id_item = $huruf . sprintf("%03s", $id);
+        if ($request->foto <> null) {
+            $file  = $request->foto;
+            $filename = $id_item.'.'.$file->extension();
+            $file->move(public_path('foto'),$filename);
+            $data = [
+                'item' => $request->item,
+                'id_kategori' => $request->id_kategori,
+                'beli' => $request->beli,
+                'jual' => $request->jual,
+                'foto' => $filename,
+            ];
+        } else {
+            $data = [
+                'item' => $request->item,
+                'id_kategori' => $request->id_kategori,
+                'beli' => $request->beli,
+                'jual' => $request->jual,
+            ];
+        }
+        $this->item->editData($id_item, $data);
+        $data = [
+            'minim' => $request->minim,
+        ];
+        $this->stok->editminimData($id_item, $data);
+        $data['success'] = 1;
+        return response()->json($data);
     }
 
     /**

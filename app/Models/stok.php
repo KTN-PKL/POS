@@ -26,6 +26,10 @@ class stok extends Model
     {
         return DB::table('stoks')->where('id_stok', $id_stok)->update($data);
     }
+    public function editminimData($id_item, $data)
+    {
+        return DB::table('stoks')->where('id_item', $id_item)->update($data);
+    }
     public function deleteData($id_stok)
     {
         return DB::table('stoks')->where('id_stok', $id_stok)->delete();

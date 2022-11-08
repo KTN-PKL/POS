@@ -36,7 +36,7 @@ class item extends Model
     }
     public function detailData($id_item)
     {
-        return DB::table('items')->where('id_item', $id_item)->first();
+        return DB::table('items')->join('stoks', 'items.id_item', '=', 'stoks.id_item')->where('items.id_item', $id_item)->first();
     }
     public function editData($id_item, $data)
     {

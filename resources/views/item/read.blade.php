@@ -6,6 +6,7 @@
         <th>Nama Item</th>
         <th>Harga Beli</th>
         <th>Harga Jual</th>
+        <th>Gambar</th>
         <th>Action</th>
     </tr>
     @php
@@ -22,9 +23,13 @@
             <td>{{ $items->item }}</td>
             <td>{{ $items->beli }}</td>
             <td>{{ $items->jual }}</td>
+            <td><img src="{{asset('/foto/'. $items->foto)}}"  alt="Gambar" width="50px" height="50px"></td>
             <td>
-                <button class="btn btn-warning" onClick="show({{ $items->id_item }})">Edit</button>
-                <button class="btn btn-danger" onClick="destroy({{ $items->id_item }})">Delete</button>
+                @php
+                     $urutan = (int) substr($items->id_item, 3, 3);
+                @endphp
+                <button class="btn btn-warning" onClick="show({{ $urutan }})">Edit</button>
+                <button class="btn btn-danger" onClick="destroy({{ $urutan }})">Delete</button>
             </td>
         </tr>
     @endforeach
