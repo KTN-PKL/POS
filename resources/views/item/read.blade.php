@@ -28,7 +28,8 @@
                 @php
                      $urutan = (int) substr($items->id_item, 3, 3);
                 @endphp
-                <button class="btn btn-warning" onClick="show({{ $urutan }})">Edit</button>
+                <button class="btn btn-primary" onClick="show({{ $urutan }})">Detail</button>
+                <button class="btn btn-warning" onClick="edit({{ $urutan }})">Edit</button>
                 <button class="btn btn-danger" onClick="destroy({{ $urutan }})">Delete</button>
             </td>
         </tr>

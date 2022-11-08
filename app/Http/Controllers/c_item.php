@@ -92,7 +92,7 @@ class c_item extends Controller
             'item' => $this->item->detailData($id_item),
             'kategori' => $this->kategori->allData(),
         ];
-        return view('item.edit', $data);
+        return view('item.detail', $data);
     }
 
     /**
@@ -101,9 +101,15 @@ class c_item extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-       
+        $huruf = "ITM";
+        $id_item = $huruf . sprintf("%03s", $id);
+        $data = [
+            'item' => $this->item->detailData($id_item),
+            'kategori' => $this->kategori->allData(),
+        ];
+        return view('item.edit', $data);
     }
 
     /**

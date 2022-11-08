@@ -40,6 +40,7 @@ Route::controller(c_item::class)->group(function () {
     Route::post('/item/store', 'store')->name('item.store');
     Route::get('/item/create', 'create')->name('item.create');
     Route::get('/item/show/{id}', 'show')->name('item.show');
+    Route::get('/item/edit/{id}', 'edit')->name('item.edit');
     Route::post('/item/update/{id}', 'update')->name('item.update');
     Route::get('/item/destroy/{id}', 'destroy')->name('item.destroy');
 });
