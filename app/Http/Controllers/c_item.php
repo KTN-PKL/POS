@@ -118,6 +118,8 @@ class c_item extends Controller
         $huruf = "ITM";
         $id_item = $huruf . sprintf("%03s", $id);
         if ($request->foto <> null) {
+            $cek = $this->item->detailData($id_item);
+            unlink(public_path('foto'). '/' .$cek->foto);
             $file  = $request->foto;
             $filename = $id_item.'.'.$file->extension();
             $file->move(public_path('foto'),$filename);
@@ -153,6 +155,10 @@ class c_item extends Controller
      */
     public function destroy($id)
     {
-        //
+        $huruf = "ITM";
+        $id_item = $huruf . sprintf("%03s", $id);
+        $cek = $this->item->detailData($id_item);
+        unlink(public_path('foto'). '/' .$cek->foto);
+        $this->item->deleteData($id_item);
     }
 }

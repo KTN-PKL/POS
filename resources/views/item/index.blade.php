@@ -151,8 +151,7 @@
         function destroy(id) {
             $.ajax({
                 type: "get",
-                url: "{{ url('kategori/destroy') }}/" + id,
-                
+                url: "{{ url('item/destroy') }}/" + id,
             });
             read();
         }
