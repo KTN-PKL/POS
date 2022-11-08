@@ -53,6 +53,7 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <script>
+        this.datas = new FormData();
         $(document).ready(function() {
             read()
         });
@@ -80,7 +81,6 @@
             var jual = $("#jual").val();
             var minim = $("#minim").val();
             var files = $("#foto")[0].files;
-            var datas = new FormData();
             datas.append('foto',files[0]);
             datas.append('item',item);
             datas.append('id_kategori',id_kategori);
@@ -113,16 +113,36 @@
             });
         }
 
+        function editgambar(){
+            var files = $("#foto")[0].files;
+            datas.append('foto',files[0]);
+        }
         // untuk proses update data
         function update(id) {
-            var kategori = $("#kategori").val();
+            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+            var item = $("#item").val();
+            var id_kategori = $("#id_kategori").val();
+            var beli = $("#beli").val();
+            var jual = $("#jual").val();
+            var minim = $("#minim").val();
+            datas.append('item',item);
+            datas.append('id_kategori',id_kategori);
+            datas.append('beli',beli);
+            datas.append('jual',jual);
+            datas.append('minim',minim);
+            datas.append('_token',CSRF_TOKEN);
             $.ajax({
-                type: "get",
-                url: "{{ url('kategori/update') }}/" + id,
-                data: "kategori=" + kategori,
-                success: function(data) {
+                 url: "{{ url('item/update') }}/" + id,
+                 method: 'post',
+                 data: datas,
+                 contentType: false,
+                 processData: false,
+                 dataType: 'json',
+                success: function(response) {
+                if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                }
                 }
             });
         }
