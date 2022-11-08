@@ -1,4 +1,5 @@
-<table class="table">
+<div class="card" style="width: 1000px">
+<table class="table table-bordered table-hover">
     <tr>
         <th>No</th>
         <th>Kode Menu</th>
@@ -23,7 +24,7 @@
             <td>{{ $items->item }}</td>
             <td>{{ $items->beli }}</td>
             <td>{{ $items->jual }}</td>
-            <td><img src="{{asset('/foto/'. $items->foto)}}"  alt="Gambar" width="50px" height="50px"></td>
+            <td><img src="{{asset('/foto/'. $items->foto)}}"  alt="Gambar" width="100px" height="100px"></td>
             <td>
                 @php
                      $urutan = (int) substr($items->id_item, 3, 3);
@@ -35,3 +36,4 @@
         </tr>
     @endforeach
 </table>
+</div>
