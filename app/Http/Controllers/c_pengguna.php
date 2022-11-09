@@ -61,44 +61,34 @@ class c_pengguna extends Controller
 
     public function update(Request $request, $id)
     {
-        $huruf = "ITM";
-        $id_pengguna = $huruf . sprintf("%03s", $id);
         if ($request->foto <> null) {
-            $cek = $this->pengguna->detailData($id_pengguna);
-            unlink(public_path('foto'). '/' .$cek->foto);
+            $cek = $this->pengguna->detailData($id);
+            unlink(public_path('fotouser'). '/' .$cek->foto);
             $file  = $request->foto;
-            $filename = $id_pengguna.'.'.$file->extension();
-            $file->move(public_path('foto'),$filename);
+            $filename = $request->username.'.'.$file->extension();
+            $file->move(public_path('fotouser'),$filename);
             $data = [
-                'pengguna' => $request->pengguna,
-                'id_kategori' => $request->id_kategori,
-                'beli' => $request->beli,
-                'jual' => $request->jual,
+                'name' => $request->name,
                 'foto' => $filename,
+                'alamatuser' => $request->alamatuser,
+                'telepon' => $request->telepon,
             ];
         } else {
             $data = [
-                'pengguna' => $request->pengguna,
-                'id_kategori' => $request->id_kategori,
-                'beli' => $request->beli,
-                'jual' => $request->jual,
+                'name' => $request->name,
+                'alamatuser' => $request->alamatuser,
+                'telepon' => $request->telepon,
             ];
         }
-        $this->pengguna->editData($id_pengguna, $data);
-        $data = [
-            'minim' => $request->minim,
-        ];
-        $this->stok->editminimData($id_pengguna, $data);
+        $this->pengguna->editData($id, $data);
         $data['success'] = 1;
         return response()->json($data);
     }
 
     public function destroy($id)
     {
-        $huruf = "ITM";
-        $id_pengguna = $huruf . sprintf("%03s", $id);
-        $cek = $this->pengguna->detailData($id_pengguna);
-        unlink(public_path('foto'). '/' .$cek->foto);
-        $this->pengguna->deleteData($id_pengguna);
+        $cek = $this->pengguna->detailData($id);
+        unlink(public_path('fotouser'). '/' .$cek->foto);
+        $this->pengguna->deleteData($id);
     }
 }

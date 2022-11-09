@@ -17,7 +17,7 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Pas Foto</label>
-        <input type="file" name="foto" id="foto" class="form-control" placeholder="Masukan Pas Foto">
+        <input type="file" name="foto" id="foto" class="form-control" placeholder="Masukan Pas Foto" onchange="editgambar()">
     </div>
     <div class="form-group mt-2">
         <button class="btn btn-warning" onClick="update({{ $pengguna->id }})">Edit</button>
