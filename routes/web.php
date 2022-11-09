@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\c_kategori;
 use App\Http\Controllers\c_item;
 use App\Http\Controllers\c_login;
+use App\Http\Controllers\c_customer;
 use App\Http\Controllers\CrudController;
 
 /*
@@ -43,6 +44,17 @@ Route::controller(c_item::class)->group(function () {
     Route::get('/item/edit/{id}', 'edit')->name('item.edit');
     Route::post('/item/update/{id}', 'update')->name('item.update');
     Route::get('/item/destroy/{id}', 'destroy')->name('item.destroy');
+});
+
+Route::controller(c_customer::class)->group(function () {
+    Route::get('/customer', 'index')->name('customer');
+    Route::get('/customer/read', 'read')->name('customer.read');
+    Route::post('/customer/store', 'store')->name('customer.store');
+    Route::get('/customer/create', 'create')->name('customer.create');
+    Route::get('/customer/show/{id}', 'show')->name('customer.show');
+    Route::get('/customer/edit/{id}', 'edit')->name('customer.edit');
+    Route::post('/customer/update/{id}', 'update')->name('customer.update');
+    Route::get('/customer/destroy/{id}', 'destroy')->name('customer.destroy');
 });
 
 
