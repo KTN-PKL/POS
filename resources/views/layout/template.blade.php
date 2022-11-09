@@ -71,7 +71,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top">
+  <header style="background-color: white;height:90px" id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
     
 
@@ -84,8 +84,8 @@
           <li><a class="nav-link scrollto active" href="#hero">HOME</a></li>
           <li class="dropdown"><a href="#"><span>DATA MASTER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a style="text-decoration: none" href="#">Menu</a></li>
-              <li><a style="text-decoration: none"  href="#">Kategori</a></li>
+              <li><a style="text-decoration: none" href="{{url('item')}}">Menu</a></li>
+              <li><a style="text-decoration: none"  href="{{url('kategori')}}">Kategori</a></li>
               <li><a style="text-decoration: none"  href="#">Customer</a></li>
               <li><a style="text-decoration: none" href="#">Pengguna</a></li>
             </ul>
@@ -130,23 +130,14 @@
 
   <!-- ======= Hero Section ======= -->
   
-<body>
+<body style="background-color: rgb(238, 237, 237)">
 <br>
 <br>
 <br>
 @yield('content')
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
+</body>
+<footer id="footer" class="footer">
+  
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

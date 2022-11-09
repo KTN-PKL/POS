@@ -1,4 +1,15 @@
-<table class="table">
+<div class="card">
+    <div style="background-color:#0c4e68" class="card-header">
+        <h5 class="text-white" ><b>Daftar Kategori<b></h5>
+    </div>
+    <div class="card-body">
+        <div class="input-group col-md-4 offset-8">
+            <input  type="search" class="form-control input-sm" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />     
+            <button type="button" class="btn btn-outline-primary">Search</button>
+          </div>
+          <br>
+      
+<table class="table table-bordered table-hover">
     <tr>
         <th>No</th>
         <th>Kategori</th>
@@ -21,3 +32,5 @@
         </tr>
     @endforeach
 </table>
+</div>
+</div>
