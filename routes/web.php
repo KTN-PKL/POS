@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\c_kategori;
 use App\Http\Controllers\c_item;
+use App\Http\Controllers\c_pengguna;
 use App\Http\Controllers\c_login;
 use App\Http\Controllers\c_customer;
 use App\Http\Controllers\CrudController;
@@ -51,12 +52,21 @@ Route::controller(c_customer::class)->group(function () {
     Route::get('/customer/read', 'read')->name('customer.read');
     Route::post('/customer/store', 'store')->name('customer.store');
     Route::get('/customer/create', 'create')->name('customer.create');
-    Route::get('/customer/show/{id}', 'show')->name('customer.show');
     Route::get('/customer/edit/{id}', 'edit')->name('customer.edit');
     Route::post('/customer/update/{id}', 'update')->name('customer.update');
     Route::get('/customer/destroy/{id}', 'destroy')->name('customer.destroy');
 });
 
+Route::controller(c_pengguna::class)->group(function () {
+    Route::get('/pengguna', 'index')->name('pengguna');
+    Route::get('/pengguna/read', 'read')->name('pengguna.read');
+    Route::post('/pengguna/store', 'store')->name('pengguna.store');
+    Route::get('/pengguna/create', 'create')->name('pengguna.create');
+    Route::get('/pengguna/show/{id}', 'show')->name('pengguna.show');
+    Route::get('/pengguna/edit/{id}', 'edit')->name('pengguna.edit');
+    Route::post('/pengguna/update/{id}', 'update')->name('pengguna.update');
+    Route::get('/pengguna/destroy/{id}', 'destroy')->name('pengguna.destroy');
+});
 
 Route::get('/test', function () {
     return view('kategori.index');
