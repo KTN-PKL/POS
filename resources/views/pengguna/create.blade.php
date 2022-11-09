@@ -4,15 +4,6 @@
         <input type="text" name="item" id="item" class="form-control" placeholder="Masukan Item">
     </div>
     <div class="mb-3">
-        <label class="form-label">Kategori</label>
-        <select type="text" name="id_kategori" id="id_kategori" class="form-control">
-            <option selected>--Pilih Kategori--</option>
-            @foreach ($kategori as $item)
-            <option value="{{ $item->id_kategori }}">{{ $item->kategori }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="mb-3">
         <label class="form-label">Harga Beli</label>
         <input type="number" name="beli" id="beli" class="form-control" placeholder="Masukan Harga Beli">
     </div>
