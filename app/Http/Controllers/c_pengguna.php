@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\pengguna;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class c_pengguna extends Controller
 {
@@ -34,15 +34,15 @@ class c_pengguna extends Controller
     public function store(Request $request)
     {
         $file  = $request->foto;
-        $filename = $id.'.'.$file->extension();
+        $filename = $request->username.'.'.$file->extension();
         $file->move(public_path('fotouser'),$filename);
-        $encrypted = Crypt::encryptString($request->password);
+        $encrypted = Hash::make($request->password);
         $data = [
             'name' => $request->name,
             'username' => $request->username,
-            'foto' => $request->foto,
+            'foto' => $filename,
             'password' => $encrypted,
-            'alamatuser' => $filename,
+            'alamatuser' => $request->alamatuser,
             'level' => 1,
             'telepon' => $request->telepon,
         ];
@@ -54,8 +54,7 @@ class c_pengguna extends Controller
     public function edit($id)
     {
         $data = [
-            'pengguna' => $this->pengguna->detailData($id_pengguna),
-            'kategori' => $this->kategori->allData(),
+            'pengguna' => $this->pengguna->detailData($id),
         ];
         return view('pengguna.edit', $data);
     }

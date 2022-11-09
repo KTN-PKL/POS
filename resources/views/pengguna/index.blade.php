@@ -75,18 +75,18 @@
         // untuk proses create data
         function store() {
             var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-            var pengguna = $("#pengguna").val();
-            var id_kategori = $("#id_kategori").val();
-            var beli = $("#beli").val();
-            var jual = $("#jual").val();
-            var minim = $("#minim").val();
+            var name = $("#name").val();
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var telepon = $("#telepon").val();
+            var alamatuser = $("#alamatuser").val();
             var files = $("#foto")[0].files;
             datas.append('foto',files[0]);
-            datas.append('pengguna',pengguna);
-            datas.append('id_kategori',id_kategori);
-            datas.append('beli',beli);
-            datas.append('jual',jual);
-            datas.append('minim',minim);
+            datas.append('name',name);
+            datas.append('username',username);
+            datas.append('password',password);
+            datas.append('telepon',telepon);
+            datas.append('alamatuser',alamatuser);
             datas.append('_token',CSRF_TOKEN);
             $.ajax({
                  url: "{{route('pengguna.store')}}",

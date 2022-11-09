@@ -1,38 +1,25 @@
 <div class="p2">
     <div class="mb-3">
-        <label class="form-label">Nama Item</label>
-        <input type="text" id="item" class="form-control" placeholder="Masukan Item" value="{{ $item->item }}">
+        <label class="form-label">Nama Pengguna</label>
+        <input type="text" name="name" id="name" class="form-control" placeholder="Masukan Nama Pengguna" value="{{ $pengguna->name }}">
     </div>
     <div class="mb-3">
-        <label class="form-label">Kategori</label>
-        <select type="text" id="id_kategori" class="form-control">
-            @foreach ($kategori as $items)
-            <option value="{{ $items->id_kategori }}" @if ($items->id_kategori == $item->id_kategori)
-                selected
-            @endif>{{ $items->kategori }}</option>
-            @endforeach
-        </select>
+        <label class="form-label">Username</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Masukan Username" value="{{ $pengguna->username }}" readonly>
     </div>
     <div class="mb-3">
-        <label class="form-label">Harga Beli</label>
-        <input type="number" id="beli" class="form-control" placeholder="Masukan Harga Beli" value="{{ $item->beli }}">
+        <label class="form-label">Telepon</label>
+        <input type="number" name="telepon" id="telepon" class="form-control" placeholder="Masukan Telepon" value="{{ $pengguna->telepon }}">
     </div>
     <div class="mb-3">
-        <label class="form-label">Harga Jual</label>
-        <input type="number" id="jual" class="form-control" placeholder="Masukan Harga Jual" value="{{ $item->jual }}">
+        <label class="form-label">Alamat</label>
+        <input type="text" name="alamatuser" id="alamatuser" class="form-control" placeholder="Masukan Alamat" value="{{ $pengguna->alamatuser }}">
     </div>
     <div class="mb-3">
-        <label class="form-label">Stok Minimal</label>
-        <input type="number" id="minim" class="form-control" placeholder="Masukan Stok Minimal" value="{{ $item->minim }}">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Foto Item</label>
-        <input type="file" id="foto" name="foto" class="form-control" placeholder="Masukan Foto Item" onchange="editgambar()">
+        <label class="form-label">Pas Foto</label>
+        <input type="file" name="foto" id="foto" class="form-control" placeholder="Masukan Pas Foto">
     </div>
     <div class="form-group mt-2">
-        @php
-             $urutan = (int) substr($item->id_item, 3, 3);
-        @endphp
-        <button class="btn btn-warning" onClick="update({{ $urutan }})">Edit</button>
+        <button class="btn btn-warning" onClick="update({{ $pengguna->id }})">Edit</button>
     </div>
 </div>
