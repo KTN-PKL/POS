@@ -26,10 +26,24 @@ class c_kategori extends Controller
 
     public function read()
     {
+        return view('kategori.read');
+    }
+
+    public function table()
+    {
         $data = [
             'kategori' => $this->kategori->allData(),
         ];
-        return view('kategori.read', $data);
+        return view('kategori.table', $data);
+    }
+
+    public function cari($cari)
+    {
+        $cari = explode(" " , $cari);
+            $data = [
+                'item' => $this->item->cariData($cari),
+            ];
+        return view('item.table', $data);
     }
     /**
      * Show the form for creating a new resource.

@@ -22,6 +22,24 @@ class kategori extends Model
     {
         return DB::table('kategoris')->where('id_kategori', $id_kategori)->first();
     }
+
+    public function cariData($cari)
+    {
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', '%'.$cari[0].'%')->get();
+        } else { 
+            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('item', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->get();
+        }
+    }
+
     public function editData($id_kategori, $data)
     {
         return DB::table('kategoris')->where('id_kategori', $id_kategori)->update($data);

@@ -30,6 +30,8 @@ Route::post('/', [App\Http\Controllers\c_login::class, 'logout'])->name('user.lo
 Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori', 'index')->name('kategori');
     Route::get('/kategori/read', 'read')->name('kategori.read');
+    Route::get('/kategori/table', 'table')->name('kategori.table');
+    Route::get('/kategori/cari/{$cari}', 'cari')->name('kategori.cari');
     Route::get('/kategori/store', 'store')->name('kategori.store');
     Route::get('/kategori/create', 'create')->name('kategori.create');
     Route::get('/kategori/show/{id}', 'show')->name('kategori.show');
