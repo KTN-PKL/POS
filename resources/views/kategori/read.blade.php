@@ -1,6 +1,6 @@
 <div class="card">
     <div style="background-color:#0c4e68" class="card-header">
-        <h5 class="text-white" ><b>Daftar Kategori</b></h5>
+        <h5 class="text-white" > <i class="fa fa-tag"></i> <b>Daftar Kategori</b></h5>
     </div>
     <div class="card-body">
         <div class="input-group col-md-4 offset-8">

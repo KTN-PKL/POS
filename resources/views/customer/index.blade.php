@@ -16,9 +16,8 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8">
-                <h1>customer</h1>
                 <br>
-                <button class="btn btn-primary" onClick="create()">+ Tambah customer</button>
+                <button  class="btn btn-success text-white" onClick="create()"><i class="fa fa-user-plus"></i>  <b>Tambah Customer</b></button>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>

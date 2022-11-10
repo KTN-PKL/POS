@@ -86,8 +86,8 @@
             <ul>
               <li><a style="text-decoration: none" href="{{url('item')}}">Item <i class="fa fa-cubes"></i> </a></li>
               <li><a style="text-decoration: none"  href="{{url('kategori')}}">Kategori <i class="fa fa-tag"></i></a></li>
-              <li><a style="text-decoration: none"  href="#">Customer<i class="fa fa-users"></i></a></li> 
-              <li><a style="text-decoration: none"  href="#">Pengguna<i class="fa fa-user"></i></a></li>
+              <li><a style="text-decoration: none"  href="{{url('customer')}}">Customer<i class="fa fa-users"></i></a></li> 
+              <li><a style="text-decoration: none"  href="{{url('pengguna')}}">Pengguna<i class="fa fa-user"></i></a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">STOK</a></li>
