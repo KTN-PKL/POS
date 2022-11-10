@@ -39,7 +39,10 @@ Route::controller(c_kategori::class)->group(function () {
 Route::controller(c_item::class)->group(function () {
     Route::get('/item', 'index')->name('item');
     Route::get('/item/read', 'read')->name('item.read');
+    Route::get('/item/kategori/{id}', 'kategori')->name('item.kategori');
+    Route::get('/item/table', 'table')->name('item.table');
     Route::post('/item/store', 'store')->name('item.store');
+    Route::get('/item/cari', 'cari')->name('item.cari');
     Route::get('/item/create', 'create')->name('item.create');
     Route::get('/item/show/{id}', 'show')->name('item.show');
     Route::get('/item/edit/{id}', 'edit')->name('item.edit');
