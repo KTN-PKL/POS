@@ -28,6 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('template') }}/assets/css/style.css" rel="stylesheet">
   
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -69,9 +70,8 @@
 </head>
 
 <body>
-
   <!-- ======= Header ======= -->
-  <header style="background-color: white;height:90px" id="header" class="header fixed-top">
+  <header style="background-color: white;height:90px;width:100%" id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
     
 
@@ -116,9 +116,9 @@
           </li>
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>{{auth()->user()->name}}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a style="text-decoration: none"  href="#">Pengaturan Toko</a></li>
-              <li><a style="text-decoration: none"  href="#">Profil</a></li>
-              <li><a style="text-decoration: none"  href="{{route('user.logout')}}">Keluar</a></li>
+              <li><a style="text-decoration: none"  href="#">Pengaturan Toko <i class="fa fa-cog" aria-hidden="true"></i></a></li>
+              <li><a style="text-decoration: none"  href="#">Profil <i class="fa fa-edit"></i></a></li>
+              <li><a style="text-decoration: none"  href="{{route('user.logout')}}">Keluar <i class="fa fa-sign-out-alt" aria-label="true"></i> </a></li>
             </ul>
           </li>
         </ul>

@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <div class="input-group col-md-4 offset-8">
-            <input  type="search" class="form-control input-sm" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />     
+            <input  type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />     
             <button type="button" class="btn btn-outline-primary">Search</button>
           </div>
           <br>
