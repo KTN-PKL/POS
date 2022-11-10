@@ -42,9 +42,43 @@ class c_item extends Controller
     public function read()
     {
         $data = [
-            'item' => $this->item->allData(),
+            'kategori' => $this->kategori->allData(),
         ];
         return view('item.read', $data);
+    }
+
+    public function table()
+    {
+        $data = [
+            'item' => $this->item->allData(),
+        ];
+        return view('item.table', $data);
+    }
+
+    public function kategori($id)
+    {
+        $data = [
+            'item' => $this->item->kategoriData($id),
+        ];
+        return view('item.table', $data);
+    }
+
+    public function cari(Request $request)
+    {
+        $id = $request->id;
+        $cari = explode(" " , $request->cari);
+        if ($id == 0) {
+            $data = [
+                'item' => $this->item->cariData0($cari),
+            ];
+        } else {
+            $cek = $this->item->cariData($id, $cari);
+            $data = [
+                'item' => $cek,
+            ];
+        }
+        return $data;
+        return view('item.table', $data);
     }
 
     /**

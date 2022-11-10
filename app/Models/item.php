@@ -15,6 +15,37 @@ class item extends Model
         return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->get();
     }
 
+    public function kategoriData($id)
+    {
+        return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('items.id_kategori', $id)->get();
+    }
+
+    public function cariData($id, $cari)
+    {
+        $j = count($cari);
+        $j = $j - 1;
+        if ($j == 0) {
+            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('items.id_kategori', $id)->where('item', 'like', '%'.$cari[0].'%')->get();
+        } else {
+            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('items.id_kategori', $id)->where('item', 'like', '%'.$cari[0].'%')->orWhere(function($query) {
+                $j = count($cari);
+                $j = $j - 1;
+                $kata = "";
+                for ($i=0; $i < $j;) { 
+                $i = $i+1;
+                $isi = "orwhere('item', 'like', '%'".$cari[$i]."'%')";
+                $kata = $kata.$isi;
+                }
+                $query = $kata;
+            })->get();
+        }
+    }
+
+    public function cariData0($cari)
+    {
+        return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', "%".$cari."%")->get();
+    }
+
     public function id()
     {
         $data = DB::table('items')->orderBy('id_item', 'DESC')->first();

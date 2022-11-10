@@ -1,39 +1,60 @@
 <div class="card" style="width: 1000px">
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>No</th>
-        <th>Kode Menu</th>
-        <th>Kategori</th>
-        <th>Nama Item</th>
-        <th>Harga Beli</th>
-        <th>Harga Jual</th>
-        <th>Gambar</th>
-        <th>Action</th>
-    </tr>
-    @php
-        $i = 0;
-    @endphp
-    @foreach ($item as $items)
-        <tr>
-            <td>@php
-                $i = $i+1;
-                echo $i;
-            @endphp</td>
-            <td>{{ $items->id_item }}</td>
-            <td>{{ $items->kategori }}</td>
-            <td>{{ $items->item }}</td>
-            <td>{{ $items->beli }}</td>
-            <td>{{ $items->jual }}</td>
-            <td><img src="{{asset('/foto/'. $items->foto)}}"  alt="Gambar" width="100px" height="100px"></td>
-            <td>
-                @php
-                     $urutan = (int) substr($items->id_item, 3, 3);
-                @endphp
-                <button class="btn btn-primary" onClick="show({{ $urutan }})">Detail</button>
-                <button class="btn btn-warning" onClick="edit({{ $urutan }})">Edit</button>
-                <button class="btn btn-danger" onClick="destroy({{ $urutan }})">Delete</button>
-            </td>
-        </tr>
-    @endforeach
-</table>
+    <br>
+    <div class="row">
+        <div style="width: 2%"></div>
+        <div style="width: 96%">
+            <div class="row">
+            <div class="col-md-4">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="kategori" onchange="kategori()">
+                <option selected value="0">Semua Kategori</option>
+                @foreach ($kategori as $kategoris)
+                <option value="{{ $kategoris->id_kategori }}">{{ $kategoris->kategori }}</option>
+                @endforeach
+            </select>
+            </div>
+            <div class="col-md-4 offset-4">
+            <input onkeyup="cari()" id="cari" type="search" class="form-control input-sm" placeholder="Search Item" aria-label="Search" aria-describedby="search-addon" />
+            </div>
+            </div>
+            <br>
+            <div id="table"></div>
+        </div>
+        <div style="width: 2%"></div>
+    </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        table()
+    });
+    function table() {
+            $.get("{{ url('item/table') }}", {}, function(data, status) {
+                $("#table").html(data);
+            });
+        }
+    function kategori() {
+            var id = $("#kategori").val();
+            if (id == 0) {
+                table()
+            } else {
+                $.get("{{ url('item/kategori') }}/" + id, {}, function(data, status) {
+                $("#table").html(data);
+            });
+            }
+        }
+    function cari() {
+            var cari = $("#cari").val();
+            var id = $("#kategori").val();
+            $.ajax({
+                type: "get",
+                url: "{{ url('item/cari') }}",
+                data: {
+                "id": id,
+                "cari": cari,
+                },
+            success: function(data, status) {
+                $("#table").html(data);
+                }
+            });
+        }
+</script>
