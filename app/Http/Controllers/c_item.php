@@ -77,7 +77,6 @@ class c_item extends Controller
                 'item' => $cek,
             ];
         }
-        return $data;
         return view('item.table', $data);
     }
 

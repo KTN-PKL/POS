@@ -23,27 +23,35 @@ class item extends Model
     public function cariData($id, $cari)
     {
         $j = count($cari);
-        $j = $j - 1;
-        if ($j == 0) {
+        if ($j == 1) {
             return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('items.id_kategori', $id)->where('item', 'like', '%'.$cari[0].'%')->get();
-        } else {
-            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('items.id_kategori', $id)->where('item', 'like', '%'.$cari[0].'%')->orWhere(function($query) {
+        } else { 
+            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('items.id_kategori', $id)->where('item', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
                 $j = count($cari);
                 $j = $j - 1;
-                $kata = "";
                 for ($i=0; $i < $j;) { 
-                $i = $i+1;
-                $isi = "orwhere('item', 'like', '%'".$cari[$i]."'%')";
-                $kata = $kata.$isi;
+                    $i = $i + 1;
+                    $queri->orWhere('item', 'like', '%'.$cari[$i].'%'); 
                 }
-                $query = $kata;
             })->get();
         }
     }
 
     public function cariData0($cari)
     {
-        return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', "%".$cari."%")->get();
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', '%'.$cari[0].'%')->get();
+        } else { 
+            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('item', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->get();
+        }
     }
 
     public function id()
