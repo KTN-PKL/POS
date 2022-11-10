@@ -49,10 +49,32 @@ class c_kategori extends Controller
      */
     public function store(Request $request)
     {
+        $cek = $this->kategori->allData();
+        if ($cek <> null) {
+            foreach ($cek as $ceks) {
+               if ($ceks->kategori == $request->kategori) {
+                   $a = 2;
+                   break;
+               } else {
+                   $a = 1;
+               }
+            }
+               if ($a == 1) {
+                $data = [
+                    'kategori' => $request->kategori,
+                ];
+                $this->kategori->addData($data);
+               }
+        } else {
+        $a = 1;
         $data = [
             'kategori' => $request->kategori,
         ];
         $this->kategori->addData($data);
+        };
+
+        $data = $a;
+        return response()->json($data);
     }
 
     /**
