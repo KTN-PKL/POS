@@ -1,6 +1,6 @@
 <div class="card">
     <div style="background-color:#0c4e68" class="card-header">
-        <h5 class="text-white" > <i class="fa fa-tag"></i> <b>Daftar Kategori</b></h5>
+        <h5 class="text-white" ><b>Daftar Order</b></h5>
     </div>
     <div class="card-body">
         <div class="input-group col-md-4 offset-8">
@@ -12,10 +12,28 @@
 <table class="table table-bordered table-hover">
     <tr>
         <th>No</th>
-        <th>Kategori</th>
-        <th>Action</th>
+        <th>No Bon</th>
+        <th>Atas Nama</th>
+        <th>Customer</th>
+        <th>Kasir</th>
+        <th>Grand Total</th>
+        <th>Tanggal</th>
+        <th>Jenis Order</th>
+        <th>Status</th>
     </tr>
-    @php
+    <tr>
+        <td>1</td>
+        <td>B0042</td>
+        <td>Sulaimana</td>
+        <td>Sulaimana</td>
+        <td>Kasir Utama</td>
+        <td>38000</td>
+        <td>2022-10-10</td>
+        <td>xx</td>
+        <td>xx</td>
+        <td><a class="btn btn-primary" href="#"><i class="fa fa-edit" ></i></a> <a class="btn btn-danger" href=""> <i class="fa fa"></a></i></td>
+    </tr>
+    {{-- @php
         $i = 0;
     @endphp
     @foreach ($kategori as $item)
@@ -30,7 +48,7 @@
                 <button class="btn btn-danger" onClick="destroy({{ $item->id_kategori }})">Delete</button>
             </td>
         </tr>
-    @endforeach
+    @endforeach --}}
 </table>
 </div>
 </div>

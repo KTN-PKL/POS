@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>FlexStart Bootstrap Template - Index</title>
+  <title>POS RESTO</title>
   <meta content="" name="description">
 
   <meta content="" name="keywords">
@@ -81,20 +81,20 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">HOME</a></li>
-          <li class="dropdown"><a href="#"><span>DATA MASTER</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="{{url('/test')}}">HOME</a></li>
+          <li class="dropdown"><a style="text-decoration: none" href="#"><span>DATA MASTER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a style="text-decoration: none" href="{{url('item')}}">Menu</a></li>
-              <li><a style="text-decoration: none"  href="{{url('kategori')}}">Kategori</a></li>
-              <li><a style="text-decoration: none"  href="#">Customer</a></li>
-              <li><a style="text-decoration: none" href="#">Pengguna</a></li>
+              <li><a style="text-decoration: none" href="{{url('item')}}">Item <i class="fa fa-cubes"></i> </a></li>
+              <li><a style="text-decoration: none"  href="{{url('kategori')}}">Kategori <i class="fa fa-tag"></i></a></li>
+              <li><a style="text-decoration: none"  href="{{url('customer')}}">Customer<i class="fa fa-users"></i></a></li> 
+              <li><a style="text-decoration: none"  href="{{url('pengguna')}}">Pengguna<i class="fa fa-user"></i></a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">STOK</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">KASIR</a></li>
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>ORDER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a style="text-decoration: none"  href="#">All Order</a></li>
+              <li><a style="text-decoration: none"  href="#">All Order <i class="badge badge primary float-right"></i> </a></li>
               <li><a style="text-decoration: none"  href="#">Ditempat</a></li>
               <li><a style="text-decoration: none"  href="#">Booking</a></li>
               <li><a style="text-decoration: none"  href="#">Delivery</a></li>
@@ -114,7 +114,7 @@
               <li><a  style="text-decoration: none" href="#">Cash Flow</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a style="text-decoration: none"  href="#"><span>User</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a style="text-decoration: none"  href="#"><span>{{auth()->user()->name}}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a style="text-decoration: none"  href="#">Pengaturan Toko</a></li>
               <li><a style="text-decoration: none"  href="#">Profil</a></li>

@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <br>
-                <button style="background-color: #0c4e68" class="btn btn-primary" onClick="create()">+ Tambah Kategori</button>
+                <button class="btn btn-success" onClick="create()"> <i class="fa fa-plus"></i> <b>Tambah Kategori</b></button>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>

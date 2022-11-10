@@ -1,12 +1,21 @@
-<div class="card" style="width: 1000px">
+<div class="card" style="width: 1100px">
+    <div style="background-color:#0c4e68" class="card-header">
+        <h5 class="text-white" ><i class="fa fa-user" ></i> <b>Daftar Pengguna</b></h5>
+    </div>
+    <div class="card-body">
+        <div class="input-group col-md-4 offset-8">
+            <input  type="search" class="form-control input-sm" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />     
+            <button type="button" class="btn btn-outline-primary">Search</button>
+          </div>
+          <br>
 <table class="table table-bordered table-hover">
     <tr>
         <th>No</th>
-        <th>Nama</th>
+        <th style="width: 200px" >Nama</th>
         <th>Username</th>
         <th>Telepon</th>
-        <th>Alamat</th>
-        <th>Pas Foto</th>
+        <th style="width:250px" >Alamat</th>
+        <th style="width:120px" >Pas Foto</th>
         <th>Action</th>
     </tr>
     @php
@@ -30,4 +39,5 @@
         </tr>
     @endforeach
 </table>
+</div>
 </div>
