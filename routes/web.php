@@ -21,7 +21,8 @@ use App\Http\Controllers\CrudController;
 
 // Login Logout
 Route::get('/', [App\Http\Controllers\c_login::class, 'index']);
-Route::post('/dashboard', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
+Route::get('/dashboard', [App\Http\Controllers\c_login::class, 'dashboard'] );
+Route::post('/check', [App\Http\Controllers\c_login::class, 'check'])->name('login.check');
 Route::post('/', [App\Http\Controllers\c_login::class, 'logout'])->name('user.logout');
 
 

@@ -25,7 +25,7 @@ class c_login extends Controller
 
         if(auth()->attempt(array('name'=>$user,'password'=>$pass)))
         {
-            return view('v_dashboard');
+            return redirect('/dashboard');
         }
         else
         {

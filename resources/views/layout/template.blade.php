@@ -81,7 +81,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{{url('/test')}}">HOME</a></li>
+          <li><a class="nav-link scrollto active" href="{{url('/dashboard')}}">HOME</a></li>
           <li class="dropdown"><a style="text-decoration: none" href="#"><span>DATA MASTER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a style="text-decoration: none" href="{{url('item')}}">Item <i class="fa fa-cubes"></i> </a></li>
