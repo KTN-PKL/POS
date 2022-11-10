@@ -34,6 +34,10 @@ class c_login extends Controller
         }
     }
 
+    public function dashboard(){
+        return view('v_dashboard');
+    }
+
     public function logout()
     {
         Auth::logout();
