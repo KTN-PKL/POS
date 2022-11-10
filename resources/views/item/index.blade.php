@@ -16,9 +16,8 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8">
-                <h1>Item</h1>
                 <br>
-                <button class="btn btn-primary" onClick="create()">+ Tambah Item</button>
+                <button class="btn btn-success" onClick="create()"> <i class="fa fa-plus"></i> Tambah Item</button>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
