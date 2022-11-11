@@ -30,6 +30,23 @@ class customer extends Model
         return $id_customer;
     }
 
+    public function cariData($cari)
+    {
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('customers')->where('nama', 'like', '%'.$cari[0].'%')->get();
+        } else { 
+            return DB::table('customers')->where('nama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('nama', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->get();
+        }
+    }
+
     public function addData($data)
     {
         DB::table('customers')->insert($data);

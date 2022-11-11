@@ -19,10 +19,24 @@ class c_customer extends Controller
 
     public function read()
     {
+        return view('customer.read');
+    }
+
+    public function table()
+    {
         $data = [
             'customer' => $this->customer->allData(),
         ];
-        return view('customer.read', $data);
+        return view('customer.table', $data);
+    }
+
+    public function cari($cari)
+    {
+        $cari = explode(" " , $cari);
+            $data = [
+                'customer' => $this->customer->cariData($cari),
+            ];
+        return view('customer.table', $data);
     }
 
     public function create()

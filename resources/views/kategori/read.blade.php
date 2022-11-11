@@ -25,8 +25,12 @@
         }
     function cari() {
             var cari = $("#cari").val();
+            if (cari == "") {
+                table()
+            } else {
                 $.get("{{ url('kategori/cari') }}/" + cari, {}, function(data, status) {
                 $("#table").html(data);
             });
+            }
         }
 </script>

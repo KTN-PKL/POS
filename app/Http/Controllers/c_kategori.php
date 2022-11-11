@@ -41,9 +41,9 @@ class c_kategori extends Controller
     {
         $cari = explode(" " , $cari);
             $data = [
-                'item' => $this->item->cariData($cari),
+                'kategori' => $this->kategori->cariData($cari),
             ];
-        return view('item.table', $data);
+        return view('kategori.table', $data);
     }
     /**
      * Show the form for creating a new resource.

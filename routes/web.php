@@ -31,7 +31,7 @@ Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori', 'index')->name('kategori');
     Route::get('/kategori/read', 'read')->name('kategori.read');
     Route::get('/kategori/table', 'table')->name('kategori.table');
-    Route::get('/kategori/cari/{$cari}', 'cari')->name('kategori.cari');
+    Route::get('/kategori/cari/{cari}', 'cari')->name('kategori.cari');
     Route::get('/kategori/store', 'store')->name('kategori.store');
     Route::get('/kategori/create', 'create')->name('kategori.create');
     Route::get('/kategori/show/{id}', 'show')->name('kategori.show');
@@ -56,6 +56,8 @@ Route::controller(c_item::class)->group(function () {
 Route::controller(c_customer::class)->group(function () {
     Route::get('/customer', 'index')->name('customer');
     Route::get('/customer/read', 'read')->name('customer.read');
+    Route::get('/customer/cari/{cari}', 'cari')->name('customer.cari');
+    Route::get('/customer/table', 'table')->name('customer.table');
     Route::post('/customer/store', 'store')->name('customer.store');
     Route::get('/customer/create', 'create')->name('customer.create');
     Route::get('/customer/edit/{id}', 'edit')->name('customer.edit');

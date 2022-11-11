@@ -27,14 +27,14 @@ class kategori extends Model
     {
         $j = count($cari);
         if ($j == 1) {
-            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', '%'.$cari[0].'%')->get();
+            return DB::table('kategoris')->where('kategori', 'like', '%'.$cari[0].'%')->get();
         } else { 
-            return DB::table('items')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->where('item', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+            return DB::table('kategoris')->where('kategori', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
                 $j = count($cari);
                 $j = $j - 1;
                 for ($i=0; $i < $j;) { 
                     $i = $i + 1;
-                    $queri->orWhere('item', 'like', '%'.$cari[$i].'%'); 
+                    $queri->orWhere('kategori', 'like', '%'.$cari[$i].'%'); 
                 }
             })->get();
         }
