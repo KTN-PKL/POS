@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <div class="input-group col-md-4 offset-8">
-            <input onkeyup="cari()" id="cari" type="search" class="form-control input-sm" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />     
+            <input onkeyup="cari()" id="cari" type="search" class="form-control input-sm" placeholder="Search Kategori" aria-label="Search" aria-describedby="search-addon" />     
             {{-- <button type="button" class="btn btn-outline-primary">Search</button> --}}
           </div>
           <br>
