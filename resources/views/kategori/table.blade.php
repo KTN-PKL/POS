@@ -15,7 +15,7 @@
             @endphp</td>
             <td>{{ $item->kategori }}</td>
             <td>
-                <button style="background-color: #0c4e68" class="btn text-white" onClick="show({{ $item->id_kategori }})">Edit</button>
+                <button style="background-color: #0c4e68" class="btn text-white" onClick="edit({{ $item->id_kategori }})">Edit</button>
                 <button class="btn btn-danger" onClick="destroy({{ $item->id_kategori }})">Delete</button>
             </td>
         </tr>

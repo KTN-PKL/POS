@@ -85,8 +85,8 @@
         }
 
         // Untuk modal halaman edit show
-        function show(id) {
-            $.get("{{ url('kategori/show') }}/" + id, {}, function(data, status) {
+        function edit(id) {
+            $.get("{{ url('kategori/edit') }}/" + id, {}, function(data, status) {
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');

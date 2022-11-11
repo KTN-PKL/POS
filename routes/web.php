@@ -34,7 +34,7 @@ Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori/cari/{cari}', 'cari')->name('kategori.cari');
     Route::get('/kategori/store', 'store')->name('kategori.store');
     Route::get('/kategori/create', 'create')->name('kategori.create');
-    Route::get('/kategori/show/{id}', 'show')->name('kategori.show');
+    Route::get('/kategori/edit/{id}', 'edit')->name('kategori.edit');
     Route::get('/kategori/update/{id}', 'update')->name('kategori.update');
     Route::get('/kategori/destroy/{id}', 'destroy')->name('kategori.destroy');
 });

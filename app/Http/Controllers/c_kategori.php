@@ -99,10 +99,7 @@ class c_kategori extends Controller
      */
     public function show($id)
     {
-        $data = [
-            'kategori' => $this->kategori->detailData($id),
-        ];
-        return view('kategori.edit', $data);
+        
     }
 
     /**
@@ -113,7 +110,10 @@ class c_kategori extends Controller
      */
     public function edit($id)
     {
-      
+        $data = [
+            'kategori' => $this->kategori->detailData($id),
+        ];
+        return view('kategori.edit', $data);
     }
 
     /**
