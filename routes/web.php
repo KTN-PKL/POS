@@ -68,6 +68,8 @@ Route::controller(c_customer::class)->group(function () {
 Route::controller(c_pengguna::class)->group(function () {
     Route::get('/pengguna', 'index')->name('pengguna');
     Route::get('/pengguna/read', 'read')->name('pengguna.read');
+    Route::get('/pengguna/table', 'table')->name('pengguna.table');
+    Route::get('/pengguna/cari/{cari}', 'cari')->name('pengguna.cari');
     Route::post('/pengguna/store', 'store')->name('pengguna.store');
     Route::get('/pengguna/create', 'create')->name('pengguna.create');
     Route::get('/pengguna/show/{id}', 'show')->name('pengguna.show');

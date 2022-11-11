@@ -14,6 +14,24 @@ class pengguna extends Model
     {
         return DB::table('users')->get();
     }
+
+    public function cariData($cari)
+    {
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('users')->where('username', 'like', '%'.$cari[0].'%')->get();
+        } else { 
+            return DB::table('users')->where('username', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('username', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->get();
+        }
+    }
+
     public function addData($data)
     {
         DB::table('users')->insert($data);

@@ -20,10 +20,24 @@ class c_pengguna extends Controller
 
     public function read()
     {
+        return view('pengguna.read');
+    }
+
+    public function table()
+    {
         $data = [
             'pengguna' => $this->pengguna->allData(),
         ];
-        return view('pengguna.read', $data);
+        return view('pengguna.table', $data);
+    }
+
+    public function cari($cari)
+    {
+        $cari = explode(" " , $cari);
+            $data = [
+                'pengguna' => $this->pengguna->cariData($cari),
+            ];
+        return view('pengguna.table', $data);
     }
 
     public function create()

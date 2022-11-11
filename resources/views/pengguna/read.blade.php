@@ -4,40 +4,32 @@
     </div>
     <div class="card-body">
         <div class="input-group col-md-4 offset-8">
-            <input  type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />     
-            <button type="button" class="btn btn-outline-primary">Search</button>
+            <input onkeyup="cari()" id="cari" type="search" class="form-control" placeholder="Search Username" aria-label="Search" aria-describedby="search-addon" />     
+            {{-- <button type="button" class="btn btn-outline-primary">Search</button> --}}
           </div>
           <br>
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>No</th>
-        <th style="width: 200px" >Nama</th>
-        <th>Username</th>
-        <th>Telepon</th>
-        <th style="width:250px" >Alamat</th>
-        <th style="width:120px" >Pas Foto</th>
-        <th>Action</th>
-    </tr>
-    @php
-        $i = 0;
-    @endphp
-    @foreach ($pengguna as $items)
-        <tr>
-            <td>@php
-                $i = $i+1;
-                echo $i;
-            @endphp</td>
-            <td>{{ $items->name }}</td>
-            <td>{{ $items->username }}</td>
-            <td>{{ $items->telepon}}</td>
-            <td>{{ $items->alamatuser }}</td>
-            <td><img src="{{asset('/fotouser/'. $items->foto)}}"  alt="Gambar" width="100px" height="100px"></td>
-            <td>
-                <button class="btn btn-warning" onClick="edit({{ $items->id }})">Edit</button>
-                <button class="btn btn-danger" onClick="destroy({{ $items->id }})">Delete</button>
-            </td>
-        </tr>
-    @endforeach
-</table>
+<div id="table"></div>
 </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+       table()
+   });
+   function table() {
+           $.get("{{ url('pengguna/table') }}", {}, function(data, status) {
+               $("#table").html(data);
+           });
+       }
+   function cari() {
+           var cari = $("#cari").val();
+           if (cari == "") {
+               table()
+           } else {
+               $.get("{{ url('pengguna/cari') }}/" + cari, {}, function(data, status) {
+               $("#table").html(data);
+           });
+           }
+       }
+</script>
