@@ -124,6 +124,14 @@
             var files = $("#foto")[0].files;
             datas.append('foto',files[0]);
         }
+
+        function hapus(id) {
+            $.get("{{ url('item/delete') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('delete Product')
+                $("#page").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
         // untuk proses update data
         function update(id) {
             var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
@@ -159,8 +167,11 @@
             $.ajax({
                 type: "get",
                 url: "{{ url('item/destroy') }}/" + id,
+                success: function(data) {
+                    $(".btn-close").click();
+                    read()
+                }
             });
-            read();
         }
     </script>
 </body>

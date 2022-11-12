@@ -71,6 +71,14 @@
             });
         }
 
+        function hapus(id) {
+            $.get("{{ url('customer/delete') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('delete Product')
+                $("#page").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
+
         // untuk proses create data
         function store() {
             var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
@@ -145,8 +153,11 @@
             $.ajax({
                 type: "get",
                 url: "{{ url('customer/destroy') }}/" + id,
+                success: function(data) {
+                    $(".btn-close").click();
+                    read()
+                }
             });
-            read();
         }
     </script>
 </body>

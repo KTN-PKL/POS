@@ -68,6 +68,16 @@ class c_customer extends Controller
         return view('customer.detail', $data);
     }
 
+    public function delete($id)
+    {
+        $huruf = "CTM";
+        $id_customer = $huruf . sprintf("%03s", $id);
+        $data = [
+            'customer' => $this->customer->detailData($id_customer),
+        ];
+        return view('customer.delete', $data);
+    }
+
     public function edit($id)
     {
         $huruf = "CTM";

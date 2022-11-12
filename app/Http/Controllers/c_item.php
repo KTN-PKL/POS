@@ -145,6 +145,16 @@ class c_item extends Controller
         return view('item.edit', $data);
     }
 
+    public function delete($id)
+    {
+        $huruf = "ITM";
+        $id_item = $huruf . sprintf("%03s", $id);
+        $data = [
+            'item' => $this->item->detailData($id_item),
+        ];
+        return view('item.delete', $data);
+    }
+
     /**
      * Update the specified resource in storage.
      *

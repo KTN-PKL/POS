@@ -65,6 +65,14 @@ class c_pengguna extends Controller
         return response()->json($data);
     }
 
+    public function delete($id)
+    {
+        $data = [
+            'pengguna' => $this->pengguna->detailData($id),
+        ];
+        return view('pengguna.delete', $data);
+    }
+
     public function edit($id)
     {
         $data = [

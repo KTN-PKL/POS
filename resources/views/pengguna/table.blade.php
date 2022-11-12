@@ -24,7 +24,7 @@
             <td><img src="{{asset('/fotouser/'. $items->foto)}}"  alt="Gambar" width="100px" height="100px"></td>
             <td>
                 <button class="btn btn-warning" onClick="edit({{ $items->id }})">Edit</button>
-                <button class="btn btn-danger" onClick="destroy({{ $items->id }})">Delete</button>
+                <button class="btn btn-danger" onClick="hapus({{ $items->id }})">Delete</button>
             </td>
         </tr>
     @endforeach

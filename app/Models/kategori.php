@@ -23,6 +23,11 @@ class kategori extends Model
         return DB::table('kategoris')->where('id_kategori', $id_kategori)->first();
     }
 
+    public function jumlahData()
+    {
+        return DB::table('kategoris')->count('id_kategori');
+    }
+
     public function cariData($cari)
     {
         $j = count($cari);

@@ -50,6 +50,7 @@ Route::controller(c_item::class)->group(function () {
     Route::get('/item/create', 'create')->name('item.create');
     Route::get('/item/show/{id}', 'show')->name('item.show');
     Route::get('/item/edit/{id}', 'edit')->name('item.edit');
+    Route::get('/item/delete/{id}', 'delete')->name('item.delete');
     Route::post('/item/update/{id}', 'update')->name('item.update');
     Route::get('/item/destroy/{id}', 'destroy')->name('item.destroy');
 });
@@ -62,6 +63,7 @@ Route::controller(c_customer::class)->group(function () {
     Route::post('/customer/store', 'store')->name('customer.store');
     Route::get('/customer/create', 'create')->name('customer.create');
     Route::get('/customer/edit/{id}', 'edit')->name('customer.edit');
+    Route::get('/customer/delete/{id}', 'delete')->name('customer.delete');
     Route::post('/customer/update/{id}', 'update')->name('customer.update');
     Route::get('/customer/destroy/{id}', 'destroy')->name('customer.destroy');
 });
@@ -75,6 +77,7 @@ Route::controller(c_pengguna::class)->group(function () {
     Route::get('/pengguna/create', 'create')->name('pengguna.create');
     Route::get('/pengguna/show/{id}', 'show')->name('pengguna.show');
     Route::get('/pengguna/edit/{id}', 'edit')->name('pengguna.edit');
+    Route::get('/pengguna/delete/{id}', 'delete')->name('pengguna.delete');
     Route::post('/pengguna/update/{id}', 'update')->name('pengguna.update');
     Route::get('/pengguna/destroy/{id}', 'destroy')->name('pengguna.destroy');
 });

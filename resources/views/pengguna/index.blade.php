@@ -112,6 +112,14 @@
             });
         }
 
+        function hapus(id) {
+            $.get("{{ url('pengguna/delete') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('delete Product')
+                $("#page").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
+
         function show(id) {
             $.get("{{ url('pengguna/show') }}/" + id, {}, function(data, status) {
                 $("#exampleModalLabel").html('Detail Product')
@@ -157,8 +165,11 @@
             $.ajax({
                 type: "get",
                 url: "{{ url('pengguna/destroy') }}/" + id,
+                success: function(data) {
+                    $(".btn-close").click();
+                    read()
+                }
             });
-            read();
         }
     </script>
 </body>

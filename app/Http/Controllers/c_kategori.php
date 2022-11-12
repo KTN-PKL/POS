@@ -63,8 +63,9 @@ class c_kategori extends Controller
      */
     public function store(Request $request)
     {
-        $cek = $this->kategori->allData();
-        if ($cek <> null) {
+        $test = $this->kategori->jumlahData();
+        if ($test <> 0) {
+            $cek = $this->kategori->allData();
             foreach ($cek as $ceks) {
                if ($ceks->kategori == $request->kategori) {
                    $a = 2;

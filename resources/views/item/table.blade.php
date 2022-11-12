@@ -30,7 +30,7 @@
                 @endphp
                 <button style="background-color:#0c4e68" class="btn text-white" onClick="show({{ $urutan }})">Detail</button>
                 <button class="btn btn-warning" onClick="edit({{ $urutan }})">Edit</button>
-                <button class="btn btn-danger" onClick="destroy({{ $urutan }})">Delete</button>
+                <button class="btn btn-danger" onClick="hapus({{ $urutan }})">Delete</button>
             </td>
         </tr>
     @endforeach
