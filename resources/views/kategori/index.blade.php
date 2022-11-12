@@ -93,6 +93,14 @@
             });
         }
 
+        function hapus(id) {
+            $.get("{{ url('kategori/delete') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('delete Product')
+                $("#page").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
+
         // untuk proses update data
         function update(id) {
             var kategori = $("#kategori").val();
@@ -107,14 +115,19 @@
             });
         }
 
+        
+
+
         // untuk delete atau destroy data
         function destroy(id) {
             $.ajax({
                 type: "get",
                 url: "{{ url('kategori/destroy') }}/" + id,
-                
+                success: function(data) {
+                    $(".btn-close").click();
+                    read()
+                }
             });
-            read();
         }
     </script>
 </body>

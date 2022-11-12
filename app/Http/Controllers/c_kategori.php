@@ -97,9 +97,12 @@ class c_kategori extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function delete($id)
     {
-        
+        $data = [
+            'kategori' => $this->kategori->detailData($id),
+        ];
+        return view('kategori.delete', $data);
     }
 
     /**
