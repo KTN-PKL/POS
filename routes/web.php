@@ -5,6 +5,7 @@ use App\Http\Controllers\c_kategori;
 use App\Http\Controllers\c_item;
 use App\Http\Controllers\c_pengguna;
 use App\Http\Controllers\c_login;
+use App\Http\Controllers\c_stok;
 use App\Http\Controllers\c_customer;
 use App\Http\Controllers\CrudController;
 
