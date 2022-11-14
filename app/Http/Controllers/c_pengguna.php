@@ -106,8 +106,11 @@ class c_pengguna extends Controller
         $data = [
             'name' => $request->name,
             'success' => 1,
+            'pesan' => 'Profil Berhasil diupdate',
+            'class_name'  => 'alert-success',
         ];
         return response()->json($data);
+        
     }
 
     public function destroy($id)
@@ -118,9 +121,12 @@ class c_pengguna extends Controller
     }
 
     public function tampilProfil()
-    {
-    
-        return view('profil.index');
+    {   
+        $id = auth()->user()->id;
+        $data = [
+            'pengguna' => $this->pengguna->detailData($id),
+        ];
+        return view('profil.index', $data);
     }
 
     public function editProfil()

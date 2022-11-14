@@ -32,7 +32,7 @@
     <div class="mb-3">
         <!-- Upload image input-->
         <label class="form-label">Upload Foto <i style="font-size: 10px" class="text-danger">Opsional</i></label>
-            <input type="file" onchange="readURL(this);" class="form-control @error('foto') is-invalid @enderror" value="{{ old('foto') }}"  name="foto" id="foto" placeholder="foto ...">
+            <input type="file" onchange="editgambar()" class="form-control @error('foto') is-invalid @enderror"  name="foto" id="foto" placeholder="foto ...">
             @error('foto')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -43,4 +43,6 @@
     <div class="form-group mt-2">
         <button class="btn btn-warning" onClick="update({{ $pengguna->id }})">Simpan</button>
     </div>
+
+    
 </div>

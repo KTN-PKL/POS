@@ -18,20 +18,21 @@
             <div class="row">
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
                 <div class="card card-rounded ">
+                    <div id="message" style="display: none" class="alert-success"><b>Sukses!</b> Profil Berhasil di update
+                    </div>
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4 style="width:200px" > <i class="fa fa-edit"></i> Edit Akun</h4>
                 </div>
                     <div class="card-body">
-                
-                            <div id="success-alert" style="display: none" class="alert alert-success custom-alert col-md-12"><b>Sukses!</b> Profil Berhasil di update
-                            </div>
+                        <div id="page">
+
+
+
+                        </div> 
+                            
                           
                     </div> 
-                  <div id="page">
-
-
-
-                  </div>  
+                
                   
             </div>
             </div>
@@ -41,7 +42,7 @@
                     <h4>Foto Profil</h4>
                 </div>
                     <div class="card-body">
-                       <img style="display:block; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
+                       <img  style="display:block; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
                     </div>    
             </div>
             </div> --}}
@@ -101,11 +102,18 @@
                success: function(response) {
                if(response.success == 1){ 
                    edit(),
-                   document.getElementById("namacok").innerHTML = response.name
+                   document.getElementById("namacok").innerHTML = response.name,
+                   $('#message').css('display', 'block');
+                    $('#message').html(data.pesan);
+                    $('#message').addClass(data.class_name);
+    
                }
                }
            });
+           
        }
+
+       
    </script>
 </body>
 
