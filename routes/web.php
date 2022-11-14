@@ -82,6 +82,15 @@ Route::controller(c_pengguna::class)->group(function () {
     Route::get('/pengguna/destroy/{id}', 'destroy')->name('pengguna.destroy');
 });
 
+Route::controller(c_stok::class)->group(function () {
+    Route::get('/stok', 'index')->name('stok');
+    Route::get('/stok/read', 'read')->name('stok.read');
+    Route::get('/stok/table', 'table')->name('stok.table');
+    Route::get('/stok/cari/{cari}', 'cari')->name('stok.cari');
+    Route::get('/stok/edit/{id}', 'edit')->name('stok.edit');
+    Route::post('/stok/update/{id}', 'update')->name('stok.update');
+});
+
 Route::get('/test', function () {
     return view('kategori.index');
 });
