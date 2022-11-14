@@ -12,7 +12,7 @@ class stok extends Model
 
     public function allData()
     {
-        return DB::table('stoks')->get();
+        return DB::table('stoks')->join('items', 'stoks.id_item', '=', 'items.id_item')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->get();
     }
     public function addData($data)
     {
