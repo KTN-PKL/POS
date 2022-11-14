@@ -21,12 +21,12 @@
                     {{-- <div id="message" style="display: none" class="alert-success"><b>Sukses!</b> Profil Berhasil di update
                     <button></button>
                     </div> --}}
-                    <div style="display:none" class="alert alert-success alert-dismissible fade show" id="message" role="alert">
+                    <div style="display:none" id="message">
                         <strong>Sukses!</strong> Akun Berhasil di update
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
-                      </div>
+                    </div>
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4 style="width:200px" > <i class="fa fa-edit"></i> Edit Akun</h4>
                 </div>
@@ -75,11 +75,8 @@
     <script>
         this.datas = new FormData();
        $(document).ready(function() {
-           edit(),
-           setTimeout(function()
-          {
-            $("div.alert").remove();
-          }, 10000);
+           edit()
+      
        });
        // edit form
        function edit() {
@@ -115,8 +112,8 @@
                    edit(),
                    document.getElementById("namacok").innerHTML = response.name,
                    $('#message').css('display', 'block');
-                    $('#message').html(data.pesan);
-                    $('#message').addClass(data.class_name);
+                    $('#message').html(response.pesan);
+                    $('#message').addClass(response.class_name);
     
                }
                }

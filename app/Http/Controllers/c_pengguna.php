@@ -107,7 +107,7 @@ class c_pengguna extends Controller
             'name' => $request->name,
             'success' => 1,
             'pesan' => 'Profil Berhasil diupdate',
-            'class_name'  => 'alert-success',
+            'class_name'  => 'alert alert-success alert-dismissible fade show',
         ];
         return response()->json($data);
         
