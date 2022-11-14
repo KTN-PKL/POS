@@ -20,7 +20,7 @@ class stok extends Model
     }
     public function detailData($id_stok)
     {
-        return DB::table('stoks')->where('id_stok', $id_stok)->first();
+        return DB::table('stoks')->join('items', 'stoks.id_item', '=', 'items.id_item')->where('id_stok', $id_stok)->first();
     }
     public function editData($id_stok, $data)
     {

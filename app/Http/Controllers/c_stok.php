@@ -32,4 +32,21 @@ class c_stok extends Controller
         return view('stok.table', $data);
     }
 
+    public function edit($id)
+    {
+        $data = [
+            'stok' => $this->stok->detailData($id),
+        ];
+        return view('stok.edit', $data);
+    }
+
+    public function tambah(Request $request, $id)
+    {
+        $cek = $this->stok->detailData($id);
+        $stok  = $cek + $request->stok;
+        $data = [
+            'stok' => $stok,
+        ];
+        $this->stok->editData($id, $data);
+    }
 }

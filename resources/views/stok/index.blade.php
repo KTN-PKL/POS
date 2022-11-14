@@ -64,7 +64,7 @@
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('stok/edit') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Edit Product')
+                $("#exampleModalLabel").html('Tambah Stok')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
