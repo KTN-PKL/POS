@@ -18,8 +18,15 @@
             <div class="row">
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
                 <div class="card card-rounded ">
-                    <div id="message" style="display: none" class="alert-success"><b>Sukses!</b> Profil Berhasil di update
-                    </div>
+                    {{-- <div id="message" style="display: none" class="alert-success"><b>Sukses!</b> Profil Berhasil di update
+                    <button></button>
+                    </div> --}}
+                    <div style="display:none" class="alert alert-success alert-dismissible fade show" id="message" role="alert">
+                        <strong>Sukses!</strong> Akun Berhasil di update
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4 style="width:200px" > <i class="fa fa-edit"></i> Edit Akun</h4>
                 </div>
@@ -68,7 +75,11 @@
     <script>
         this.datas = new FormData();
        $(document).ready(function() {
-           edit()
+           edit(),
+           setTimeout(function()
+          {
+            $("div.alert").remove();
+          }, 10000);
        });
        // edit form
        function edit() {
