@@ -12,7 +12,7 @@ class stok extends Model
 
     public function allData()
     {
-        return DB::table('stoks')->get();
+        return DB::table('stoks')->join('items', 'stoks.id_item', '=', 'items.id_item')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->get();
     }
     public function addData($data)
     {
@@ -20,7 +20,7 @@ class stok extends Model
     }
     public function detailData($id_stok)
     {
-        return DB::table('stoks')->where('id_stok', $id_stok)->first();
+        return DB::table('stoks')->join('items', 'stoks.id_item', '=', 'items.id_item')->where('id_stok', $id_stok)->first();
     }
     public function editData($id_stok, $data)
     {

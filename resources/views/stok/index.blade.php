@@ -16,8 +16,6 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8">
-                <br>
-                <button class="btn btn-success" onClick="create()"> <i class="fa fa-plus"></i> <b>Tambah Kategori</b></button>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
@@ -57,27 +55,29 @@
         });
         // Read Database
         function read() {
-            $.get("{{ url(stok/read') }}", {}, function(data, status) {
+            $.get("{{ url('stok/read') }}", {}, function(data, status) {
                 $("#read").html(data);
             });
         }
+    
 
         // Untuk modal halaman edit show
         function edit(id) {
-            $.get("{{ url(stok/edit') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Edit Product')
+            $.get("{{ url('stok/edit') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('Tambah Stok')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
         }
 
+
         // untuk proses update data
         function update(id) {
-            var kategori = $("#kategori").val();
+            var stok = $("#stok").val();
             $.ajax({
                 type: "get",
-                url: "{{ url(stok/update') }}/" + id,
-                data: "kategori=" + kategori,
+                url: "{{ url('stok/update') }}/" + id,
+                data: "stok=" + stok,
                 success: function(data) {
                     $(".btn-close").click();
                     read()

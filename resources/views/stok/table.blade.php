@@ -1,22 +1,31 @@
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" style="width: 100%">
     <tr>
         <th>No</th>
+        <th>Kode Menu</th>
         <th>Kategori</th>
+        <th>Nama Item</th>
+        <th>Harga Beli</th>
+        <th>Harga Jual</th>
+        <th>Gambar</th>
         <th>Action</th>
     </tr>
     @php
         $i = 0;
     @endphp
-    @foreach ($kategori as $item)
+    @foreach ($stok as $items)
         <tr>
             <td>@php
                 $i = $i+1;
                 echo $i;
             @endphp</td>
-            <td>{{ $item->kategori }}</td>
+            <td>{{ $items->id_item }}</td>
+            <td>{{ $items->kategori }}</td>
+            <td>{{ $items->item }}</td>
+            <td>{{ $items->beli }}</td>
+            <td>{{ $items->jual }}</td>
+            <td><img src="{{asset('/foto/'. $items->foto)}}"  alt="Gambar" width="100px" height="100px"></td>
             <td>
-                <button style="background-color: #0c4e68" class="btn text-white" onClick="edit({{ $item->id_kategori }})">Edit</button>
-                <button class="btn btn-danger" onClick="hapus({{ $item->id_kategori }})">Delete</button>
+                <button class="btn btn-warning" onClick="edit({{ $items->id_stok }})">Tambah</button>
             </td>
         </tr>
     @endforeach
