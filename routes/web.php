@@ -80,6 +80,10 @@ Route::controller(c_pengguna::class)->group(function () {
     Route::get('/pengguna/delete/{id}', 'delete')->name('pengguna.delete');
     Route::post('/pengguna/update/{id}', 'update')->name('pengguna.update');
     Route::get('/pengguna/destroy/{id}', 'destroy')->name('pengguna.destroy');
+    // editprofil
+    Route::get('/profil', 'tampilProfil')->name('profil');
+    Route::get('/profil/edit', 'editProfil')->name('profil.edit');
+    Route::post('/profil/update/{id}', 'update')->name('profil.update');
 });
 
 Route::controller(c_stok::class)->group(function () {

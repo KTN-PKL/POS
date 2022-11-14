@@ -103,7 +103,10 @@ class c_pengguna extends Controller
             ];
         }
         $this->pengguna->editData($id, $data);
-        $data['success'] = 1;
+        $data = [
+            'name' => $request->name,
+            'success' => 1,
+        ];
         return response()->json($data);
     }
 
@@ -112,5 +115,20 @@ class c_pengguna extends Controller
         $cek = $this->pengguna->detailData($id);
         unlink(public_path('fotouser'). '/' .$cek->foto);
         $this->pengguna->deleteData($id);
+    }
+
+    public function tampilProfil()
+    {
+    
+        return view('profil.index');
+    }
+
+    public function editProfil()
+    {
+        $id = auth()->user()->id;
+        $data = [
+            'pengguna' => $this->pengguna->detailData($id),
+        ];
+        return view('profil.edit', $data);
     }
 }
