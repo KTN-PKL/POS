@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CRUD Laravel 8</title>
 
@@ -22,17 +22,20 @@
                     <h4 style="width:200px" > <i class="fa fa-edit"></i> Edit Akun</h4>
                 </div>
                     <div class="card-body">
-                            @if(session()->has('error'))
-                            <div id="login-alert" class="alert alert-danger custom-alert col-md-12"><b>Warning!</b> {{session('error')}}</div>
-                            @endif
-                            @if(session()->has('update'))
-                            <div id="login-alert" class="alert alert-success custom-alert col-md-12"><b>Sukses!</b> {{session('update')}}</div>
-                            @endif
+                
+                            <div id="success-alert" style="display: none" class="alert alert-success custom-alert col-md-12"><b>Sukses!</b> Profil Berhasil di update
+                            </div>
+                          
                     </div> 
+                  <div id="page">
+
+
+
+                  </div>  
                   
             </div>
             </div>
-            <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-4" >
+            {{-- <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-4" >
                 <div class="card card-rounded mb-4 ">
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4>Foto Profil</h4>
@@ -41,7 +44,7 @@
                        <img style="display:block; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
                     </div>    
             </div>
-            </div>
+            </div> --}}
         
         </div>
         </div>
@@ -62,47 +65,48 @@
 
    
     <script>
-         this.datas = new FormData();
-        $(document).ready(function() {
-            read()
-        });
-        // edit form
-        function edit(id) {
-            $.get("{{ url('pengguna/edit') }}/" + id, {}, function(data, status) {
-                $("#page").html(data);  
-            });
-        }
-        // edit gambar
-        function editgambar(){
-            var files = $("#foto")[0].files;
-            datas.append('foto',files[0]);
-        }
+        this.datas = new FormData();
+       $(document).ready(function() {
+           edit()
+       });
+       // edit form
+       function edit() {
+           $.get("{{ url('profil/edit') }}", {}, function(data, status) {
+               $("#page").html(data);  
+           });
+       }
+       // edit gambar
+       function editgambar(){
+           var files = $("#foto")[0].files;
+           datas.append('foto',files[0]);
+       }
 
-        // update data
-        function update(id) {
-            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-            var name = $("#name").val();
-            var telepon = $("#telepon").val();
-            var alamatuser = $("#alamatuser").val();
-            datas.append('name',name);
-            datas.append('telepon',telepon);
-            datas.append('alamatuser',alamatuser);
-            datas.append('_token',CSRF_TOKEN);
-            $.ajax({
-                 url: "{{ url('pengguna/update') }}/" + id,
-                 method: 'post',
-                 data: datas,
-                 contentType: false,
-                 processData: false,
-                 dataType: 'json',
-                success: function(response) {
-                if(response.success == 1){ 
-                    edit()
-                }
-                }
-            });
-        }
-    </script>
+       // update data
+       function update(id) {
+           var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+           var name = $("#name").val();
+           var telepon = $("#telepon").val();
+           var alamatuser = $("#alamatuser").val();
+           datas.append('name',name);
+           datas.append('telepon',telepon);
+           datas.append('alamatuser',alamatuser);
+           datas.append('_token',CSRF_TOKEN);
+           $.ajax({
+                url: "{{ url('pengguna/update') }}/" + id,
+                method: 'post',
+                data: datas,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+               success: function(response) {
+               if(response.success == 1){ 
+                   edit(),
+                   document.getElementById("namacok").innerHTML = response.name
+               }
+               }
+           });
+       }
+   </script>
 </body>
 
 @endsection
