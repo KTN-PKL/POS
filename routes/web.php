@@ -7,6 +7,7 @@ use App\Http\Controllers\c_pengguna;
 use App\Http\Controllers\c_login;
 use App\Http\Controllers\c_stok;
 use App\Http\Controllers\c_customer;
+use App\Http\Controllers\c_kasir;
 use App\Http\Controllers\CrudController;
 
 /*
@@ -85,6 +86,8 @@ Route::controller(c_pengguna::class)->group(function () {
     Route::get('/profil', 'tampilProfil')->name('profil');
     Route::get('/profil/edit', 'editProfil')->name('profil.edit');
     Route::post('/profil/update/{id}', 'update')->name('profil.update');
+
+   
 });
 
 Route::controller(c_stok::class)->group(function () {
@@ -98,7 +101,16 @@ Route::controller(c_stok::class)->group(function () {
     Route::get('/stok/kategori/{id}', 'kategori')->name('stok.kategori');
 });
 
+Route::controller(c_kasir::class)->group(function () {
+     // kasir
+     Route::get('/kasir', 'index')->name('kasir');
+     Route::get('/kasir/read', 'read')->name('kasir.read');
+     Route::get('/kasir/table', 'table')->name('kasir.table');
+});
+
+
+
 Route::get('/test', function () {
-    return view('kategori.index');
+    return view('kasir.index');
 });
 
