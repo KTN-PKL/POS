@@ -90,7 +90,7 @@
                     </table>
                     <br>
                         {{-- table pemesanan    --}}
-                        <table class="table table-striped" width="100%">
+                        <table class="table table-striped" width="100%" id="barang" style="border: none">
                             <tr>
                                 <th style="width:5%" >No</th>
                                 <th style="width:25%">Nama</th>
@@ -120,6 +120,7 @@
                                     <button class="btn btn-danger btn-sm" onClick=""> <i class="fa fa-times"></i></button>
                                     </td>
                                 </tr>
+                            
                         </table>
                     </div>
                      {{-- Pembayaran --}}
@@ -299,6 +300,22 @@
                }
            });
            
+       }
+
+       function barang()
+       {
+        var barang = $("#barang").html();
+         document.getElementById("barang").innerHTML = barang+` <tr>
+                                    <td>1</td>
+                                    <td>Susu</td>
+                                    <td>   
+                                       <input style="width:40px" type="number">
+                                    </td>
+                                    <td>Rp100.000,-</td>
+                                    <td>
+                                    <button class="btn btn-danger btn-sm" onClick=""> <i class="fa fa-times"></i></button>
+                                    </td>
+                                </tr>`
        }
 
        

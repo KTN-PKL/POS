@@ -2,7 +2,7 @@
     <div class="row">
         @foreach ($item as $items)
 
-        <div type="button" style="margin-left: 1em" class="card col-md-3">
+        <div type="button" onclick="barang()" style="margin-left: 1em" class="card col-md-3">
             <div class="card-header"  >
                 <img src="{{asset('/foto/'. $items->foto)}}" style="display:block; margin:auto;"  alt="Gambar" width="100px" height="80px">
             </div>
