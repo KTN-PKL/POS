@@ -93,7 +93,9 @@ Route::controller(c_stok::class)->group(function () {
     Route::get('/stok/table', 'table')->name('stok.table');
     Route::get('/stok/cari/{cari}', 'cari')->name('stok.cari');
     Route::get('/stok/edit/{id}', 'edit')->name('stok.edit');
-    Route::post('/stok/update/{id}', 'update')->name('stok.update');
+    Route::get('/stok/tambah/{id}', 'tambah')->name('stok.tambah');
+    Route::get('/stok/cari', 'cari')->name('stok.cari');
+    Route::get('/stok/kategori/{id}', 'kategori')->name('stok.kategori');
 });
 
 Route::get('/test', function () {

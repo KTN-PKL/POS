@@ -90,7 +90,7 @@
               <li><a style="text-decoration: none"  href="{{url('pengguna')}}">Pengguna<i class="fa fa-user"></i></a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#services">STOK</a></li>
+          <li><a class="nav-link scrollto" href="/stok">STOK</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">KASIR</a></li>
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>ORDER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

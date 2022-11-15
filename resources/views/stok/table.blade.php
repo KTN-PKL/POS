@@ -1,11 +1,11 @@
 <table class="table table-bordered table-hover" style="width: 100%">
     <tr>
         <th>No</th>
-        <th>Kode Menu</th>
+        <th>Kode Item</th>
         <th>Kategori</th>
         <th>Nama Item</th>
-        <th>Harga Beli</th>
-        <th>Harga Jual</th>
+        <th>Stok</th>
+        <th>Stok Minimal</th>
         <th>Gambar</th>
         <th>Action</th>
     </tr>
@@ -21,8 +21,8 @@
             <td>{{ $items->id_item }}</td>
             <td>{{ $items->kategori }}</td>
             <td>{{ $items->item }}</td>
-            <td>{{ $items->beli }}</td>
-            <td>{{ $items->jual }}</td>
+            <td>{{ $items->stok }}</td>
+            <td>{{ $items->minim }}</td>
             <td><img src="{{asset('/foto/'. $items->foto)}}"  alt="Gambar" width="100px" height="100px"></td>
             <td>
                 <button class="btn btn-warning" onClick="edit({{ $items->id_stok }})">Tambah</button>

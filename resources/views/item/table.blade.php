@@ -1,7 +1,7 @@
 <table class="table table-bordered table-hover" style="width: 100%">
     <tr>
         <th>No</th>
-        <th>Kode Menu</th>
+        <th>Kode Item</th>
         <th>Kategori</th>
         <th>Nama Item</th>
         <th>Harga Beli</th>

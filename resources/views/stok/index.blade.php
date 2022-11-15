@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CRUD Laravel 8</title>
+    <title>POS</title>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -72,11 +72,11 @@
 
 
         // untuk proses update data
-        function update(id) {
+        function tambah(id) {
             var stok = $("#stok").val();
             $.ajax({
                 type: "get",
-                url: "{{ url('stok/update') }}/" + id,
+                url: "{{ url('stok/tambah') }}/" + id,
                 data: "stok=" + stok,
                 success: function(data) {
                     $(".btn-close").click();
