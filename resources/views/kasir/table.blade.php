@@ -1,22 +1,23 @@
 <div class="col-md-12">
     <div class="row">
-        <div style="" class="col-md-3">
+        @foreach ($item as $items)
+
+        <div type="button" style="margin-left: 1em" class="card col-md-3">
             <div class="card-header"  >
-                <img  style="display:block; margin:auto;" width="100px" height="100" src="{{asset('/fotouser/fotoadmin.png')}}" alt="">
+                <img src="{{asset('/foto/'. $items->foto)}}" style="display:block; margin:auto;"  alt="Gambar" width="100px" height="80px">
             </div>
             <div class="card-body" >
-                <h5>Susu</h5>
+                <h6 style="text-align: center"> ({{ $items->kategori }}) </h6>
+                <h6 style="text-align: center"> {{ $items->item }} </h6>
+                <h6 style="text-align: center"> @php
+                    echo "Rp.".number_format($items->jual,2,',','.');
+                @endphp </h6>
+                <h6 style="text-align: center">STOK: {{ $items->stok }} </h6>
             </div>
         </div>
-   
-        <div class="col-md-3">
-            <div class="card-header"  >
-                <img  style="display:block; margin:auto;" width="100px" height="100" src="{{asset('/fotouser/fotoadmin.png')}}" alt="">
-            </div>
-            <div class="card-body" >
-                <h5>Buah</h5>
-            </div>
-        </div>
+            
+        @endforeach
+       
         
 
     </div>

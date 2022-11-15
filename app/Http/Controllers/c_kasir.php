@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\item;
+use App\Models\kategori;
+use App\Models\stok;
 
 class c_kasir extends Controller
 {
+    public function __construct()
+    {
+        $this->item = new item();
+        $this->kategori = new kategori();
+        $this->stok = new stok();
+    }
+
     public function index()
     {
         return view('kasir.index');
@@ -13,23 +23,42 @@ class c_kasir extends Controller
 
     public function read()
     {
-        return view('kasir.read');
+        $data = [
+            'kategori' => $this->kategori->allData(),
+        ];
+        return view('kasir.read', $data);
     }
 
     public function table()
     {
-        // $data = [
-        //     'kategori' => $this->kategori->allData(),
-        // ];
-        return view('kasir.table');
+        $data = [
+            'item' => $this->item->allData(),
+        ];
+        return view('kasir.table', $data);
     }
 
-    public function cari($cari)
+    public function kategori($id)
     {
-        $cari = explode(" " , $cari);
+        $data = [
+            'item' => $this->item->kategoriData($id),
+        ];
+        return view('kasir.table', $data);
+    }
+
+    public function cari(Request $request)
+    {
+        $id = $request->id;
+        $cari = explode(" " , $request->cari);
+        if ($id == 0) {
             $data = [
-                'kategori' => $this->kategori->cariData($cari),
+                'item' => $this->item->cariData0($cari),
             ];
-        return view('kategori.table', $data);
+        } else {
+            $cek = $this->item->cariData($id, $cari);
+            $data = [
+                'item' => $cek,
+            ];
+        }
+        return view('kasir.table', $data);
     }
 }
