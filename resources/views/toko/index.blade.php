@@ -14,42 +14,15 @@
 
 <body>
     <div class="jumbotron p-5 rounded-3" style="background-color: rgb(240, 240, 240)">
-        <div class="container">
-            <div class="row">
-             <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card" >
-                <div class="card card-rounded ">
-                   
-                <div style="background-color:#0c4e68" class="card-header text-white">
-                    <h4> <i class="fa fa-edit"></i> Pengaturan Toko</h4>
-                </div>
-                    <div class="card-body">
-                        <div id="page">
-
-
-
-                        </div> 
-                            
-                          
-                    </div> 
-                
+        <div class="row">
+             <div id="page" class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
+                {{-- Page Edit --}}
                   
             </div>
-            </div>
-            <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-4" >
-                {{-- <div class="card card-rounded mb-4 ">
-                <div style="background-color:#0c4e68" class="card-header text-white">
-                    <h4>Foto Profil</h4>
-                </div>
-                    <div class="card-body">
-                        <span id="uploaded_image"></span>
-                       <img style="display:none; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
-                    </div>    
-            </div> --}}
-            </div>
-        
-        </div>
-        </div>
-        </div>
+        </div>  
+    </div>
+   
+      
 
         {{-- modal notifikasi --}}
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
