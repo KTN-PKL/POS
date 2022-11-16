@@ -29,6 +29,14 @@ class c_kasir extends Controller
         return view('kasir.read', $data);
     }
 
+    public function keranjang()
+    {
+        $data = [
+            'item' => $this->item->allData(),
+        ];
+        return view('kasir.keranjang', $data);
+    }
+
     public function table()
     {
         $data = [

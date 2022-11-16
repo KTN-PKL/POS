@@ -107,7 +107,8 @@ Route::controller(c_kasir::class)->group(function () {
      Route::get('/kasir/read', 'read')->name('kasir.read');
      Route::get('/kasir/table', 'table')->name('kasir.table');
      Route::get('/kasir/cari', 'cari')->name('kasir.cari');
-    Route::get('/kasir/kategori/{id}', 'kategori')->name('kasir.kategori');
+     Route::get('/kasir/kategori/{id}', 'kategori')->name('kasir.kategori');
+     Route::get('/kasir/keranjang', 'keranjang')->name('kasir.keranjang');
 });
 
 
