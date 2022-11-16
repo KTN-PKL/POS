@@ -22,6 +22,10 @@ class stok extends Model
     {
         return DB::table('stoks')->join('items', 'stoks.id_item', '=', 'items.id_item')->where('id_stok', $id_stok)->first();
     }
+    public function itemData($id_item)
+    {
+        return DB::table('stoks')->where('id_item', $id_item)->first();
+    }
     public function editData($id_stok, $data)
     {
         return DB::table('stoks')->where('id_stok', $id_stok)->update($data);

@@ -163,22 +163,25 @@
            barang()
        });
     function barang(){
-        var id = $("#id").val;
+        var id = $("#id").val();
         $.get("{{ url('kasir/keranjang') }}/" + id, {}, function(data, status) {
                $("#barang").html(data);  
         });
     }
-    function tambahbarang(idi){
-        var id = $("#id").val;
+    function tambahbarang(id){
+        var id_transaksi = $("#id").val();
         $.ajax({
                 type: "get",
-                url: "{{ url('kasir/tambahbarang') }}/" + id,
+                url: "{{ url('kasir/tambahbarang') }}",
                 data: {
-                "id_item": idi,
+                "id_item": id,
+                "id_transaksi": id_transaksi,
                 },
-            success: function(data, status) {
-                barang()
+                success: function(data, status) {
+                barang(),
+                table()
                 }
             });
        }
+    
 </script>

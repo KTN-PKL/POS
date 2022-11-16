@@ -71,6 +71,24 @@
            transaksi()
       
        });
+
+       function ubah(id){
+        var id_transaksi = $("#id").val();
+        var qty = $("#qty").val();
+        $.ajax({
+                type: "get",
+                url: "{{ url('kasir/ubahqty') }}",
+                data: {
+                "id_item": id,
+                "id_transaksi": id_transaksi,
+                "qty": qty,
+                },
+                success: function(response) {
+                barang(),
+                table()
+                }
+            });
+    }
        // edit form
        function read() {
            $.get("{{ url('kasir/read') }}", {}, function(data, status) {
