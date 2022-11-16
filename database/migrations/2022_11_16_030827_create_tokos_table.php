@@ -14,7 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tokos', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_toko');
+            $table->string('tnama');
+            $table->string('talamat');
+            $table->string('thp');
+            $table->string('temail');
+            $table->string('tpemilik');
+            $table->string('twebsite');
+            $table->string('tos');
+            $table->string('tprintukuran');
+            $table->string('tprintmodel');
+            $table->string('tgambar');
+            $table->string('tfooter');
+            $table->string('tdiskonpersen');
+            $table->string('tpajakpersen');
+            $table->string('tdiskonrp');
+            $table->string('tpajakrp');
             $table->timestamps();
         });
     }
