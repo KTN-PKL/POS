@@ -17,16 +17,14 @@
         <div class="container">
             <div class="row">
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
+                <div class="alert" style="display:none" id="message">
+                    <strong>Sukses!</strong> Akun Berhasil di update
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="card card-rounded ">
-                    {{-- <div id="message" style="display: none" class="alert-success"><b>Sukses!</b> Profil Berhasil di update
-                    <button></button>
-                    </div> --}}
-                    <div style="display:none" id="message">
-                        <strong>Sukses!</strong> Akun Berhasil di update
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                   
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4 style="width:200px" > <i class="fa fa-edit"></i> Edit Akun</h4>
                 </div>
@@ -43,16 +41,17 @@
                   
             </div>
             </div>
-            {{-- <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-4" >
+            <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-4" >
                 <div class="card card-rounded mb-4 ">
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4>Foto Profil</h4>
                 </div>
                     <div class="card-body">
-                       <img  style="display:block; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
+                        {{-- <span id="uploaded_image"></span> --}}
+                       <img style="display:none; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
                     </div>    
             </div>
-            </div> --}}
+            </div>
         
         </div>
         </div>
@@ -94,9 +93,11 @@
        function update(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var name = $("#name").val();
+           var name = $("#username").val();
            var telepon = $("#telepon").val();
            var alamatuser = $("#alamatuser").val();
            datas.append('name',name);
+           datas.append('username',username);
            datas.append('telepon',telepon);
            datas.append('alamatuser',alamatuser);
            datas.append('_token',CSRF_TOKEN);
@@ -107,15 +108,23 @@
                 contentType: false,
                 processData: false,
                 dataType: 'json',
-               success: function(response) {
+               success: function(response) 
+               {
                if(response.success == 1){ 
                    edit(),
                    document.getElementById("namacok").innerHTML = response.name,
                    $('#message').css('display', 'block');
                     $('#message').html(response.pesan);
                     $('#message').addClass(response.class_name);
+                    $('#uploaded_image').html(response.uploaded_image);
+                    window.setTimeout(function() {
+                    $(".custom-alert").slideUp(2000, function() 
+                    {
+                    $(this).remove();
+                    });
+                    }, 2000);
     
-               }
+               }    
                }
            });
            

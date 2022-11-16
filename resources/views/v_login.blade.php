@@ -6,7 +6,7 @@
     body {
   margin: 0;
   padding: 0;
-  background-color: #17a2b8;
+  background-color: #0c4e68;
   height: 100vh;
 }
 #login .container #login-row #login-column #login-box {
@@ -41,10 +41,10 @@
                             <div id="login-alert" class="alert alert-danger custom-alert col-md-12"><b>Warning!</b> {{session('error')}}</div>
                             @endif
                             @csrf
-                            <h3 class="text-center text-info">POSCAFE & RESTO</h3>
+                            <h3 style="color: #0c4e68" class="text-center">POSCAFE & RESTO</h3>
                             <div class="form-group">
-                                <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror">
+                                <label for="username" style="color: #0c4e68">Username</label><br>
+                                <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" placeholder="Masukkan Username">
                             @error('username')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -52,20 +52,21 @@
                               @enderror
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" autocomplete="on">
+                                <label style="color: #0c4e68" for="password">Password</label><br>
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" autocomplete="on" placeholder="Masukkan Password">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                               @enderror
                             </div>
-                            <div style="margin-bottom: 2em" class="form-group">
+                            <div style="margin-bottom: 2em;background-color:#0c4e68;" class="form-group">
         
-                                <input  type="submit" name="submit" class="btn btn-info btn-md float-right" value="Login">
+                                <input style="background-color: #0c4e68"  type="submit" name="submit" class="btn btn-info btn-md float-right" value="Login">
                             </div>
 
                         </form>
+
                     </div>
                 </div>
             </div>
