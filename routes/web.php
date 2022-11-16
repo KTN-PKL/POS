@@ -111,15 +111,17 @@ Route::controller(c_kasir::class)->group(function () {
      Route::get('/kasir/kategori/{id}', 'kategori')->name('kasir.kategori');
      Route::get('/kasir/transaksi', 'transaksi')->name('kasir.transaksi');
      Route::get('/kasir/keranjang/{id}', 'keranjang')->name('kasir.keranjang');
-     Route::get('/kasir/hitung/{id}', 'hitung')->name('kasir.hitung');
+     Route::get('/kasir/hitung', 'hitung')->name('kasir.hitung');
      Route::get('/kasir/tambahbarang', 'tambahbarang')->name('kasir.tambahbarang');
      Route::get('/kasir/ubahqty', 'ubahqty')->name('kasir.ubahqty');
+     Route::get('/kasir/total/{id}', 'total')->name('kasir.total');
+     Route::get('/kasir/grantotal/{id}', 'grantotal')->name('kasir.grantotal');
 });
 
 Route::controller(c_toko::class)->group(function () {
     // pengaturan toko
     Route::get('/toko', 'tampilToko')->name('toko');
-    Route::get('/toko/edit1', 'editToko1')->name('toko.edit1');
+    Route::get('/toko/edit', 'editToko')->name('toko.edit');
     Route::get('/toko/edit2', 'editToko2')->name('toko.edit2');
     Route::post('/toko/update/{id}', 'update')->name('toko.update');
     Route::post('/toko/update2/{id}', 'update2')->name('toko.update2');
