@@ -85,7 +85,8 @@
                 },
                 success: function(response) {
                 barang(),
-                table()
+                table(),
+                hitung()
                 }
             });
     }

@@ -59,7 +59,8 @@
             </div>
 <script>
      $(document).ready(function() {
-           barang()
+           barang(),
+           hitung()
        });
     function barang(){
         var id = $("#id").val();
@@ -84,7 +85,8 @@
                 },
                 success: function(data, status) {
                 barang(),
-                table()
+                table(),
+                hitung()
                 }
             });
        }
