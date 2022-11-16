@@ -68,7 +68,7 @@
         this.datas = new FormData();
        $(document).ready(function() {
            read(),
-           keranjang()
+           transaksi()
       
        });
        // edit form
@@ -78,8 +78,8 @@
            });
        }
 
-       function keranjang() {
-           $.get("{{ url('kasir/keranjang') }}", {}, function(data, status) {
+       function transaksi() {
+           $.get("{{ url('kasir/transaksi') }}", {}, function(data, status) {
                $("#keranjang").html(data);  
            });
        }
@@ -87,11 +87,6 @@
        function editgambar(){
            var files = $("#foto")[0].files;
            datas.append('foto',files[0]);
-       }
-
-       function barang(id)
-       {
-        document.getElementById("raw"+id).style.display = "block";
        }
 
        

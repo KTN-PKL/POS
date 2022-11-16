@@ -12,7 +12,7 @@
                             </td> 
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" value="B01" readonly>
+                                    <input type="text" class="form-control" id="id" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ $id->id_transaksi }}" readonly>
                                   </div>
                             </td> 
                         </tr>
@@ -158,3 +158,14 @@
                    </div>    
                     </div>    
             </div>
+<script>
+     $(document).ready(function() {
+           barang()
+       });
+    function barang(){
+        var id = $("#id").val;
+        $.get("{{ url('kasir/keranjang') }}/" + id, {}, function(data, status) {
+               $("#barang").html(data);  
+        });
+    }
+</script>
