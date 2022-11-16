@@ -113,7 +113,7 @@ Route::controller(c_kasir::class)->group(function () {
 
 
 
-Route::get('/test', function () {
-    return view('kasir.index');
+Route::get('/notifikasi', function () {
+    return view('v_notifikasi');
 });
 
