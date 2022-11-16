@@ -17,9 +17,9 @@
         <div class="container">
             <div class="row">
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
-                <div class="alert" style="display:none" id="message">
+                <div class="alert" style="display:block" id="message">
                     <strong>Sukses!</strong> Akun Berhasil di update
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button id="close" type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -57,6 +57,21 @@
         </div>
         </div>
 
+        {{-- modal notifikasi --}}
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="notif" class="p-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -89,6 +104,14 @@
            datas.append('foto',files[0]);
        }
 
+       function notif() {
+            $.get("{{ url('notifikasi') }}" , {}, function(data, status) {
+                $("#exampleModalLabel").html('notif')
+                $("#notif").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
+
        // update data
        function update(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
@@ -113,16 +136,18 @@
                if(response.success == 1){ 
                    edit(),
                    document.getElementById("namacok").innerHTML = response.name,
+                //    alert(response.pesan)
                    $('#message').css('display', 'block');
                     $('#message').html(response.pesan);
                     $('#message').addClass(response.class_name);
-                    $('#uploaded_image').html(response.uploaded_image);
-                    window.setTimeout(function() {
-                    $(".custom-alert").slideUp(2000, function() 
-                    {
-                    $(this).remove();
-                    });
-                    }, 2000);
+
+                //     $('#uploaded_image').html(response.uploaded_image);
+                //     window.setTimeout(function() {
+                //     $(".custom-alert").slideUp(2000, function() 
+                //     {
+                //     $(this).remove();
+                //     });
+                //     }, 2000);
     
                }    
                }
