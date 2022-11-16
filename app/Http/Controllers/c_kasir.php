@@ -74,12 +74,17 @@ class c_kasir extends Controller
         return view('kasir.table', $data);
     }
 
-    public function hitung($id)
+    public function hitung()
+    {
+        return view('kasir.hitung');
+    }
+
+    public function total($id)
     {
         $data = [
             'total' => $this->keranjang->total($id),
         ];
-        return view('kasir.hitung', $data);
+        return view('kasir.total', $data);
     }
 
     public function transaksi()

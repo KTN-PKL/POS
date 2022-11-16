@@ -69,7 +69,6 @@
        $(document).ready(function() {
            read(),
            transaksi()
-      
        });
 
        function ubah(id){
@@ -86,7 +85,7 @@
                 success: function(response) {
                 barang(),
                 table(),
-                hitung()
+                total()
                 }
             });
     }
