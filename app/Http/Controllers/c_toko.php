@@ -52,11 +52,12 @@ class c_toko extends Controller
 
     public function update2(Request $request, $id)
     {
-        if ($request->foto <> null) {
-            $cek = $this->toko->detailData($id);
-            unlink(public_path('fototoko'). '/' .$cek->foto);
-            $file  = $request->foto;
-            $filename = $request->tnama.'.'.$file->extension();
+        $id_toko=1;
+        if ($request->tgambar <> null) {
+            $cek = $this->toko->detailData($id_toko);
+            unlink(public_path('fototoko'). '/' .$cek->tgambar);
+            $file  = $request->tgambar;
+            $filename = $request->id_toko.'.'.$file->extension();
             $file->move(public_path('fototoko'),$filename);
             $data = [
                 'tgambar' => $filename,
@@ -81,7 +82,7 @@ class c_toko extends Controller
                 'tpajakrp' => $request->tpajakrp,
             ];
         }
-        $this->pengguna->editData($id_toko, $data);
+        $this->toko->editData($id_toko, $data);
         $data = [
             'success' => 1,
         ];

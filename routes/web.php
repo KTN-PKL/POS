@@ -120,6 +120,7 @@ Route::controller(c_toko::class)->group(function () {
     Route::get('/toko', 'tampilToko')->name('toko');
     Route::get('/toko/edit', 'editToko')->name('toko.edit');
     Route::post('/toko/update/{id}', 'update')->name('toko.update');
+    Route::post('/toko/update2/{id}', 'update2')->name('toko.update2');
 
    
 });

@@ -98,7 +98,7 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-3 col-form-label">Gambar</label>
                 <div class="col-sm-9">
-                    <input type="file" onchange="editgambar()" class="form-control @error('foto') is-invalid @enderror"  name="tgambar" id="tgambar">
+                    <input type="file" onchange="editgambar()" class="form-control" id="tgambar">
                 </div>
                 </div>
             </div>
@@ -120,8 +120,8 @@
                     <label for="" class="col-sm-3 col-form-label">Diskon (%) </label>
                         <div class="col-sm-9">
                             <select type="text" class="form-select" id="tdiskonpersen" aria-describedby="basic-addon2">
-                                <option selected disabled>-- Pilih --</option>
-                                <option value="enable">Enable</option>
+                                <option  disabled>-- Pilih --</option>
+                                <option selected  value="enable">Enable</option>
                                 <option value="disable">Disable</option>
                             </select>    
                         </div>
@@ -131,7 +131,7 @@
                         <div class="col-sm-9">
                             <select type="text" class="form-select" id="tpajakpersen" aria-describedby="basic-addon2">
                                 <option selected disabled>-- Pilih --</option>
-                                <option value="enable">Enable</option>
+                                <option selected  value="enable">Enable</option>
                                 <option value="disable">Disable</option>
                             </select>    
                         </div>
@@ -140,8 +140,8 @@
                     <label for="" class="col-sm-3 col-form-label">Diskon (Rp) </label>
                         <div class="col-sm-9">
                             <select type="text" class="form-select" id="tdiskonrp" aria-describedby="basic-addon2">
-                                <option selected disabled>-- Pilih --</option>
-                                <option value="enable">Enable</option>
+                                <option disabled>-- Pilih --</option>
+                                <option  selected value="enable">Enable</option>
                                 <option value="disable">Disable</option>
                             </select>    
                         </div>
@@ -150,8 +150,8 @@
                     <label for="" class="col-sm-3 col-form-label">Pajak (Rp) </label>
                         <div class="col-sm-9">
                             <select type="text" class="form-select" id="tpajakrp" aria-describedby="basic-addon2">
-                                <option selected disabled>-- Pilih --</option>
-                                <option value="enable">Enable</option>
+                                <option disabled>-- Pilih --</option>
+                                <option  selected value="enable">Enable</option>
                                 <option value="disable">Disable</option>
                             </select>    
                         </div>
@@ -161,7 +161,7 @@
         </div>
     </div>
 <div class="card-footer text-muted">
-    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"><i class="fa fa-save text-white" onClick="update({{ $toko->id_toko }})"></i> Save </button>
+    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"><i class="fa fa-save text-white" onClick="update2({{ $toko->id_toko }})"></i> Save </button>
 
 </div>
 </div>

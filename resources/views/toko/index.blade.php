@@ -80,7 +80,7 @@
             });
         }
 
-       // update data
+       // update data 1
        function update(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var tnama = $("#tnama").val();
@@ -89,6 +89,34 @@
            var temail = $("#temail").val();
            var tpemilik = $("#tpemilik").val();
            var twebsite = $("#twebsite").val();
+           datas.append('tnama',tnama);
+           datas.append('talamat',talamat);
+           datas.append('thp',thp);
+           datas.append('temail',temail);
+           datas.append('tpemilik',tpemilik);
+           datas.append('twebsite',twebsite);
+           datas.append('_token',CSRF_TOKEN);
+           $.ajax({
+                url: "{{ url('toko/update') }}/" + id,
+                method: 'post',
+                data: datas,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+               success: function(response) 
+               {
+               if(response.success == 1){ 
+                   edit()
+                   notif()
+
+               }    
+               }
+           });
+           
+       }
+
+       function update2(id) {
+           var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var tos = $("#tos").val();
            var tprintukuran = $("#tprintukuran").val();
            var tprintmodel = $("#tprintmodel").val();
@@ -97,12 +125,6 @@
            var tdiskonpersen = $("#tdiskonpersen").val();
            var tpajakpersen = $("#tpajakpersen").val();
            var tpajakrp = $("#tpajakrp").val();
-           datas.append('tnama',tnama);
-           datas.append('talamat',talamat);
-           datas.append('thp',thp);
-           datas.append('temail',temail);
-           datas.append('tpemilik',tpemilik);
-           datas.append('twebsite',twebsite);
            datas.append('tos',tos);
            datas.append('tprintukuran',tprintukuran);
            datas.append('tprintmodel',tprintmodel);
@@ -113,7 +135,7 @@
            datas.append('tpajakpersen',tpajakpersen);
            datas.append('_token',CSRF_TOKEN);
            $.ajax({
-                url: "{{ url('toko/update') }}/" + id,
+                url: "{{ url('toko/update2') }}/" + id,
                 method: 'post',
                 data: datas,
                 contentType: false,
