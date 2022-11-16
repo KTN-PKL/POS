@@ -83,13 +83,6 @@
                $("#keranjang").html(data);  
            });
        }
-       // edit gambar
-       function editgambar(){
-           var files = $("#foto")[0].files;
-           datas.append('foto',files[0]);
-       }
-
-       
    </script>
 </body>
 
