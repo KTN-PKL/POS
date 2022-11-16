@@ -14,4 +14,20 @@ class keranjang extends Model
     {
         return DB::table('keranjangs')->join('items', 'keranjangs.id_item', '=', 'items.id_item')->where('id_transaksi', $id_transaksi)->get();
     }
+    public function addData($data)
+    {
+        DB::table('keranjangs')->insert($data);
+    }
+    public function jumlahData($id_transaksi, $id_item)
+    {
+        return DB::table('keranjangs')->where('id_transaksi', $id_transaksi)->where('id_item', $id_item)->count();
+    }
+    public function cekData($id_transaksi, $id_item)
+    {
+        return DB::table('keranjangs')->where('id_transaksi', $id_transaksi)->where('id_item', $id_item)->first();
+    }
+    public function updateData($id_transaksi, $id_item, $data)
+    {
+        return DB::table('keranjangs')->where('id_transaksi', $id_transaksi)->where('id_item', $id_item)->update($data);
+    }
 }
