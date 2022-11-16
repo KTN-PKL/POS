@@ -17,12 +17,6 @@
         <div class="container">
             <div class="row">
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
-                <div class="alert" style="display:block" id="message">
-                    <strong>Sukses!</strong> Akun Berhasil di update
-                    <button id="close" type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <div class="card card-rounded ">
                    
                 <div style="background-color:#0c4e68" class="card-header text-white">
@@ -42,15 +36,15 @@
             </div>
             </div>
             <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-4" >
-                <div class="card card-rounded mb-4 ">
+                {{-- <div class="card card-rounded mb-4 ">
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4>Foto Profil</h4>
                 </div>
                     <div class="card-body">
-                        {{-- <span id="uploaded_image"></span> --}}
+                        <span id="uploaded_image"></span>
                        <img style="display:none; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
                     </div>    
-            </div>
+            </div> --}}
             </div>
         
         </div>
@@ -59,14 +53,14 @@
 
         {{-- modal notifikasi --}}
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <div style="background-color: #0c4e68" class="modal-header">
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Notifikasi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div id="notif" class="p-2"></div>
+                        <div id="notifikasi" class="p-2"></div>
                     </div>
                 </div>
             </div>
@@ -104,10 +98,11 @@
            datas.append('foto',files[0]);
        }
 
+    //    notifikasi
        function notif() {
             $.get("{{ url('notifikasi') }}" , {}, function(data, status) {
-                $("#exampleModalLabel").html('notif')
-                $("#notif").html(data);
+                $("#exampleModalLabel").html('Notifikasi')
+                $("#notifikasi").html(data);
                 $("#exampleModal").modal('show');
             });
         }
@@ -116,7 +111,7 @@
        function update(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var name = $("#name").val();
-           var name = $("#username").val();
+           var username = $("#username").val();
            var telepon = $("#telepon").val();
            var alamatuser = $("#alamatuser").val();
            datas.append('name',name);
@@ -134,21 +129,10 @@
                success: function(response) 
                {
                if(response.success == 1){ 
-                   edit(),
-                   document.getElementById("namacok").innerHTML = response.name,
-                //    alert(response.pesan)
-                   $('#message').css('display', 'block');
-                    $('#message').html(response.pesan);
-                    $('#message').addClass(response.class_name);
+                   edit()
+                   document.getElementById("namacok").innerHTML = response.name
+                   notif()
 
-                //     $('#uploaded_image').html(response.uploaded_image);
-                //     window.setTimeout(function() {
-                //     $(".custom-alert").slideUp(2000, function() 
-                //     {
-                //     $(this).remove();
-                //     });
-                //     }, 2000);
-    
                }    
                }
            });
