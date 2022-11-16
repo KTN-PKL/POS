@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\item;
 use App\Models\kategori;
 use App\Models\stok;
+use App\Models\keranjang;
+use App\Models\transaksi;
 
 class c_kasir extends Controller
 {
@@ -14,6 +16,8 @@ class c_kasir extends Controller
         $this->item = new item();
         $this->kategori = new kategori();
         $this->stok = new stok();
+        $this->keranjang = new keranjang();
+        $this->transaksi = new transaksi();
     }
 
     public function index()
@@ -29,12 +33,12 @@ class c_kasir extends Controller
         return view('kasir.read', $data);
     }
 
-    public function keranjang()
+    public function keranjang($id)
     {
         $data = [
-            'item' => $this->item->allData(),
+            'keranjang' => $this->keranjang->Data($id),
         ];
-        return view('kasir.keranjang', $data);
+        return view('kasir.barang', $data);
     }
 
     public function table()
@@ -68,5 +72,13 @@ class c_kasir extends Controller
             ];
         }
         return view('kasir.table', $data);
+    }
+
+    public function transaksi()
+    {
+        $data = [
+            'id' => $this->transaksi->kasir(),
+        ];
+        return view('kasir.keranjang', $data);
     }
 }

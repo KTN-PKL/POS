@@ -12,29 +12,30 @@ class transaksi extends Model
 
     public function id()
     {
-        $data = DB::table('items')->orderBy('id_item', 'DESC')->first();
+        $data = DB::table('transaksis')->orderBy('id_transaksi', 'DESC')->first();
         if ($data == null) {
             $urutan = 0;
         } else {
-            $kode = $data->id_item;
+            $kode = $data->id_transaksi;
             $urutan = (int) substr($kode, 3, 3);
         }
         $urutan++;
-        $huruf = "ITM";
-        $id_item = $huruf . sprintf("%03s", $urutan);
-        return $id_item;
+        $huruf = "TRS";
+        $id_transaksi = $huruf . sprintf("%03s", $urutan);
+        return $id_transaksi;
     }
 
-    public function id2()
+    public function kasir()
     {
         $cek = DB::table('transaksis')->count();
         if ($cek == 0) {
-            DB::table('transaksis')->insert([
+            DB::table('transaksis')->insert(['id_transaksi' => $this->id()]);
         }
+        return DB::table('transaksis')->orderBy('id_transaksi', 'DESC')->first();
     }
 
-    // public function jumlah()
-    // {
-    //     return 
-    // }
+    public function genid()
+    {
+        DB::table('transaksis')->insert(['id_transaksi' => $this->id()]);
+    }
 }
