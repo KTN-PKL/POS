@@ -30,4 +30,8 @@ class keranjang extends Model
     {
         return DB::table('keranjangs')->where('id_transaksi', $id_transaksi)->where('id_item', $id_item)->update($data);
     }
+    public function total($id_transaksi)
+    {
+        return DB::table('keranjangs')->where('id_transaksi', $id_transaksi)->sum('subtotal');
+    }
 }
