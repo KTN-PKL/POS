@@ -8,6 +8,7 @@ use App\Http\Controllers\c_login;
 use App\Http\Controllers\c_stok;
 use App\Http\Controllers\c_customer;
 use App\Http\Controllers\c_kasir;
+use App\Http\Controllers\c_toko;
 use App\Http\Controllers\CrudController;
 
 /*
@@ -112,6 +113,15 @@ Route::controller(c_kasir::class)->group(function () {
      Route::get('/kasir/keranjang/{id}', 'keranjang')->name('kasir.keranjang');
 });
 
+
+Route::controller(c_toko::class)->group(function () {
+    // pengaturan toko
+    Route::get('/toko', 'tampilToko')->name('toko');
+    Route::get('/profil/edit', 'editToko')->name('toko.edit');
+    Route::post('/profil/update/{id}', 'update')->name('toko.update');
+
+   
+});
 
 
 Route::get('/notifikasi', function () {
