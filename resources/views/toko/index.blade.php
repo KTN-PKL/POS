@@ -16,11 +16,11 @@
     <div class="jumbotron p-5 rounded-3" style="background-color: rgb(240, 240, 240)">
         <div class="container">
             <div class="row">
-             <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
+             <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card" >
                 <div class="card card-rounded ">
                    
                 <div style="background-color:#0c4e68" class="card-header text-white">
-                    <h4 style="width:200px" > <i class="fa fa-edit"></i> Edit Akun</h4>
+                    <h4> <i class="fa fa-edit"></i> Pengaturan Toko</h4>
                 </div>
                     <div class="card-body">
                         <div id="page">
@@ -88,7 +88,7 @@
        });
        // edit form
        function edit() {
-           $.get("{{ url('profil/edit') }}", {}, function(data, status) {
+           $.get("{{ url('toko/edit') }}", {}, function(data, status) {
                $("#page").html(data);  
            });
        }

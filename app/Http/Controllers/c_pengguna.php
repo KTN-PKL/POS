@@ -95,30 +95,19 @@ class c_pengguna extends Controller
                 'alamatuser' => $request->alamatuser,
                 'telepon' => $request->telepon,
             ];
-            $this->pengguna->editData($id, $data);
-            $data = [
-                'name' => $request->name,
-                'success' => 1,
-                'pesan' => 'Profil Berhasil diupdate gambar',
-                'class_name'  => 'alert alert-success custom-alert alert-dismissible',
-                'uploaded_image'=> '<img src="/fotouser/'.$filename.'" class="img-thumbnail" width="300" />',
-            ];
-            return response()->json($data);
         } else {
             $data = [
                 'name' => $request->name,
                 'alamatuser' => $request->alamatuser,
                 'telepon' => $request->telepon,
             ];
-            $this->pengguna->editData($id, $data);
-            $data = [
-                'name' => $request->name,
-                'success' => 1,
-                'pesan' => 'Profil Berhasil diupdatee',
-                'class_name'  => 'alert alert-success custom-alert alert-dismissible',
-            ];
-            return response()->json($data);
         }
+        $this->pengguna->editData($id, $data);
+        $data = [
+            'name' => $request->name,
+            'success' => 1,
+        ];
+        return response()->json($data);
        
         
     }

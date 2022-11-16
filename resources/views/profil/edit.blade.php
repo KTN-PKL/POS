@@ -9,7 +9,7 @@
       @enderror
     </div>
     <div class="form-group">
-        <label for="username">Nama Pengguna</label><br>
+        <label for="name">Nama Pengguna</label><br>
         <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{$pengguna->name}}" >
     @error('name')
         <span class="invalid-feedback" role="alert">

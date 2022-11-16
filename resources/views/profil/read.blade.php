@@ -1,16 +1,11 @@
-<div class="card">
-    <div style="background-color:#0c4e68" class="card-header">
-        <h5 class="text-white" > <i class="fa fa-tag"></i> <b>Daftar Kategori</b></h5>
+<div class="card card-rounded mb-4 ">
+    <div style="background-color:#0c4e68" class="card-header text-white">
+        <h4>Foto Profil</h4>
     </div>
-    <div class="card-body">
-        <div class="input-group col-md-4 offset-8">
-            <input onkeyup="cari()" id="cari" type="search" class="form-control input-sm" placeholder="Search Kategori" aria-label="Search" aria-describedby="search-addon" />     
-            {{-- <button type="button" class="btn btn-outline-primary">Search</button> --}}
-          </div>
-          <br>
-      
-<div id="table"></div>
-</div>
+        <div class="card-body">
+            <span id="uploaded_image"></span>
+           <img style="display:none; margin:auto;" width="300px" height="300" src="{{asset('/fotouser/'. $pengguna->foto)}}" alt="">
+        </div>    
 </div>
 
 
