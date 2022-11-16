@@ -1,8 +1,4 @@
-<br>
-<br>
-<div class="card card-rounded ">
-                   
-    <div class="card-header text-white" style="background-color:#0c4e68" >
+<div class="card-header text-white" style="background-color:#0c4e68" >
         <h5> <i class="fa fa-edit"></i> Pengaturan Sistem Print dan Kasir</h5>
     </div>
     <div class="card-body">

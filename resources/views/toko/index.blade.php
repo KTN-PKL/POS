@@ -60,19 +60,13 @@
     <script>
         this.datas = new FormData();
        $(document).ready(function() {
-           edit1(),
-           edit2()
+           edit()
       
        });
        // edit form
-       function edit1() {
-           $.get("{{ url('toko/edit1') }}", {}, function(data, status) {
+       function edit() {
+           $.get("{{ url('toko/edit') }}", {}, function(data, status) {
                $("#page1").html(data); 
-           });
-       }
-       function edit2() {
-           $.get("{{ url('toko/edit2') }}", {}, function(data, status) {
-               $("#page2").html(data); 
            });
        }
        // edit gambar
@@ -116,7 +110,7 @@
                success: function(response) 
                {
                if(response.success == 1){ 
-                   edit1()
+                   edit()
                    notif()
 
                }    
@@ -125,43 +119,43 @@
            
        }
 
-       function update2(id) {
-           var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-           var tos = $("#tos").val();
-        //    var tprintukuran = $("#tprintukuran").val();
-        //    var tprintmodel = $("#tprintmodel").val();
-        //    var tfooter = $("#tfooter").val();
-        //    var tdiskonrp = $("#tdiskonrp").val();
-        //    var tdiskonpersen = $("#tdiskonpersen").val();
-        //    var tpajakpersen = $("#tpajakpersen").val();
-        //    var tpajakrp = $("#tpajakrp").val();
-           datas.append('tos',tos);
-        //    datas.append('tprintukuran',tprintukuran);
-        //    datas.append('tprintmodel',tprintmodel);
-        //    datas.append('tfooter',tfooter);
-        //    datas.append('tdiskonrp',tdiskonrp);
-        //    datas.append('tdiskonpersen',tdiskonpersen);
-        //    datas.append('tpajakrp',tpajakrp);
-        //    datas.append('tpajakpersen',tpajakpersen);
-           datas.append('_token',CSRF_TOKEN);
-           $.ajax({
-                url: "{{ url('toko/update2') }}/" + id,
-                method: 'post',
-                data: datas,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-               success: function(response) 
-               {
-               if(response.success == 1){ 
-                   edit2()
-                   notif()
+    //    function update2(id) {
+    //        var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    //        var tos = $("#tos").val();
+    //        var tprintukuran = $("#tprintukuran").val();
+    //        var tprintmodel = $("#tprintmodel").val();
+    //        var tfooter = $("#tfooter").val();
+    //        var tdiskonrp = $("#tdiskonrp").val();
+    //        var tdiskonpersen = $("#tdiskonpersen").val();
+    //        var tpajakpersen = $("#tpajakpersen").val();
+    //        var tpajakrp = $("#tpajakrp").val();
+    //        datas.append('tos',tos);
+    //        datas.append('tprintukuran',tprintukuran);
+    //        datas.append('tprintmodel',tprintmodel);
+    //        datas.append('tfooter',tfooter);
+    //        datas.append('tdiskonrp',tdiskonrp);
+    //        datas.append('tdiskonpersen',tdiskonpersen);
+    //        datas.append('tpajakrp',tpajakrp);
+    //        datas.append('tpajakpersen',tpajakpersen);
+    //        datas.append('_token',CSRF_TOKEN);
+    //        $.ajax({
+    //             url: "{{ url('toko/update2') }}/" + id,
+    //             method: 'post',
+    //             data: datas,
+    //             contentType: false,
+    //             processData: false,
+    //             dataType: 'json',
+    //            success: function(response) 
+    //            {
+    //            if(response.success == 1){ 
+    //                edit2()
+    //                notif()
 
-               }    
-               }
-           });
+    //            }    
+    //            }
+    //        });
            
-       }
+    //    }
 
        
    </script>

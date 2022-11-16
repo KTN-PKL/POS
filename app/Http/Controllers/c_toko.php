@@ -22,7 +22,7 @@ class c_toko extends Controller
         return view('toko.index', $data);
     }
 
-    public function editToko1()
+    public function editToko()
     {   
         $id_toko = 1;
         $data = [
@@ -31,7 +31,7 @@ class c_toko extends Controller
         return view('toko.edit', $data);
     }
 
-    public function editToko2()
+    public function editPengaturan()
     {   
         $id_toko = 1;
         $data = [
