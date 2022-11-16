@@ -69,8 +69,7 @@
         });
     }
     function hitung(){
-        var id = $("#id").val();
-        $.get("{{ url('kasir/hitung') }}/" + id, {}, function(data, status) {
+        $.get("{{ url('kasir/hitung') }}", {}, function(data, status) {
                $("#hitung").html(data);  
         });
     }
@@ -86,7 +85,7 @@
                 success: function(data, status) {
                 barang(),
                 table(),
-                hitung()
+                total()
                 }
             });
        }
