@@ -17,6 +17,10 @@
         <div class="row">
              <div id="page" class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
                 {{-- Page Edit --}}
+                <div id="page1" class="card card-rounded ">     
+                </div>
+                <div id="page2" class="card card-rounded ">     
+                </div>
                   
             </div>
         </div>  
@@ -60,9 +64,14 @@
       
        });
        // edit form
-       function edit() {
-           $.get("{{ url('toko/edit') }}", {}, function(data, status) {
-               $("#page").html(data);  
+       function edit1() {
+           $.get("{{ url('toko/edit1') }}", {}, function(data, status) {
+               $("#page1").html(data); 
+           });
+       }
+       function edit2() {
+           $.get("{{ url('toko/edit2') }}", {}, function(data, status) {
+               $("#page2").html(data); 
            });
        }
        // edit gambar
@@ -118,21 +127,21 @@
        function update2(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var tos = $("#tos").val();
-           var tprintukuran = $("#tprintukuran").val();
-           var tprintmodel = $("#tprintmodel").val();
-           var tfooter = $("#tfooter").val();
-           var tdiskonrp = $("#tdiskonrp").val();
-           var tdiskonpersen = $("#tdiskonpersen").val();
-           var tpajakpersen = $("#tpajakpersen").val();
-           var tpajakrp = $("#tpajakrp").val();
+        //    var tprintukuran = $("#tprintukuran").val();
+        //    var tprintmodel = $("#tprintmodel").val();
+        //    var tfooter = $("#tfooter").val();
+        //    var tdiskonrp = $("#tdiskonrp").val();
+        //    var tdiskonpersen = $("#tdiskonpersen").val();
+        //    var tpajakpersen = $("#tpajakpersen").val();
+        //    var tpajakrp = $("#tpajakrp").val();
            datas.append('tos',tos);
-           datas.append('tprintukuran',tprintukuran);
-           datas.append('tprintmodel',tprintmodel);
-           datas.append('tfooter',tfooter);
-           datas.append('tdiskonrp',tdiskonrp);
-           datas.append('tdiskonpersen',tdiskonpersen);
-           datas.append('tpajakrp',tpajakrp);
-           datas.append('tpajakpersen',tpajakpersen);
+        //    datas.append('tprintukuran',tprintukuran);
+        //    datas.append('tprintmodel',tprintmodel);
+        //    datas.append('tfooter',tfooter);
+        //    datas.append('tdiskonrp',tdiskonrp);
+        //    datas.append('tdiskonpersen',tdiskonpersen);
+        //    datas.append('tpajakrp',tpajakrp);
+        //    datas.append('tpajakpersen',tpajakpersen);
            datas.append('_token',CSRF_TOKEN);
            $.ajax({
                 url: "{{ url('toko/update2') }}/" + id,
