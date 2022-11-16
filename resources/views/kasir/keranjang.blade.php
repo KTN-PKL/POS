@@ -12,7 +12,7 @@
                             </td> 
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="id" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ $id->id_transaksi }}" readonly>
+                                    <input type="text" class="form-control" id="id" value="{{ $id->id_transaksi }}" readonly>
                                   </div>
                             </td> 
                         </tr>
