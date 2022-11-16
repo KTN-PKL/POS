@@ -82,27 +82,28 @@ class c_kasir extends Controller
         return view('kasir.keranjang', $data);
     }
 
-    public function tambahbarang(Request $request)
+    public function tambahbarang(Request $request, $id)
     {
-        $cek = $this->keranjang->jumlahData($request->id_transaksi, $request->id_item);
-        $item = $this->item->detailData($request->id_item);
+        $id_item = "ITM" . sprintf("%03s", $request->id_item);
+        $cek = $this->keranjang->jumlahData($id, $id_item);
+        $item = $this->item->detailData($id_item);
         if ($cek = 0) {
             $data = [
-                'id_transaksi' => $request->id_transaksi,
-                'id_item' => $request->id_item,
+                'id_transaksi' => $id,
+                'id_item' => $id_item,
                 'qty' => 1,
                 'subtotal' => $item->jual,
             ];
             $this->keranjang->addData($data);
         } else {
-            $qty = $this->keranjang->cekData($request->id_transaksi, $request->id_item);
+            $qty = $this->keranjang->cekData($id, $id_item);
             $jumlah = $qty->qty + 1;
             $subtotal = $jumlah * $item->jual;
             $data = [
                 'qty' => $jumlah,
                 'subtotal' => $subtotal,
             ];
-            $this->keranjang->updateData($id_transaksi, $id_item, $data);
+            $this->keranjang->updateData($id, $id_item, $data);
         }
     }
 }

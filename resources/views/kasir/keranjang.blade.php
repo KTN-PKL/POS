@@ -168,4 +168,17 @@
                $("#barang").html(data);  
         });
     }
+    function tambahbarang(idi){
+        var id = $("#id").val;
+        $.ajax({
+                type: "get",
+                url: "{{ url('kasir/tambahbarang') }}/" + id,
+                data: {
+                "id_item": idi,
+                },
+            success: function(data, status) {
+                barang()
+                }
+            });
+       }
 </script>

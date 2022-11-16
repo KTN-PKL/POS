@@ -4,7 +4,7 @@
         @php
         $urutan = (int) substr($items->id_item, 3, 3);
         @endphp
-        <div type="button" onclick="barang({{ $urutan }})" style="margin-left: 1em" class="card col-md-3">
+        <div type="button" onclick="tambahbarang({{ $urutan }})" style="margin-left: 1em" class="card col-md-3">
             <div class="card-header"  >
                 <img src="{{asset('/foto/'. $items->foto)}}" style="display:block; margin:auto;"  alt="Gambar" width="100px" height="80px">
             </div>
@@ -19,10 +19,6 @@
         </div>
             
         @endforeach
-       
-        
-
     </div>
 
 </div>
-    

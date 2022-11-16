@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transaksis', function (Blueprint $table) {
-            $table->string('id_transaksi');
+            $table->string('id_transaksi', 7)->primary();
             $table->string('total')->nullable();
             $table->timestamps();
         });
