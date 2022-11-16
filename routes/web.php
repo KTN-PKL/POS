@@ -111,7 +111,8 @@ Route::controller(c_kasir::class)->group(function () {
      Route::get('/kasir/kategori/{id}', 'kategori')->name('kasir.kategori');
      Route::get('/kasir/transaksi', 'transaksi')->name('kasir.transaksi');
      Route::get('/kasir/keranjang/{id}', 'keranjang')->name('kasir.keranjang');
-     Route::get('/kasir/tambahbarang/{id}', 'tambahbarang')->name('kasir.tambahbarang');
+     Route::get('/kasir/tambahbarang', 'tambahbarang')->name('kasir.tambahbarang');
+     Route::get('/kasir/ubahqty', 'ubahqty')->name('kasir.ubahqty');
 });
 
 Route::controller(c_toko::class)->group(function () {

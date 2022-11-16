@@ -82,28 +82,69 @@ class c_kasir extends Controller
         return view('kasir.keranjang', $data);
     }
 
-    public function tambahbarang(Request $request, $id)
+    public function tambahbarang(Request $request)
     {
         $id_item = "ITM" . sprintf("%03s", $request->id_item);
-        $cek = $this->keranjang->jumlahData($id, $id_item);
+        $cek = $this->keranjang->jumlahData($request->id_transaksi, $id_item);
         $item = $this->item->detailData($id_item);
-        if ($cek = 0) {
-            $data = [
-                'id_transaksi' => $id,
-                'id_item' => $id_item,
-                'qty' => 1,
-                'subtotal' => $item->jual,
-            ];
-            $this->keranjang->addData($data);
-        } else {
-            $qty = $this->keranjang->cekData($id, $id_item);
-            $jumlah = $qty->qty + 1;
-            $subtotal = $jumlah * $item->jual;
-            $data = [
-                'qty' => $jumlah,
-                'subtotal' => $subtotal,
-            ];
-            $this->keranjang->updateData($id, $id_item, $data);
+        $stok = $this->stok->itemData($id_item);
+        if ($stok->stok <> 0) {
+            if ($cek == 0) {
+                $data = [
+                    'id_transaksi' => $request->id_transaksi,
+                    'id_item' => $id_item,
+                    'qty' => 1,
+                    'subtotal' => $item->jual,
+                ];
+                $this->keranjang->addData($data);
+                $isi = $stok->stok - 1;
+                $data = [
+                    'stok' => $isi,
+                ];
+                $this->stok->editData($stok->id_stok, $data);
+    
+            } else {
+                $qty = $this->keranjang->cekData($request->id_transaksi, $id_item);
+                $jumlah = $qty->qty + 1;
+                $subtotal = $jumlah * $item->jual;
+                $data = [
+                    'qty' => $jumlah,
+                    'subtotal' => $subtotal,
+                ];
+                $this->keranjang->updateData($request->id_transaksi, $id_item, $data);
+                $isi = $stok->stok - 1;
+                $data = [
+                    'stok' => $isi,
+                ];
+                $this->stok->editData($stok->id_stok, $data);
         }
+        }
+
+        
     }
+    
+    public function ubahqty(Request $request)
+    {
+        $id_item = "ITM" . sprintf("%03s", $request->id_item);
+        $item = $this->item->detailData($id_item);
+        $qty = $this->keranjang->cekData($request->id_transaksi, $id_item);
+        $qtya = $qty->qty;
+        $stok = $this->stok->itemData($id_item);
+            $jumlah = $request->qty;
+            $isi = $stok->stok + $qtya;
+            if ($isi > $jumlah) {
+                $isi = $isi - $jumlah;
+                $subtotal = $jumlah * $item->jual;
+                $data = [
+                    'qty' => $jumlah,
+                    'subtotal' => $subtotal,
+                ];
+                $this->keranjang->updateData($request->id_transaksi, $id_item, $data);
+                $data = [
+                    'stok' => $isi,
+                ];
+                $this->stok->editData($stok->id_stok, $data);
+            }
+    }
+    
 }

@@ -14,7 +14,7 @@
                 <h6 style="text-align: center"> @php
                     echo "Rp.".number_format($items->jual,2,',','.');
                 @endphp </h6>
-                <h6 style="text-align: center">STOK: {{ $items->stok }} </h6>
+                <h6 style="text-align: center">STOK: <span id="stok">{{ $items->stok }}</span> </h6>
             </div>
         </div>
             
