@@ -67,8 +67,8 @@
        }
        // edit gambar
        function editgambar(){
-           var files = $("#foto")[0].files;
-           datas.append('foto',files[0]);
+           var files = $("#tgambar")[0].files;
+           datas.append('tgambar',files[0]);
        }
 
     //    notifikasi
@@ -80,20 +80,24 @@
             });
         }
 
-       // update data
+       // update data 1
        function update(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-           var name = $("#name").val();
-           var username = $("#username").val();
-           var telepon = $("#telepon").val();
-           var alamatuser = $("#alamatuser").val();
-           datas.append('name',name);
-           datas.append('username',username);
-           datas.append('telepon',telepon);
-           datas.append('alamatuser',alamatuser);
+           var tnama = $("#tnama").val();
+           var talamat = $("#talamat").val();
+           var thp = $("#thp").val();
+           var temail = $("#temail").val();
+           var tpemilik = $("#tpemilik").val();
+           var twebsite = $("#twebsite").val();
+           datas.append('tnama',tnama);
+           datas.append('talamat',talamat);
+           datas.append('thp',thp);
+           datas.append('temail',temail);
+           datas.append('tpemilik',tpemilik);
+           datas.append('twebsite',twebsite);
            datas.append('_token',CSRF_TOKEN);
            $.ajax({
-                url: "{{ url('pengguna/update') }}/" + id,
+                url: "{{ url('toko/update') }}/" + id,
                 method: 'post',
                 data: datas,
                 contentType: false,
@@ -103,7 +107,44 @@
                {
                if(response.success == 1){ 
                    edit()
-                   document.getElementById("namacok").innerHTML = response.name
+                   notif()
+
+               }    
+               }
+           });
+           
+       }
+
+       function update2(id) {
+           var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+           var tos = $("#tos").val();
+           var tprintukuran = $("#tprintukuran").val();
+           var tprintmodel = $("#tprintmodel").val();
+           var tfooter = $("#tfooter").val();
+           var tdiskonrp = $("#tdiskonrp").val();
+           var tdiskonpersen = $("#tdiskonpersen").val();
+           var tpajakpersen = $("#tpajakpersen").val();
+           var tpajakrp = $("#tpajakrp").val();
+           datas.append('tos',tos);
+           datas.append('tprintukuran',tprintukuran);
+           datas.append('tprintmodel',tprintmodel);
+           datas.append('tfooter',tfooter);
+           datas.append('tdiskonrp',tdiskonrp);
+           datas.append('tdiskonpersen',tdiskonpersen);
+           datas.append('tpajakrp',tpajakrp);
+           datas.append('tpajakpersen',tpajakpersen);
+           datas.append('_token',CSRF_TOKEN);
+           $.ajax({
+                url: "{{ url('toko/update2') }}/" + id,
+                method: 'post',
+                data: datas,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+               success: function(response) 
+               {
+               if(response.success == 1){ 
+                   edit()
                    notif()
 
                }    
