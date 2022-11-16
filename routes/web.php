@@ -119,7 +119,8 @@ Route::controller(c_kasir::class)->group(function () {
 Route::controller(c_toko::class)->group(function () {
     // pengaturan toko
     Route::get('/toko', 'tampilToko')->name('toko');
-    Route::get('/toko/edit', 'editToko')->name('toko.edit');
+    Route::get('/toko/edit1', 'editToko1')->name('toko.edit1');
+    Route::get('/toko/edit2', 'editToko2')->name('toko.edit2');
     Route::post('/toko/update/{id}', 'update')->name('toko.update');
     Route::post('/toko/update2/{id}', 'update2')->name('toko.update2');
 
