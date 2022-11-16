@@ -28,7 +28,7 @@ class c_toko extends Controller
         $data = [
             'toko' => $this->toko->detailData($id_toko),
         ];
-        return view('toko.edit1', $data);
+        return view('toko.edit', $data);
     }
 
     public function editToko2()

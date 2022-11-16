@@ -15,7 +15,7 @@
 <body>
     <div class="jumbotron p-5 rounded-3" style="background-color: rgb(240, 240, 240)">
         <div class="row">
-             <div id="page" class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
+             <div  class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
                 {{-- Page Edit --}}
                 <div id="page1" class="card card-rounded ">     
                 </div>
@@ -60,7 +60,8 @@
     <script>
         this.datas = new FormData();
        $(document).ready(function() {
-           edit()
+           edit1(),
+           edit2()
       
        });
        // edit form
@@ -115,7 +116,7 @@
                success: function(response) 
                {
                if(response.success == 1){ 
-                   edit()
+                   edit1()
                    notif()
 
                }    
@@ -153,7 +154,7 @@
                success: function(response) 
                {
                if(response.success == 1){ 
-                   edit()
+                   edit2()
                    notif()
 
                }    
