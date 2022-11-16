@@ -15,47 +15,74 @@ class c_toko extends Controller
 
     public function tampilToko()
     {   
-        $id = 1;
+        $id_toko = 1;
         $data = [
-            'toko' => $this->toko->detailData($id),
+            'toko' => $this->toko->detailData($id_toko),
         ];
         return view('toko.index', $data);
     }
 
     public function editToko()
-    {
-        $id = 1;
+    {   
+        $id_toko = 1;
         $data = [
-            'toko' => $this->toko->detailData($id),
+            'toko' => $this->toko->detailData($id_toko),
         ];
         return view('toko.edit', $data);
     }
 
     public function update(Request $request, $id)
+    {       
+        $id_toko = 1;    
+        $data = [
+                'tnama' => $request->tnama,
+                'talamat' => $request->talamat,
+                'thp' => $request->thp,
+                'temail' => $request->temail,
+                'tpemilik' => $request->tpemilik,
+                'twebsite' => $request->twebsite,
+            ];
+        
+        $this->toko->editData($id_toko, $data);
+        $data = [
+            'success' => 1,
+        ];
+        return response()->json($data);  
+    }
+
+    public function update2(Request $request, $id)
     {
         if ($request->foto <> null) {
             $cek = $this->toko->detailData($id);
             unlink(public_path('fototoko'). '/' .$cek->foto);
             $file  = $request->foto;
-            $filename = $request->username.'.'.$file->extension();
+            $filename = $request->tnama.'.'.$file->extension();
             $file->move(public_path('fototoko'),$filename);
             $data = [
-                'tnama' => $request->tnama,
-                'tnama' => $request->tnama,
-                'tfoto' => $filename,
-                'alamatuser' => $request->alamatuser,
-                'telepon' => $request->telepon,
+                'tgambar' => $filename,
+                'tos' => $request->tos,
+                'tprintukuran' => $request->tprintukuran,
+                'tprintmodel' => $request->tprintmodel,
+                'tfooter' => $request->tfooter,
+                'tdiskonpersen' => $request->tdiskonpersen,
+                'tpajakpersen' => $request->tpajakpersen,
+                'tdiskonrp' => $request->tdiskonrp,
+                'tpajakrp' => $request->tpajakrp,
             ];
         } else {
             $data = [
-                'name' => $request->name,
-                'alamatuser' => $request->alamatuser,
-                'telepon' => $request->telepon,
+                'tos' => $request->tos,
+                'tprintukuran' => $request->tprintukuran,
+                'tprintmodel' => $request->tprintmodel,
+                'tfooter' => $request->tfooter,
+                'tdiskonpersen' => $request->tdiskonpersen,
+                'tpajakpersen' => $request->tpajakpersen,
+                'tdiskonrp' => $request->tdiskonrp,
+                'tpajakrp' => $request->tpajakrp,
             ];
         }
-        $this->pengguna->editData($id, $data);
+        $this->pengguna->editData($id_toko, $data);
         $data = [
-            'name' => $request->name,
             'success' => 1,
         ];
         return response()->json($data);

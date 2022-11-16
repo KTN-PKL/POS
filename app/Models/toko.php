@@ -13,4 +13,8 @@ class toko extends Model
     {
         return DB::table('tokos')->where('id_toko', $id_toko)->first();
     }
+    public function editData($id_toko, $data)
+    {
+        return DB::table('tokos')->where('id_toko', $id_toko)->update($data);
+    }
 }
