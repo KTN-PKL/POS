@@ -17,7 +17,8 @@
         <div class="row">
              <div  class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
                 {{-- Page Edit --}}
-              
+                <div id="page1" class="card card-rounded ">     
+                </div>
                 <div id="page2" class="card card-rounded ">     
                 </div>
                   
@@ -59,7 +60,8 @@
     <script>
       
         $(document).ready(function() {
-           editPengaturan()
+           editPengaturan(),
+           edit()
       
        });
 
@@ -76,12 +78,12 @@
     //    }
     //    end edit pengaturan
 
-       // start tampil edit Toko
-    //    function edit() {
-    //        $.get("{{ url('toko/edit') }}", {}, function(data, status) {
-    //            $("#page1").html(data); 
-    //        });
-    //    }
+    //    start tampil edit Toko
+       function edit() {
+           $.get("{{ url('toko/edit') }}", {}, function(data, status) {
+               $("#page1").html(data); 
+           });
+       }
         // end edit toko
         
       
