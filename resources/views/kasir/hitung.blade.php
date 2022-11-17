@@ -7,8 +7,8 @@
         <td>
             <select type="text" id="#" class="form-select">
               <option selected disabled>-- Status Pembayaran --</option>
-              <option value="">z</option>
-              <option value="">a</option>
+              <option value="lunas">Lunas</option>
+              <option value="bayar nanti">Bayar Nanti</option>
             </select>
         </td> 
     </tr>
@@ -17,7 +17,7 @@
         <label for="FirstName">ORDER</label>
         </td> 
         <td>
-            <select type="text" id="#" class="form-select">
+            <select type="text" id="#" class="form-select" onchange="tampli()">
               <option selected disabled>-- Kategori Order --</option>
               <option value="">z</option>
               <option value="">a</option>
@@ -86,6 +86,36 @@
         </td> 
     </tr>
     <tr id="grandtotal"></tr>
+    <tr id="t1" style="display: none"> 
+        <td>
+        <label for="FirstName">Bayar</label>
+        <small class="text-danger"></small>
+        </td> 
+        <td>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rp</span>
+                </div>
+                <input type="text" class="form-control" id="pajak" aria-describedby="basic-addon2" value="0" onchange="grandtotal()">
+               
+              </div>
+        </td> 
+    </tr>
+    <tr> 
+        <td>
+        <label for="FirstName">Kembalian</label>
+        <small class="text-danger"></small>
+        </td> 
+        <td>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rp</span>
+                </div>
+                <input type="text" class="form-control" id="pajak" aria-describedby="basic-addon2" value="0" onchange="grandtotal()">
+               
+              </div>
+        </td> 
+    </tr>
 </table>
 
 <script>
@@ -123,5 +153,8 @@
                     $("#grandtotal").html(data); 
                 }
             });
+    }
+    function tampil(){
+        document.getElementById("t1").style.display = "block";
     }
 </script>
