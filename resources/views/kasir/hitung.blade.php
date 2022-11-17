@@ -123,6 +123,7 @@
                 },
                 success: function(data) {
                     $("#grandtotal").html(data); 
+                    bayar()
                 }
             });
     }
