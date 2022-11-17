@@ -47,14 +47,14 @@
         </div>
     </div>
 <div class="card-footer text-muted">
-    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"  onClick="#"><i class="fa fa-save text-white"></i> Save </button>
+    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"  onClick="update({{$toko->id_toko}})"><i class="fa fa-save text-white"></i> Save </button>
 
 </div>
 
 <br>
 <br>
 
-{{-- <script>
+<script>
      function update(id) {
            var tnama = $("#tnama").val();
            var talamat = $("#talamat").val();
@@ -74,9 +74,10 @@
                 "twebsite": twebsite,
                 },
             success: function(data, response) {
-                notif()
+                edit(),
+               notif()
                 }
             });
         }
-</script> --}}
+</script>
 

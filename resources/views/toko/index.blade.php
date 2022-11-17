@@ -17,9 +17,10 @@
         <div class="row">
              <div  class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
                 {{-- Page Edit --}}
-              
-                <div id="page2" class="card card-rounded ">     
+                <div id="page1" class="card card-rounded ">     
                 </div>
+                {{-- <div id="page2" class="card card-rounded ">     
+                </div> --}}
                   
             </div>
         </div>  
@@ -59,29 +60,30 @@
     <script>
       
         $(document).ready(function() {
-           editPengaturan()
+        //    editPengaturan(),
+           edit()
       
        });
 
        
     //    start tampil edit pengaturan
-       function editPengaturan() {
-           $.get("{{ url('toko/editpengaturan') }}", {}, function(data, status) {
-               $("#page2").html(data); 
-           });
-       }
+    //    function editPengaturan() {
+    //        $.get("{{ url('toko/editpengaturan') }}", {}, function(data, status) {
+    //            $("#page2").html(data); 
+    //        });
+    //    }
     //    function editgambar(){
     //        var files = $("#tgambar")[0].files;
     //        datas.append('tgambar',files[0]);
     //    }
     //    end edit pengaturan
 
-       // start tampil edit Toko
-    //    function edit() {
-    //        $.get("{{ url('toko/edit') }}", {}, function(data, status) {
-    //            $("#page1").html(data); 
-    //        });
-    //    }
+    //    start tampil edit Toko
+       function edit() {
+           $.get("{{ url('toko/edit') }}", {}, function(data, status) {
+               $("#page1").html(data); 
+           });
+       }
         // end edit toko
         
       
