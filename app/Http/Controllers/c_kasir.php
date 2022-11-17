@@ -162,11 +162,11 @@ class c_kasir extends Controller
             }
     }
     
-    public function grandtotal()
+    public function grandtotal(Request $request)
     {
-        $t = $request->total;
-        $dr = $request->discountrate * $t;
-        $pr = $request->pajakrate * $t;
+        $t = (int) str_replace(".","",$request->total);
+        $dr = ($request->discountrate * $t)/100;
+        $pr = ($request->pajakrate * $t)/100;
         $d = $request->discount;
         $p = $request->pajak;
         $gt = $t - $dr + $pr - $d + $p;

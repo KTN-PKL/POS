@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'username' => 'admin',
             'level' => 2,
-            'foto' => 'fotoadmin.png',
+            'foto' => 'admin.png',
             'telepon' => '08',
             'alamatuser' => 'Subang',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

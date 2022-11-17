@@ -10,6 +10,6 @@
             @php
                 $isi = number_format($total,2,",",".");
             @endphp
-        <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ $isi }}" readonly>   
+        <input type="text" id="total1" class="form-control" value="{{ $isi }}" readonly>   
     </div>
 </td> 

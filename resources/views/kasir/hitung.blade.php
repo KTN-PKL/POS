@@ -33,7 +33,7 @@
         <td>
             <div class="input-group">
                
-                <input type="number" class="form-control" aria-describedby="basic-addon2" value="0">
+                <input type="number" id="discountrate" class="form-control" aria-describedby="basic-addon2" value="0" onchange="grandtotal()">
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
                 </div>
@@ -48,7 +48,7 @@
         <td>
             <div class="input-group">
                
-                <input type="number" class="form-control" aria-describedby="basic-addon2" value="0">
+                <input type="number" class="form-control" id="pajakrate" aria-describedby="basic-addon2" value="0" onchange="grandtotal()">
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Rp</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" value="0">
+                <input type="text" class="form-control" id="discount" aria-describedby="basic-addon2" value="0" onchange="grandtotal()">
                
               </div>
         </td> 
@@ -80,7 +80,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Rp</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" value="0">
+                <input type="text" class="form-control" id="pajak" aria-describedby="basic-addon2" value="0" onchange="grandtotal()">
                
               </div>
         </td> 
@@ -97,6 +97,31 @@
         var id = $("#id").val();
         $.get("{{ url('kasir/total') }}/" + id, {}, function(data, status) {
                $("#total").html(data);  
+               grandtotal()
         });
+       
+    }
+
+    function grandtotal()
+    {
+        var total = $("#total1").val();
+        var discountrate = $("#discountrate").val();
+        var pajakrate = $("#pajakrate").val();
+        var discount = $("#discount").val();
+        var pajak = $("#pajak").val();
+        $.ajax({
+                type: "get",
+                url: "{{ url('kasir/grandtotal') }}",
+                data: {
+                "total": total,
+                "discountrate": discountrate,
+                "pajakrate": pajakrate,
+                "discount": discount,
+                "pajak": pajak,
+                },
+                success: function(data) {
+                    $("#grandtotal").html(data); 
+                }
+            });
     }
 </script>
