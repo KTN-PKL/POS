@@ -12,7 +12,7 @@
                 <h6 style="text-align: center"> ({{ $items->kategori }}) </h6>
                 <h6 style="text-align: center"> {{ $items->item }} </h6>
                 <h6 style="text-align: center"> @php
-                    echo "Rp.".number_format($items->jual,2,',','.');
+                    echo "Rp.".number_format($items->jual,0,',','.');
                 @endphp </h6>
                 <h6 style="text-align: center">STOK: <span id="stok">{{ $items->stok }}</span> </h6>
             </div>

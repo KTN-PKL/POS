@@ -8,7 +8,7 @@
             <span class="input-group-text">Rp</span>
         </div>
             @php
-                $isi = number_format($total,2,",",".");
+                $isi = number_format($total,0,",",".");
             @endphp
         <input type="text" id="total1" class="form-control" value="{{ $isi }}" readonly>   
     </div>

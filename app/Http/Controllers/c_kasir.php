@@ -180,7 +180,7 @@ class c_kasir extends Controller
     {
         $gt = (int) str_replace(".","",$request->gt);
         $bayar = (int) str_replace(".","",$request->bayar);
-        $hasil = $gt - $bayar;
-        return $bayar;
+        $hasil = $bayar - $gt;
+        return $hasil;
     }
 }
