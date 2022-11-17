@@ -193,4 +193,14 @@ class c_kasir extends Controller
         ];
         return view('kasir.customer', $data);
     }
+
+    public function add($id)
+    {
+        $huruf = "CTM";
+        $id_customer = $huruf . sprintf("%03s", $id);
+        $data = $this->customer->detailData($id_customer);
+
+        $nama = $data->nama;
+        return $nama;
+    }
 }

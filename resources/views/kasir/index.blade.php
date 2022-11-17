@@ -125,7 +125,9 @@
         }
         function add(id){
             $.get("{{ url('kasir/add') }}/" + id, {}, function(data, status) {
-               $("#keranjang").html(data);  
+               $("#nama").val(data);  
+               $("#nama1").val(data);  
+               $(".btn-close").click();
            });
         }
    </script>
