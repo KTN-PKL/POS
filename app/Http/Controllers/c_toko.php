@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 // use App\Models\toko;
-use App\Models\pengaturan;
+use App\Models\test;
 use DB;
 
 class c_toko extends Controller
 {
     public function __construct()
     {
-        // $this->toko = new toko();  
-        $this->pengaturan = new pengaturan();  
+        $this->toko = new toko();  
+        $this->test = new test();  
     }
 
     public function tampilToko()
@@ -50,21 +50,21 @@ class c_toko extends Controller
 
     public function editPengaturan()
     {   
-        $id_pengaturan = 1;
+        $id_test = 1;
         $data = [
-            'pengaturan' => $this->pengaturan->detailData($id_pengaturan),
+            'test' => $this->test->detailData($id_test),
         ];
         return view('toko.editPengaturan', $data);
     }
 
     public function updatePengaturan(Request $request, $id)
     {       
-        $id_pengaturan = 1;    
+        $id_test = 1;    
         $data = [
                 'operasi' => $request->operasi,
             ];
         
-        $this->pengaturan->editData($id_pengaturan, $data);
+        $this->test->editData($id_test, $data);
         $data = [
             'success' => 2,
         ];

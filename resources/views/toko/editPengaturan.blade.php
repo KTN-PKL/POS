@@ -40,7 +40,7 @@
            datas.append('operasi',operasi);
            datas.append('_token',CSRF_TOKEN);
            $.ajax({
-                url: "{{ url('toko/updatePengaturan') }}/" + id,
+                url: "{{ url('toko/updatepengaturan') }}/" + id,
                 method: 'post',
                 data: datas,
                 contentType: false,

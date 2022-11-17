@@ -66,7 +66,7 @@
        
     //    start tampil edit pengaturan
        function editPengaturan() {
-           $.get("{{ url('toko/editPengaturan') }}", {}, function(data, status) {
+           $.get("{{ url('toko/editpengaturan') }}", {}, function(data, status) {
                $("#page2").html(data); 
            });
        }

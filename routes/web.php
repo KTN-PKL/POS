@@ -123,9 +123,9 @@ Route::controller(c_toko::class)->group(function () {
     // pengaturan toko
     Route::get('/toko', 'tampilToko')->name('toko');
     Route::get('/toko/edit', 'editToko')->name('toko.edit');
-    Route::get('/toko/editPengaturan', 'editPengaturan')->name('pengaturan.edit');
+    Route::get('/toko/editpengaturan', 'editPengaturan')->name('pengaturan.edit');
     Route::get('/toko/update/{id}', 'update')->name('toko.update');
-    Route::post('/toko/updatePengaturan/{id}', 'updatePengaturan')->name('toko.updatePengaturan');
+    Route::post('/toko/updatepengaturan/{id}', 'updatePengaturan')->name('toko.updatePengaturan');
 
    
 });
