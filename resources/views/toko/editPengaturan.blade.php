@@ -142,7 +142,7 @@
 @endsection
 
 
-<script>
+{{-- <script>
   function updatePengaturan(id) {
            var tos = $("#tos").val();
          
@@ -158,7 +158,7 @@
             });
         }
 
-</script>
+</script> --}}
 
 
 

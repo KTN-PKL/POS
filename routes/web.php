@@ -127,7 +127,7 @@ Route::controller(c_toko::class)->group(function () {
     Route::get('/toko/edit', 'editToko')->name('toko.edit');
     Route::get('/toko/editpengaturan', 'editPengaturan')->name('pengaturan.edit');
     Route::get('/toko/update/{id}', 'update')->name('toko.update');
-    Route::get('/toko/updatepengaturan/{id}', 'updatePengaturan')->name('toko.updatePengaturan');
+    Route::post('/toko/updatepengaturan/{id}', 'updatePengaturan')->name('toko.updatePengaturan');
 
    
 });
