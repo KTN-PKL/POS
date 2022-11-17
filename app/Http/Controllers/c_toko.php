@@ -68,6 +68,7 @@ class c_toko extends Controller
         $data = [
             'success' => 1,
         ];
+        // return redirect()->back();  
         return response()->json($data);  
     }
 
