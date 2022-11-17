@@ -167,13 +167,13 @@ class c_kasir extends Controller
         $t = (int) str_replace(".","",$request->total);
         $dr = ($request->discountrate * $t)/100;
         $pr = ($request->pajakrate * $t)/100;
-        $d = $request->discount;
-        $p = $request->pajak;
+        $d = (int) str_replace(".","",$request->discount);
+        $p = (int) str_replace(".","",$request->pajak);
         $gt = $t - $dr + $pr - $d + $p;
         $data = [
             'grandtotal' => $gt,
         ];
         return view('kasir.grandtotal', $data);
     }
-    
+
 }
