@@ -175,4 +175,5 @@ class c_kasir extends Controller
         ];
         return view('kasir.grandtotal', $data);
     }
+    
 }
