@@ -3,41 +3,42 @@
     </div>
     <div class="card-body">
         <div class="row">
+
             <div class="col col-sm-6">
                 <div class="form-group row">
                     <label for="tos" class="col-sm-3 col-form-label">Tipe OS</label>
                 <div class="col-sm-9">
                     <input name="tos" type="text" id="tos" class="form-control" value="{{$pengaturan->tos}}">
-                    {{-- <select type="text" class="form-control" id="tos">
+                    <select type="text" class="form-control" id="tos">
                         <option selected disabled>-- Pilih --</option>
                         <option value="Windows">Windows</option>
                         <option value="Linux">Linux</option>
                         <option value="MacOS">Mac OS</option>
-                    </select> --}}
+                    </select>
                 </div>
                 </div>    
-                {{-- <div class="form-group row">
+                <div class="form-group row">
                     <label  for="" class="col-sm-3 col-form-label">Ukuran Default</label>
                 <div class="col-sm-9">
-                    <select name="tprintukuran" type="text" class="form-control" id="tprintukuran">
+                    <select name="tprintukuran" type="text" class="form-select" id="tprintukuran">
                         <option selected disabled>-- Pilih --</option>
                         <option value="58mm">58mm</option>
                         <option value="80mm">80mm</option>
                         <option value="a4">A4</option>
                     </select>
                 </div>
-                </div> --}}
+                </div>
             </div>
             <div class="col col-sm-6">
-                {{-- <div class="form-group row">
+                <div class="form-group row">
                     <label for="" class="col-sm-3 col-form-label">Model Print</label>
                 <div class="col-sm-9">
-                    <select name="tprintmodel" type="text" class="form-control" id="tprintmodel">
+                    <select name="tprintmodel" type="text" class="form-select" id="tprintmodel">
                         <option selected disabled>-- Pilih --</option>
                         <option value="browser">Print With Browser</option>
                     </select>
                 </div>
-                </div>     --}}
+                </div>    
                 <div class="form-group row">
                     <label for="" class="col-sm-3 col-form-label">Gambar</label>
                 <div class="col-sm-9">
@@ -50,7 +51,7 @@
                 <h4>Pengaturan Kasir</h4>
             </div>
            
-            {{-- <div class="col col-sm-6">
+            <div class="col col-sm-6">
                 <div class="form-group row">
                     <label for="" class="col-sm-3 col-form-label">Struk Footer</label>
                 <div class="col-sm-9">
@@ -98,9 +99,9 @@
                                 <option value="disable">Disable</option>
                             </select>    
                         </div>
-                </div>  --}}
-                
-            {{-- </div> --}}
+                </div>  
+            </div>
+            
         </div>
     </div>
 <div class="card-footer text-muted">

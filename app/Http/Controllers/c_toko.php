@@ -29,9 +29,6 @@ class c_toko extends Controller
         return view('toko.edit', $data);
     }
 
- 
-
-
     public function update(Request $request, $id)
     {       
         $id_toko = 1;    
@@ -73,24 +70,24 @@ class c_toko extends Controller
             $data = [
                 'tgambar' => $filename,
                 'tos' => $request->tos,
-                // 'tprintukuran' => $request->tprintukuran,
-                // 'tprintmodel' => $request->tprintmodel,
-                // 'tfooter' => $request->tfooter,
-                // 'tdiskonpersen' => $request->tdiskonpersen,
-                // 'tpajakpersen' => $request->tpajakpersen,
-                // 'tdiskonrp' => $request->tdiskonrp,
-                // 'tpajakrp' => $request->tpajakrp,
+                'tprintukuran' => $request->tprintukuran,
+                'tprintmodel' => $request->tprintmodel,
+                'tfooter' => $request->tfooter,
+                'tdiskonpersen' => $request->tdiskonpersen,
+                'tpajakpersen' => $request->tpajakpersen,
+                'tdiskonrp' => $request->tdiskonrp,
+                'tpajakrp' => $request->tpajakrp,
             ];
         } else {
             $data = [
                 'tos' => $request->tos,
-                // 'tprintukuran' => $request->tprintukuran,
-                // 'tprintmodel' => $request->tprintmodel,
-                // 'tfooter' => $request->tfooter,
-                // 'tdiskonpersen' => $request->tdiskonpersen,
-                // 'tpajakpersen' => $request->tpajakpersen,
-                // 'tdiskonrp' => $request->tdiskonrp,
-                // 'tpajakrp' => $request->tpajakrp,
+                'tprintukuran' => $request->tprintukuran,
+                'tprintmodel' => $request->tprintmodel,
+                'tfooter' => $request->tfooter,
+                'tdiskonpersen' => $request->tdiskonpersen,
+                'tpajakpersen' => $request->tpajakpersen,
+                'tdiskonrp' => $request->tdiskonrp,
+                'tpajakrp' => $request->tpajakrp,
             ];
         }
         $this->pengaturan->editData($id_pengaturan, $data);
