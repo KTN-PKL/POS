@@ -47,30 +47,36 @@
         </div>
     </div>
 <div class="card-footer text-muted">
-    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"  onClick="update({{ $toko->id_toko }})"><i class="fa fa-save text-white"></i> Save </button>
+    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"  onClick="#"><i class="fa fa-save text-white"></i> Save </button>
 
 </div>
 
 <br>
 <br>
-{{-- Nama Customer --}}
-          
-   
-    {{-- <div class="mb-3">
-        <!-- Upload image input-->
-        <label class="form-label">Upload Foto <i style="font-size: 10px" class="text-danger">Opsional</i></label>
-            <input type="file" onchange="editgambar()" class="form-control @error('foto') is-invalid @enderror"  name="foto" id="foto" placeholder="foto ...">
-            @error('foto')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-      </div> --}}
 
-    {{-- <div class="form-group mt-2">
-        <button class="btn btn-warning" onClick="update({{ $toko->id }})">Simpan</button>
-    </div> --}}
-
-
-    
+{{-- <script>
+     function update(id) {
+           var tnama = $("#tnama").val();
+           var talamat = $("#talamat").val();
+           var thp = $("#thp").val();
+           var temail = $("#temail").val();
+           var tpemilik = $("#tpemilik").val();
+           var twebsite = $("#twebsite").val();
+            $.ajax({
+                type: "get",
+                url: "{{ url('toko/update') }}/" + id,
+                data: {
+                "tnama": tnama,
+                "talamat": talamat,
+                "thp": thp,
+                "temail": temail,
+                "tpemilik": tpemilik,
+                "twebsite": twebsite,
+                },
+            success: function(data, response) {
+                notif()
+                }
+            });
+        }
+</script> --}}
 
