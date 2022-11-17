@@ -17,15 +17,14 @@
         <div class="row">
              <div  class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
                 {{-- Page Edit --}}
-                <div id="page1" class="card card-rounded ">     
-                </div>
+              
                 <div id="page2" class="card card-rounded ">     
                 </div>
                   
             </div>
         </div>  
     </div>
-   
+
       
 
         {{-- modal notifikasi --}}
@@ -58,96 +57,34 @@
 
    
     <script>
-        this.datas = new FormData();
       
         $(document).ready(function() {
-           edit(),
            editPengaturan()
       
        });
-       // edit Toko
-       function edit() {
-           $.get("{{ url('toko/edit') }}", {}, function(data, status) {
-               $("#page1").html(data); 
-           });
-       }
-       function update(id) {
-           var tnama = $("#tnama").val();
-           var talamat = $("#talamat").val();
-           var thp = $("#thp").val();
-           var temail = $("#temail").val();
-           var tpemilik = $("#tpemilik").val();
-           var twebsite = $("#twebsite").val();
-            $.ajax({
-                type: "get",
-                url: "{{ url('toko/update') }}/" + id,
-                data: {
-                "tnama": tnama,
-                "talamat": talamat,
-                "thp": thp,
-                "temail": temail,
-                "tpemilik": tpemilik,
-                "twebsite": twebsite,
-                },
-            success: function(data, response) {
-                notif()
-                }
-            });
-        }
 
-
-        // EDIT PENGATURAN
-
+       
+    //    start tampil edit pengaturan
        function editPengaturan() {
-           $.get("{{ url('toko/editPengaturan') }}", {}, function(data, status) {
+           $.get("{{ url('toko/editpengaturan') }}", {}, function(data, status) {
                $("#page2").html(data); 
            });
        }
-       // edit gambar
-       function editgambar(){
-           var files = $("#tgambar")[0].files;
-           datas.append('tgambar',files[0]);
-       }
+    //    function editgambar(){
+    //        var files = $("#tgambar")[0].files;
+    //        datas.append('tgambar',files[0]);
+    //    }
+    //    end edit pengaturan
 
-       function updatePengaturan(id) {
-           var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-           var tos = $("#tos").val();
-           var tprintukuran = $("#tprintukuran").val();
-           var tprintmodel = $("#tprintmodel").val();
-           var tfooter = $("#tfooter").val();
-           var tdiskonrp = $("#tdiskonrp").val();
-           var tdiskonpersen = $("#tdiskonpersen").val();
-           var tpajakpersen = $("#tpajakpersen").val();
-           var tpajakrp = $("#tpajakrp").val();
-           datas.append('tos',tos);
-           datas.append('tprintukuran',tprintukuran);
-           datas.append('tprintmodel',tprintmodel);
-           datas.append('tfooter',tfooter);
-           datas.append('tdiskonrp',tdiskonrp);
-           datas.append('tdiskonpersen',tdiskonpersen);
-           datas.append('tpajakpersen',tpajakpersen);
-           datas.append('tpajakrp',tpajakrp);
-           datas.append('_token',CSRF_TOKEN);
-           $.ajax({
-                url: "{{ url('toko/updatePengaturan') }}/" + id,
-                method: 'post',
-                data: datas,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-               success: function(response) 
-               {
-               if(response.success == 1){ 
-                   alert('Success')
-
-               }    
-               }
-           });
-           
-       }
-
-
-        //    notifikasi
+       // start tampil edit Toko
+    //    function edit() {
+    //        $.get("{{ url('toko/edit') }}", {}, function(data, status) {
+    //            $("#page1").html(data); 
+    //        });
+    //    }
+        // end edit toko
+        
+      
         function notif() {
             $.get("{{ url('notifikasi') }}" , {}, function(data, status) {
                 $("#exampleModalLabel").html('Notifikasi')
@@ -156,6 +93,63 @@
             });
         }
        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function updatePengaturan(id) {
+    //        var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    //        var tos = $("#tos").val();
+    //        var tprintukuran = $("#tprintukuran").val();
+    //        var tprintmodel = $("#tprintmodel").val();
+    //        var tfooter = $("#tfooter").val();
+    //        var tdiskonrp = $("#tdiskonrp").val();
+    //        var tdiskonpersen = $("#tdiskonpersen").val();
+    //        var tpajakpersen = $("#tpajakpersen").val();
+    //        var tpajakrp = $("#tpajakrp").val();
+    //        datas.append('tos',tos);
+    //        datas.append('tprintukuran',tprintukuran);
+    //        datas.append('tprintmodel',tprintmodel);
+    //        datas.append('tfooter',tfooter);
+    //        datas.append('tdiskonrp',tdiskonrp);
+    //        datas.append('tdiskonpersen',tdiskonpersen);
+    //        datas.append('tpajakpersen',tpajakpersen);
+    //        datas.append('tpajakrp',tpajakrp);
+    //        datas.append('_token',CSRF_TOKEN);
+    //        $.ajax({
+    //             url: "{{ url('toko/updatePengaturan') }}/" + id,
+    //             method: 'post',
+    //             data: datas,
+    //             contentType: false,
+    //             processData: false,
+    //             dataType: 'json',
+    //            success: function(response) 
+    //            {
+    //            if(response.success == 1){ 
+    //                alert('Success')
+
+    //            }    
+    //            }
+    //        });
+           
+    //    }
    </script>
 </body>
 
