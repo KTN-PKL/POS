@@ -8,8 +8,8 @@
                 <span class="input-group-text">Rp</span>
             </div>
             @php
-                $isi = number_format($grandtotal,2,",",".");
+                $isi = number_format($grandtotal,0,",",".");
             @endphp
-            <input type="text" id="grandtotal" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ $isi }}" readonly>
+            <input type="text" id="grandtotal1" class="form-control" aria-describedby="basic-addon2" value="{{ $isi }}" readonly>
           </div>
     </td> 

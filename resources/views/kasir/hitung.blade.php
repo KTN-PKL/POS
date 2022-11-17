@@ -123,6 +123,7 @@
                 },
                 success: function(data) {
                     $("#grandtotal").html(data); 
+                    bayar()
                 }
             });
     }
@@ -141,7 +142,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rp</span>
                     </div>
-                    <input type="text" class="form-control" id="bayaru" value="0" aria-describedby="basic-addon2" onchange="bayar()">
+                    <input type="text" class="form-control" id="bayaru" value="0" aria-describedby="basic-addon2" onchange="bayar()" onkeyup="rupiah(3)">
                    
                   </div>
             </td> 
@@ -197,11 +198,34 @@
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             $("#pajak").val(rupiah)
         }
+        if (id == 3) {
+            var bayaru = $("#bayaru").val();
+            var number_string = bayaru.replace(/[^,\d]/g, '').toString(),
+	        split = number_string.split(','),
+	        sisa  = split[0].length % 3,
+	        rupiah  = split[0].substr(0, sisa),
+	        ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
+            if(ribuan){
+	    	separator = sisa ? '.' : '';
+		    rupiah += separator + ribuan.join('.');
+	        }
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            $("#bayaru").val(rupiah)
+        }
     }
     function bayar(){
         var gt = $("#grandtotal1").val();
         var bayar = $("#bayaru").val();
-        kembali = bayar - gt;
-        $("#kembalian").val(kembali)
+        $.ajax({
+                type: "get",
+                url: "{{ url('kasir/kembalian') }}",
+                data: {
+                "gt": gt,
+                "bayar": bayar,
+                },
+                success: function(data) {
+                    $("#kembalian").val(data); 
+                }
+            });
     }
 </script>

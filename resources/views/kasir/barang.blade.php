@@ -12,7 +12,7 @@
         $urutan = (int) substr($item->id_item, 3, 3);
         @endphp
         <td><input class="col-md-12" type="number" value="{{ $item->qty }}" id="qty" onchange="ubah({{ $urutan }})"></td>
-        <td>{{ "Rp.".number_format($item->subtotal,2,',','.') }}</td>
+        <td>{{ "Rp.".number_format($item->subtotal,0,',','.') }}</td>
         <td><button class="btn btn-danger btn-sm" onClick=""> <i class="fa fa-times"></i></button></td>
         </tr>
     @endforeach
