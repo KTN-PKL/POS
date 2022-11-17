@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\toko;
+use App\Models\pengaturan;
 use DB;
 
 class c_toko extends Controller
@@ -11,6 +12,7 @@ class c_toko extends Controller
     public function __construct()
     {
         $this->toko = new toko();  
+        $this->pengaturan = new pengaturan();  
     }
 
     public function tampilToko()
@@ -33,11 +35,11 @@ class c_toko extends Controller
 
     public function editPengaturan()
     {   
-        $id_toko = 1;
+        $id_pengaturan = 1;
         $data = [
-            'toko' => $this->toko->detailData($id_toko),
+            'pengaturan' => $this->pengaturan->detailData($id_pengaturan),
         ];
-        return view('toko.edit2', $data);
+        return view('toko.editPengaturan', $data);
     }
 
 
@@ -60,9 +62,9 @@ class c_toko extends Controller
         return response()->json($data);  
     }
 
-    public function update2(Request $request, $id)
+    public function updatePengaturan(Request $request, $id)
     {
-        $id_toko=1;
+        $id_pengaturan=1;
         // if ($request->tgambar <> null) {
         //     $cek = $this->toko->detailData($id_toko);
         //     unlink(public_path('fototoko'). '/' .$cek->tgambar);
@@ -92,7 +94,7 @@ class c_toko extends Controller
                 // 'tpajakrp' => $request->tpajakrp,
             ];
         // }
-        $this->toko->editData($id_toko, $data);
+        $this->pengaturan->editData($id_pengaturan, $data);
         $data = [
             'success' => 1,
         ];

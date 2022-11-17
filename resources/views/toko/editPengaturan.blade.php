@@ -104,7 +104,7 @@
         </div>
     </div>
 <div class="card-footer text-muted">
-    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"><i class="fa fa-save text-white" onClick="update2({{ $toko->id_toko }})"></i> Save </button>
+    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"><i class="fa fa-save text-white" onClick="update2({{ $pengaturan->id_pengaturan }})"></i> Save </button>
 
 </div>
 </div>
