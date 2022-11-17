@@ -8,6 +8,7 @@ use App\Models\kategori;
 use App\Models\stok;
 use App\Models\keranjang;
 use App\Models\transaksi;
+use App\Models\customer;
 
 class c_kasir extends Controller
 {
@@ -17,6 +18,7 @@ class c_kasir extends Controller
         $this->kategori = new kategori();
         $this->stok = new stok();
         $this->keranjang = new keranjang();
+        $this->customer = new customer();
         $this->transaksi = new transaksi();
     }
 
@@ -182,5 +184,13 @@ class c_kasir extends Controller
         $bayar = (int) str_replace(".","",$request->bayar);
         $hasil = $bayar - $gt;
         return $hasil;
+    }
+
+    public function customer()
+    {
+        $data = [
+            'customer' => $this->customer->allData(),
+        ];
+        return view('kasir.customer', $data);
     }
 }

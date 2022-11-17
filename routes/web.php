@@ -117,6 +117,7 @@ Route::controller(c_kasir::class)->group(function () {
      Route::get('/kasir/total/{id}', 'total')->name('kasir.total');
      Route::get('/kasir/grandtotal', 'grandtotal')->name('kasir.grandtotal');
      Route::get('/kasir/kembalian', 'kembalian')->name('kasir.kembalian');
+     Route::get('/kasir/customer', 'customer')->name('kasir.customer');
 });
 
 Route::controller(c_toko::class)->group(function () {
