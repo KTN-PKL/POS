@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('tos');
             $table->string('tprintukuran');
             $table->string('tprintmodel');
-            $table->string('tgambar');
             $table->string('tfooter');
             $table->string('tdiskonpersen');
             $table->string('tpajakpersen');
             $table->string('tdiskonrp');
             $table->string('tpajakrp');
+            $table->string('tgambar');
             $table->timestamps();
         });
     }

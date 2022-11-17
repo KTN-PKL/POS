@@ -59,17 +59,44 @@
    
     <script>
         this.datas = new FormData();
-       $(document).ready(function() {
+      
+        $(document).ready(function() {
            edit(),
            editPengaturan()
       
        });
-       // edit form
+       // edit Toko
        function edit() {
            $.get("{{ url('toko/edit') }}", {}, function(data, status) {
                $("#page1").html(data); 
            });
        }
+       function update(id) {
+           var tnama = $("#tnama").val();
+           var talamat = $("#talamat").val();
+           var thp = $("#thp").val();
+           var temail = $("#temail").val();
+           var tpemilik = $("#tpemilik").val();
+           var twebsite = $("#twebsite").val();
+            $.ajax({
+                type: "get",
+                url: "{{ url('toko/update') }}/" + id,
+                data: {
+                "tnama": tnama,
+                "talamat": talamat,
+                "thp": thp,
+                "temail": temail,
+                "tpemilik": tpemilik,
+                "twebsite": twebsite,
+                },
+            success: function(data, response) {
+                notif()
+                }
+            });
+        }
+
+
+        // EDIT PENGATURAN
 
        function editPengaturan() {
            $.get("{{ url('toko/editPengaturan') }}", {}, function(data, status) {
@@ -82,68 +109,24 @@
            datas.append('tgambar',files[0]);
        }
 
-    //    notifikasi
-       function notif() {
-            $.get("{{ url('notifikasi') }}" , {}, function(data, status) {
-                $("#exampleModalLabel").html('Notifikasi')
-                $("#notifikasi").html(data);
-                $("#exampleModal").modal('show');
-            });
-        }
-
-       // update data 1
-       function update(id) {
-           var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-           var tnama = $("#tnama").val();
-           var talamat = $("#talamat").val();
-           var thp = $("#thp").val();
-           var temail = $("#temail").val();
-           var tpemilik = $("#tpemilik").val();
-           var twebsite = $("#twebsite").val();
-           datas.append('tnama',tnama);
-           datas.append('talamat',talamat);
-           datas.append('thp',thp);
-           datas.append('temail',temail);
-           datas.append('tpemilik',tpemilik);
-           datas.append('twebsite',twebsite);
-           datas.append('_token',CSRF_TOKEN);
-           $.ajax({
-                url: "{{ url('toko/update') }}/" + id,
-                method: 'post',
-                data: datas,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-               success: function(response) 
-               {
-               if(response.success == 1){ 
-                   edit()
-                   notif()
-
-               }    
-               }
-           });
-           
-       }
-
-       function update2(id) {
+       function updatePengaturan(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var tos = $("#tos").val();
-        //    var tprintukuran = $("#tprintukuran").val();
-        //    var tprintmodel = $("#tprintmodel").val();
-        //    var tfooter = $("#tfooter").val();
-        //    var tdiskonrp = $("#tdiskonrp").val();
-        //    var tdiskonpersen = $("#tdiskonpersen").val();
-        //    var tpajakpersen = $("#tpajakpersen").val();
-        //    var tpajakrp = $("#tpajakrp").val();
+           var tprintukuran = $("#tprintukuran").val();
+           var tprintmodel = $("#tprintmodel").val();
+           var tfooter = $("#tfooter").val();
+           var tdiskonrp = $("#tdiskonrp").val();
+           var tdiskonpersen = $("#tdiskonpersen").val();
+           var tpajakpersen = $("#tpajakpersen").val();
+           var tpajakrp = $("#tpajakrp").val();
            datas.append('tos',tos);
-        //    datas.append('tprintukuran',tprintukuran);
-        //    datas.append('tprintmodel',tprintmodel);
-        //    datas.append('tfooter',tfooter);
-        //    datas.append('tdiskonrp',tdiskonrp);
-        //    datas.append('tdiskonpersen',tdiskonpersen);
-        //    datas.append('tpajakrp',tpajakrp);
-        //    datas.append('tpajakpersen',tpajakpersen);
+           datas.append('tprintukuran',tprintukuran);
+           datas.append('tprintmodel',tprintmodel);
+           datas.append('tfooter',tfooter);
+           datas.append('tdiskonrp',tdiskonrp);
+           datas.append('tdiskonpersen',tdiskonpersen);
+           datas.append('tpajakpersen',tpajakpersen);
+           datas.append('tpajakrp',tpajakrp);
            datas.append('_token',CSRF_TOKEN);
            $.ajax({
                 url: "{{ url('toko/updatePengaturan') }}/" + id,
@@ -155,8 +138,7 @@
                success: function(response) 
                {
                if(response.success == 1){ 
-                   edit2()
-                   notif()
+                   alert('Success')
 
                }    
                }
@@ -164,6 +146,15 @@
            
        }
 
+
+        //    notifikasi
+        function notif() {
+            $.get("{{ url('notifikasi') }}" , {}, function(data, status) {
+                $("#exampleModalLabel").html('Notifikasi')
+                $("#notifikasi").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
        
    </script>
 </body>

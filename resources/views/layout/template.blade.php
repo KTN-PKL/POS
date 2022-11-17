@@ -188,8 +188,8 @@
 <script src="{{ asset('template2') }}/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('template2') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="{{ asset('template2') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+{{-- <!-- Bootstrap Switch -->
+<script src="{{ asset('template2') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script> --}}
 <!-- BS-Stepper -->
 <script src="{{ asset('template2') }}/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 <!-- dropzonejs -->
