@@ -176,4 +176,11 @@ class c_kasir extends Controller
         return view('kasir.grandtotal', $data);
     }
 
+    public function kembalian(Request $request)
+    {
+        $gt = (int) str_replace(".","",$request->gt);
+        $bayar = (int) str_replace(".","",$request->bayar);
+        $hasil = $gt - $bayar;
+        return $bayar;
+    }
 }
