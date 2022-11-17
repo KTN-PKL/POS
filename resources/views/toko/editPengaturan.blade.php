@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 <div class="card-footer text-muted">
-                    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"><i class="fa fa-save text-white" onClick="#"></i> Save </button>
+                    <button style="background-color:  #0c4e68" type="submit" class="btn btn-md text-white"><i class="fa fa-save text-white" onClick="updatePengaturan({{ $pengaturan->id_pengaturan }})"></i> Save </button>
                 
                 </div>
                 </div>
@@ -142,32 +142,23 @@
 @endsection
 
 
-{{-- <script>
- this.datas = new FormData();
-
-          function updatePengaturan(id) {
-           var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+<script>
+  function updatePengaturan(id) {
            var tos = $("#tos").val();
-           datas.append('tos',tos);
-           datas.append('_token',CSRF_TOKEN);
-           $.ajax({
+         
+            $.ajax({
+                type: "get",
                 url: "{{ url('toko/updatepengaturan') }}/" + id,
-                method: 'post',
-                data: datas,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-               success: function(response) 
-               {
-               if(response.success == 1){ 
-                alert('ha')
+                data: {
+                "tos": tos,
+                },
+            success: function(data, response) {
+             alert('s')
+                }
+            });
+        }
 
-               }    
-               }
-           });
-       }
-
-</script> --}}
+</script>
 
 
 
