@@ -17,8 +17,8 @@
         <div class="row">
              <div  class="col-sm-12" style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" >
                 {{-- Page Edit --}}
-                <div id="page1" class="card card-rounded ">     
-                </div>
+                {{-- <div id="page1" class="card card-rounded ">     
+                </div> --}}
                 <div id="page2" class="card card-rounded ">     
                 </div>
                   
@@ -91,7 +91,7 @@
             });
         }
 
-       // update data 1
+       update data 1
        function update(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var tnama = $("#tnama").val();
@@ -126,7 +126,7 @@
            
        }
 
-       function update2(id) {
+       function updatePengaturan(id) {
            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
            var tos = $("#tos").val();
         //    var tprintukuran = $("#tprintukuran").val();
@@ -155,8 +155,7 @@
                success: function(response) 
                {
                if(response.success == 1){ 
-                   edit2()
-                   notif()
+                   alert('Success')
 
                }    
                }
