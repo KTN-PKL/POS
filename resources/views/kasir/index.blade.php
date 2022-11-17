@@ -123,8 +123,10 @@
                 $("#exampleModal").modal('show');
             });
         }
-        function add(){
-            
+        function add(id){
+            $.get("{{ url('kasir/add') }}/" + id, {}, function(data, status) {
+               $("#keranjang").html(data);  
+           });
         }
    </script>
 </body>
