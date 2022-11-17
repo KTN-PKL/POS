@@ -162,4 +162,17 @@ class c_kasir extends Controller
             }
     }
     
+    public function grandtotal()
+    {
+        $t = $request->total;
+        $dr = $request->discountrate * $t;
+        $pr = $request->pajakrate * $t;
+        $d = $request->discount;
+        $p = $request->pajak;
+        $gt = $t - $dr + $pr - $d + $p;
+        $data = [
+            'grandtotal' => $gt,
+        ];
+        return view('kasir.grandtotal', $data);
+    }
 }
