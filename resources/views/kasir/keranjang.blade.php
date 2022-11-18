@@ -23,7 +23,7 @@
                             </td> 
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" readonly>
+                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" id="nama" readonly>
                                     <div class="input-group-append">
                                       <button style="background-color: #0c4e68" class="btn text-white" type="button" onclick="customer()"><i class="fa fa-search"></i></button>
                                       <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
@@ -38,7 +38,7 @@
                             </td> 
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" id="nama1" aria-describedby="basic-addon2">
                                   </div>
                             </td> 
                         </tr>  
