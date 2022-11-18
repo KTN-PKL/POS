@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('pengaturans', function (Blueprint $table) {
             $table->id('id_pengaturan');
-            $table->string('tos');
-            $table->string('tprintukuran');
-            $table->string('tprintmodel');
             $table->string('tfooter');
             $table->string('tdiskonpersen');
             $table->string('tpajakpersen');

@@ -57,13 +57,33 @@ class c_toko extends Controller
         return view('toko.editPengaturan', $data);
     }
 
-    public function updatePengaturan(Request $request, $id)
+
+      public function updatePengaturan(Request $request, $id)
     {       
-        $id_pengaturan = 1;    
-        $data = [
-                'tos' => $request->tos,
+        $id_pengaturan = 1; 
+        if ($request->tgambar <> null){
+            $cek = $this->pengaturan->detailData($id);
+            unlink(public_path('fototoko'). '/' .$cek->tgambar);
+            $file  = $request->tgambar;
+            $filename = $id_pengaturan.'.'.$file->extension();
+            $file->move(public_path('fototoko'),$filename);
+            $data = [
+                'tgambar' => $filename,
+                'tfooter' => $request->tfooter,
+                'tdiskonrp' => $request->tdiskonrp,
+                'tdiskonpersen' => $request->tdiskonpersen,
+                'tpajakrp' => $request->tpajakrp,
+                'tpajakpersen' => $request->tpajakpersen,
             ];
-        
+        }else{ 
+        $data = [
+                'tfooter' => $request->tfooter,
+                'tdiskonrp' => $request->tdiskonrp,
+                'tdiskonpersen' => $request->tdiskonpersen,
+                'tpajakrp' => $request->tpajakrp,
+                'tpajakpersen' => $request->tpajakpersen,
+            ];
+        }  
         $this->pengaturan->editData($id_pengaturan, $data);
         $data = [
             'success' => 1,
@@ -71,6 +91,25 @@ class c_toko extends Controller
         // return redirect()->back();  
         return response()->json($data);  
     }
+
+    // public function updatePengaturan(Request $request, $id)
+    // {       
+    //     $id_pengaturan = 1;    
+    //     $data = [
+    //             'tfooter' => $request->tfooter,
+    //             'tdiskonrp' => $request->tdiskonrp,
+    //             'tdiskonpersen' => $request->tdiskonpersen,
+    //             'tpajakrp' => $request->tpajakrp,
+    //             'tpajakpersen' => $request->tpajakpersen,
+    //         ];
+        
+    //     $this->pengaturan->editData($id_pengaturan, $data);
+    //     $data = [
+    //         'success' => 1,
+    //     ];
+    //     // return redirect()->back();  
+    //     return response()->json($data);  
+    // }
 
 
   

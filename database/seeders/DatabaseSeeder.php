@@ -38,9 +38,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pengaturans')->insert([
-            'tos' => 'Windows',
-            'tprintukuran' => 'A4',
-            'tprintmodel' => 'Print With Browser',
             'tgambar' => '1.png',
             'tfooter' => 'Struk Toko Hemat',
             'tdiskonrp' => 'enable',
