@@ -131,7 +131,13 @@
                if(response.success == 1){ 
                    edit()
                    document.getElementById("namacok").innerHTML = response.name
-                   notif()
+                   Swal.fire(
+                    {
+                        type: 'success',
+                        title: 'Berhasil',
+                        text: 'Profil Berhasil di Update!'
+                        }
+                    )
 
                }    
                }

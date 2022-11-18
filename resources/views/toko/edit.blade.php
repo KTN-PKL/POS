@@ -75,7 +75,13 @@
                 },
             success: function(data, response) {
                 edit(),
-               notif()
+                Swal.fire(
+                    {
+                        type: 'success',
+                        title: 'Berhasil',
+                        text: 'Data Berhasil di Update!'
+                        }
+                    )
                 }
             });
         }

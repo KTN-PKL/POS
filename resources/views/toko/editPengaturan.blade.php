@@ -144,7 +144,13 @@ function updatePengaturan(id) {
                  dataType: 'json',
                 success: function(response) {
                 if(response.success == 1){ 
-                    notif()
+                    Swal.fire(
+                    {
+                        type: 'success',
+                        title: 'Berhasil',
+                        text: 'Data Berhasil di Update!'
+                        }
+                    )
                 }
                 }
             });
