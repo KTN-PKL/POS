@@ -17,10 +17,10 @@
         <label for="FirstName">ORDER</label>
         </td> 
         <td>
-            <select type="text" id="#" class="form-select">
+            <select type="text" id="order" class="form-select">
               <option selected disabled>-- Kategori Order --</option>
-              <option value="">z</option>
-              <option value="">a</option>
+              <option value="1">z</option>
+              <option value="2">a</option>
             </select>
         </td> 
     </tr>

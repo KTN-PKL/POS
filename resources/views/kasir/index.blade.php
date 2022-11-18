@@ -1,3 +1,4 @@
+
 @extends('layout.template')
 @section('content')
 
@@ -64,6 +65,19 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 500px;height: 500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="p-2">Berhasil</div>
+                <img src="{{asset('success.gif')}}" alt="" style="display:block; margin:auto;">
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -102,7 +116,7 @@
                 total()
                 }
             });
-    }
+        }
        // edit form
        function read() {
            $.get("{{ url('kasir/read') }}", {}, function(data, status) {
@@ -125,10 +139,47 @@
         }
         function add(id){
             $.get("{{ url('kasir/add') }}/" + id, {}, function(data, status) {
-               $("#nama").val(data);  
-               $("#nama1").val(data);  
+               $("#nama").val(data.nama);  
+               $("#nama1").val(data.nama);
+               $("#id_customer").val(data.id_customer);  
                $(".btn-close").click();
            });
+        }
+        function menyimpan(id){
+        var id_transaksi = $("#id").val();
+        var total = $("#total1").val();
+        var id_customer = $("#id_customer").val();
+        var atasnama = $("#nama1").val();
+        var grandtotal = $("#grandtotal1").val();
+        var discountrate = $("#discountrate").val();
+        var pajakrate = $("#pajakrate").val();
+        var discount = $("#discount").val();
+        var pajak = $("#pajak").val();
+        var status = $("#status").val();
+        var order = $("#order").val();
+        var bayar = $("#bayaru").val();
+        var kembali = $("#kembalian").val();
+        $.ajax({
+                type: "get",
+                url: "{{ url('kasir/simpantransaksi') }}",
+                data: {
+                "id_transaksi": id_transaksi,
+                "total": total,
+                "id_customer": id_customer,
+                "atasnama": atasnama,
+                "grandtotal": grandtotal,
+                "discountrate": discountrate,
+                "pajakrate": pajakrate,
+                "discount": discount,
+                "pajak": pajak,
+                "status": status,
+                "order": order,
+                "bayar": bayar,
+                "kembali": kembali,
+                },
+                success: function(response) {
+                }
+            });
         }
    </script>
 </body>
