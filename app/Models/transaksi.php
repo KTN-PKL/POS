@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+
 class transaksi extends Model
 {
     use HasFactory;
@@ -37,5 +38,10 @@ class transaksi extends Model
     public function genid()
     {
         DB::table('transaksis')->insert(['id_transaksi' => $this->id()]);
+    }
+
+    public function updateData($id_transaksi, $data)
+    {
+        DB::table('transaksis')->where('id_transaksi', $id_transaksi)->update($data);
     }
 }

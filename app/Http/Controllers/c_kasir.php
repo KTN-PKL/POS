@@ -134,7 +134,11 @@ class c_kasir extends Controller
                     'stok' => $isi,
                 ];
                 $this->stok->editData($stok->id_stok, $data);
+                $data = 1;
+                return $data;
         }
+        $data = 2;
+        return $data;
         }
 
         
@@ -198,9 +202,31 @@ class c_kasir extends Controller
     {
         $huruf = "CTM";
         $id_customer = $huruf . sprintf("%03s", $id);
-        $data = $this->customer->detailData($id_customer);
+        $data1 = $this->customer->detailData($id_customer);
 
-        $nama = $data->nama;
-        return $nama;
+        $data = [
+            'nama' => $data1->nama,
+            'id_customer' => $id_customer,
+        ];
+        return $data;
+    }
+
+    public function simpan(Request $request)
+    {
+        $data = [
+            'total' => $request->total,
+            'id_customer' => $request->id_customer,
+            'atasnama' => $request->atasnama,
+            'grandtotal' => $request->grandtotal,
+            'discountrate' => $request->discountrate,
+            'pajakrate' => $request->pajakrate,
+            'discount' => $request->discount,
+            'pajak' => $request->pajak,
+            'status' => $request->status,
+            'order' => $request->order,
+            'bayar' => $request->bayar,
+            'kembali' => $request->kembali,
+        ];
+        $this->transaksi->updateData($request->id_transaksi, $data);
     }
 }
