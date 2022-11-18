@@ -10,13 +10,18 @@
                     
                                     <label for="tos" class="col-sm-3 col-form-label">Tipe OS</label>
                                 <div class="col-sm-9">
-                                    <input name="tos" type="text" id="tos" class="form-control" value="{{$pengaturan->tos}}">
-                                    {{-- <select type="text" class="form-control" id="tos">
-                                        <option selected disabled>-- Pilih --</option>
+                                    {{-- <input name="tos" type="text" id="tos" class="form-control" value="{{$pengaturan->tos}}"> --}}
+                                    <select type="text" class="form-select" id="tos">
+                                        <option disabled>-- Pilih --</option>
+                                        @if ($pengaturan->tos == "Windows")
+                                        <option value="Windows" selected>Windows</option>
+                                        <option value="Linux" >Linux</option>
+                                        @else
+                                        <option value="Linux" selected>Linux</option>
                                         <option value="Windows">Windows</option>
-                                        <option value="Linux">Linux</option>
-                                        <option value="MacOS">Mac OS</option>
-                                    </select> --}}
+                                        @endif
+                                        
+                                    </select>
                                 </div>
                                 </div>  
                                 {{-- <div class="form-group row">

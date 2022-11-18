@@ -58,10 +58,10 @@
 
    
     <script>
-      
         $(document).ready(function() {
            editPengaturan(),
            edit()
+           
       
        });
 
@@ -93,7 +93,11 @@
                 $("#notifikasi").html(data);
                 $("#exampleModal").modal('show');
             });
+
+            
         }
+
+   
        
 
 

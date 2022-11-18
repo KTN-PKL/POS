@@ -22,9 +22,32 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'level' => 2,
             'foto' => 'admin.png',
-            'telepon' => '08',
+            'telepon' => '081214141414',
             'alamatuser' => 'Subang',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
+
+        DB::table('tokos')->insert([
+            'tnama' => 'Toko Hemat',
+            'talamat' => 'Jl Brigjen Katamso, Subang',
+            'thp' => '081214141414',
+            'tpemilik' => 'admin.png',
+            'twebsite' => 'hemat.ac.id',
+            'temail' => 'hemat@gmail.com',
+
+        ]);
+
+        DB::table('pengaturans')->insert([
+            'tos' => 'Windows',
+            'tprintukuran' => 'A4',
+            'tprintmodel' => 'Print With Browser',
+            'tgambar' => '1.png',
+            'tfooter' => 'Struk Toko Hemat',
+            'tdiskonrp' => 'enable',
+            'tdiskonpersen' => 'enable',
+            'tpajakrp' => 'enable',
+            'tpajakpersen' => 'enable',
+            
         ]);
     }
 }
