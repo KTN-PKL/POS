@@ -63,6 +63,7 @@
   <link rel="stylesheet" href="{{ asset('template2') }}/dist/css/adminlte.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
 
   <!-- =======================================================
   * Template Name: FlexStart - v1.11.1
@@ -70,14 +71,14 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style type="text/css">
+  {{-- <style type="text/css">
     .lihat{
         color: #0c4e68
     }
     #warna{
-        background-color: rgb(121, 36, 36);
+        background-color: #00530a;
     }
-</style>
+</style> --}}
 </head>
 
 <body>
@@ -92,7 +93,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{{url('/dashboard')}}">HOME</a></li>
+          <li><a class="nav-link" href="{{url('/dashboard')}}">HOME</a></li>
           <li class="dropdown"><a style="text-decoration: none" href="#"><span>DATA MASTER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a style="text-decoration: none" href="{{url('item')}}">Item <i class="fa fa-cubes"></i> </a></li>

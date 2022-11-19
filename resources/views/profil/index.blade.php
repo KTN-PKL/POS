@@ -19,7 +19,7 @@
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
                 <div class="card card-rounded ">
                    
-                <div style="background-color:#0c4e68" class="card-header text-white">
+                <div  class="card-header text-white">
                     <h4 style="width:200px" > <i class="fa fa-edit"></i> Edit Akun</h4>
                 </div>
                     <div class="card-body">
@@ -55,7 +55,7 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
-                    <div style="background-color: #0c4e68" class="modal-header">
+                    <div class="modal-header">
                         <h5 class="modal-title text-white" id="exampleModalLabel">Notifikasi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
