@@ -34,9 +34,9 @@ class stok extends Model
     {
         return DB::table('stoks')->where('id_item', $id_item)->update($data);
     }
-    public function deleteData($id_stok)
+    public function deleteData($id_item)
     {
-        return DB::table('stoks')->where('id_stok', $id_stok)->delete();
+        return DB::table('stoks')->where('id_item', $id_item)->delete();
     }
 
     public function kategoriData($id)

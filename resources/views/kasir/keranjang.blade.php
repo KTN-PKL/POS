@@ -86,7 +86,8 @@
                 success: function(data, status) {
                 barang(),
                 table(),
-                total(),
+                total()
+                if (data == 1) {
                 Swal.fire(
                     {
                         type: 'success',
@@ -94,8 +95,17 @@
                         text: 'Item Berhasil Ditambahkan!'
                         }
                     )
-                
+                } else {
+                    Swal.fire(
+                    {
+                        type: 'error',
+                        title: 'Gagal',
+                        text: 'Stok Sudah Habis!'
+                        }
+                    )
                 }
+                }
+               
             });
        }
     

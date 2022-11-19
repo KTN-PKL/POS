@@ -98,6 +98,11 @@
                 if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Menambahkan Item",
+                    type: 'success'
+                    })
                 }
                 }
             });
@@ -126,11 +131,25 @@
         }
 
         function hapus(id) {
-            $.get("{{ url('item/delete') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('delete Product')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
+            var item= $("#item"+id).html();
+            Swal.fire({
+            title: 'Apakah Anda Yakin?',
+            text: "Anda Ingin Menghapus Item " + item,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Iya Saya Yakin!',
+            cancelButtonText: 'Tidak'
+            }).then((result) => {
+            if (result.value) {
+                destroy(id)
+                Swal.fire({
+                title: 'Terhapus',
+                text: "Anda Telah Menghapus Item " + item,
+                type: 'success'
+                })}
+                })
         }
         // untuk proses update data
         function update(id) {
@@ -157,6 +176,11 @@
                 if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Mengedit Item",
+                    type: 'success'
+                    })
                 }
                 }
             });
