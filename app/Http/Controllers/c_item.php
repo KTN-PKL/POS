@@ -209,5 +209,6 @@ class c_item extends Controller
         $cek = $this->item->detailData($id_item);
         unlink(public_path('foto'). '/' .$cek->foto);
         $this->item->deleteData($id_item);
+        $this->stok->deleteData($id_item);
     }
 }
