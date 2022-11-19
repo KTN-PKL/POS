@@ -70,6 +70,14 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style type="text/css">
+    .lihat{
+        color: #0c4e68
+    }
+    #warna{
+        background-color: rgb(121, 36, 36);
+    }
+</style>
 </head>
 
 <body>
