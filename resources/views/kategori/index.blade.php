@@ -94,10 +94,9 @@
         }
 
         function hapus(id) {
-            var item= $("#item"+id).html();
             Swal.fire({
             title: 'Apakah Anda Yakin?',
-            text: "Anda Ingin Menghapus Item " + item,
+            text: "Anda Ingin Menghapus Kategori ",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -109,7 +108,7 @@
                 destroy(id)
                 Swal.fire({
                 title: 'Terhapus',
-                text: "Anda Telah Menghapus Item " + item,
+                text: "Anda Telah Menghapus Kategori ",
                 type: 'success'
                 })}
                 })
