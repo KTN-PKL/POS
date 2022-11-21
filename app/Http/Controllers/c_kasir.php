@@ -9,6 +9,7 @@ use App\Models\stok;
 use App\Models\keranjang;
 use App\Models\transaksi;
 use App\Models\customer;
+use App\Models\pengaturan;
 
 class c_kasir extends Controller
 {
@@ -18,8 +19,9 @@ class c_kasir extends Controller
         $this->kategori = new kategori();
         $this->stok = new stok();
         $this->keranjang = new keranjang();
-        $this->customer = new customer();
+        $this->pengaturan = new pengaturan();
         $this->transaksi = new transaksi();
+        $this->customer = new customer();
     }
 
     public function index()
@@ -78,7 +80,18 @@ class c_kasir extends Controller
 
     public function hitung()
     {
-        return view('kasir.hitung');
+        $data = [
+            'pengaturan' =>  $this->pengaturan->Data(),
+        ];
+        return view('kasir.hitung',$data);
+    }
+
+    public function nota()
+    {
+        $data = [
+            'pengaturan' =>  $this->pengaturan->Data(),
+        ];
+        return view('kasir.nota',$data);
     }
 
     public function total($id)
@@ -134,14 +147,14 @@ class c_kasir extends Controller
                     'stok' => $isi,
                 ];
                 $this->stok->editData($stok->id_stok, $data);
-                $data = 1;
+            
+                
+            }
+            $data = 1;
                 return $data;
         }
         $data = 2;
         return $data;
-        }
-
-        
     }
     
     public function ubahqty(Request $request)

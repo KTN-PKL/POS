@@ -18,13 +18,15 @@
         </td> 
         <td>
             <select type="text" id="order" class="form-select">
-              <option selected disabled>-- Kategori Order --</option>
-              <option value="1">z</option>
-              <option value="2">a</option>
+              <option disabled>-- Kategori Order --</option>
+              <option value="1" selected>Ditempat</option>
+              <option value="2">Booking</option>
+              <option value="3">Delivery</option>
             </select>
         </td> 
     </tr>
     <tr id="total"></tr>
+    @if ($pengaturan->tdiskonpersen == "enable")
     <tr> 
         <td>
         <label for="FirstName">DISKON</label>
@@ -40,6 +42,9 @@
               </div>
         </td> 
     </tr>
+    @endif
+    @if ($pengaturan->tpajakpersen == "enable")
+    
     <tr> 
         <td>
         <label for="FirstName">PAJAK</label>
@@ -55,6 +60,9 @@
               </div>
         </td> 
     </tr>
+        
+    @endif
+    @if ($pengaturan->tdiskonrp == "enable")
     <tr> 
         <td>
         <label for="FirstName">DISKON</label>
@@ -70,6 +78,9 @@
               </div>
         </td> 
     </tr>
+        
+    @endif
+    @if ($pengaturan->tpajakrp == "enable")
     <tr> 
         <td>
         <label for="FirstName">PAJAK</label>
@@ -85,6 +96,8 @@
               </div>
         </td> 
     </tr>
+    @endif
+    
     <tr id="grandtotal"></tr>
 </table>
 <div id="bayar"></div>
