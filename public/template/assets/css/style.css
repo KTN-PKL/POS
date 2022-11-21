@@ -128,11 +128,11 @@ section {
 # Card Header
 --------------------------------------------------------------*/
 .card .card-header {
-  background-color: #127700;
+  background-color: #0c4e68;
 }
 
 .card .card-footer .lihat {
- color: #127700;
+ color: #0c4e68;
 }
 
 
@@ -206,7 +206,7 @@ section {
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #00530a;
+  color: #18a4db;
   font-family: "Nunito", sans-serif;
   margin-top: 3px;
 }
@@ -242,7 +242,7 @@ section {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #00530a;
+  color:#18a4db;
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -258,7 +258,7 @@ section {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #00ff1a;
+  color:  #0c4e68;
 }
 
 .navbar .getstarted,
@@ -310,7 +310,7 @@ section {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color:#00ff1a;
+  color: #0c4e68;
 }
 
 .navbar .dropdown:hover>ul {
