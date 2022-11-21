@@ -3,9 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\kategori;
+use App\Models\item;
+use App\Models\customer;
+use App\Models\transaksi;
+use Auth;
+use DB;
 
 class c_login extends Controller
 {
+
+    public function __construct()
+    {
+        $this->kategori = new kategori();
+        $this->customer = new customer();
+        $this->item = new item();
+        $this->transaksi = new transaksi();
+ 
+    }
+
     public function index()
     {
         return view('v_login');
@@ -35,7 +51,14 @@ class c_login extends Controller
     }
 
     public function dashboard(){
-        return view('v_dashboard');
+
+        $data = [
+            'kategori' => $this->kategori->jumlahData(),
+            'customer' => $this->customer->jumlahData(),
+            'customer' => $this->customer->grafikData(),
+            
+        ];
+        return view('v_dashboard', $data);
     }
 
     public function logout()

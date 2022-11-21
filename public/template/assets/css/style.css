@@ -124,6 +124,17 @@ section {
   color: #8894f6;
   content: "/";
 }
+/*--------------------------------------------------------------
+# Card Header
+--------------------------------------------------------------*/
+.card .card-header {
+  background-color: #127700;
+}
+
+.card .card-footer .lihat {
+ color: #127700;
+}
+
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -195,7 +206,7 @@ section {
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #012970;
+  color: #00530a;
   font-family: "Nunito", sans-serif;
   margin-top: 3px;
 }
@@ -231,7 +242,7 @@ section {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #013289;
+  color: #00530a;
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -247,7 +258,7 @@ section {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #4154f1;
+  color: #00ff1a;
 }
 
 .navbar .getstarted,
@@ -299,7 +310,7 @@ section {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color: #4154f1;
+  color:#00ff1a;
 }
 
 .navbar .dropdown:hover>ul {

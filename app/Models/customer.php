@@ -63,4 +63,16 @@ class customer extends Model
     {
         return DB::table('customers')->where('id_customer', $id_customer)->delete();
     }
+    public function jumlahData()
+    {
+        return DB::table('customers')->count('id_customer');
+    }
+
+    public function grafikData()
+    {
+        return DB::table('customers')->selectRaw('COUNT(*) AS count')->whereYear('created_at',date('Y'))
+        ->groupBy(DB::table('customers')->selectRaw("Month(created_at)"))->pluck('count');
+        
+    }
+    
 }
