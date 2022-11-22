@@ -63,7 +63,7 @@ class c_toko extends Controller
         $id_pengaturan = 1; 
         if ($request->tgambar <> null){
             $cek = $this->pengaturan->detailData($id);
-            unlink(public_path('fototoko'). '/' .$cek->tgambar);
+            // unlink(public_path('fototoko'). '/' .$cek->tgambar);
             $file  = $request->tgambar;
             $filename = $id_pengaturan.'.'.$file->extension();
             $file->move(public_path('fototoko'),$filename);

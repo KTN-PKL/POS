@@ -119,6 +119,7 @@ Route::controller(c_kasir::class)->group(function () {
      Route::get('/kasir/kembalian', 'kembalian')->name('kasir.kembalian');
      Route::get('/kasir/customer', 'customer')->name('kasir.customer');
      Route::get('/kasir/add/{id}', 'add')->name('kasir.add');
+     Route::get('/kasir/nota/{id}', 'nota')->name('kasir.nota');
      Route::get('/kasir/simpantransaksi', 'simpan')->name('kasir.simpan');
 });
 

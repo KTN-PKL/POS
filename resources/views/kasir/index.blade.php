@@ -145,7 +145,7 @@
                $(".btn-close").click();
            });
         }
-        function menyimpan(id){
+        function menyimpan(){
         var id_transaksi = $("#id").val();
         var total = $("#total1").val();
         var id_customer = $("#id_customer").val();
@@ -178,7 +178,22 @@
                 "kembali": kembali,
                 },
                 success: function(response) {
+                    if (response.success == 1) {
+                        document.getElementById("erorr1").style.display = "block";
+                    } else {
+                    nota(),
+                    transaksi()
+                    }
                 }
+            });
+        }
+
+        function nota(){
+            var id = $("#id").val();
+            $.get("{{ url('kasir/nota') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('Daftar Customer')
+                $("#page").html(data);
+                $("#exampleModal").modal('show');
             });
         }
    </script>

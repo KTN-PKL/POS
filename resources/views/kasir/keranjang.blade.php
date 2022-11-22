@@ -30,7 +30,7 @@
                                       <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
                                     </div>
                                   </div>
-                                  <small class="text-danger">*Khusus Member</small>
+                                  
                             </td> 
                         </tr>
                         <tr> 
@@ -39,8 +39,9 @@
                             </td> 
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" id="nama1" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" id="nama1" aria-describedby="basic-addon2" required>
                                   </div>
+                                  <small style="display: none" class="text-danger" id="erorr1">Atas Nama Harus Diisi!</small>
                             </td> 
                         </tr>  
                         </table>

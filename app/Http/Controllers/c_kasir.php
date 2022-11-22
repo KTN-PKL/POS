@@ -10,6 +10,7 @@ use App\Models\keranjang;
 use App\Models\transaksi;
 use App\Models\customer;
 use App\Models\pengaturan;
+use App\Models\toko;
 
 class c_kasir extends Controller
 {
@@ -19,6 +20,7 @@ class c_kasir extends Controller
         $this->kategori = new kategori();
         $this->stok = new stok();
         $this->keranjang = new keranjang();
+        $this->toko = new toko();
         $this->pengaturan = new pengaturan();
         $this->transaksi = new transaksi();
         $this->customer = new customer();
@@ -86,10 +88,13 @@ class c_kasir extends Controller
         return view('kasir.hitung',$data);
     }
 
-    public function nota()
+    public function nota($id)
     {
         $data = [
             'pengaturan' =>  $this->pengaturan->Data(),
+            'toko' =>  $this->toko->Data(),
+            'transaksi' => $this->transaksi->transaksiDaata($id),
+            'keranjang' => $this->keranjang->Data($id),
         ];
         return view('kasir.nota',$data);
     }
@@ -226,6 +231,10 @@ class c_kasir extends Controller
 
     public function simpan(Request $request)
     {
+        if ($request->atasnama ==null) {
+            $data['success'] = 1;
+            return response()->json($data);
+        } else {
         $data = [
             'total' => $request->total,
             'id_customer' => $request->id_customer,
@@ -241,5 +250,7 @@ class c_kasir extends Controller
             'kembali' => $request->kembali,
         ];
         $this->transaksi->updateData($request->id_transaksi, $data);
+        $this->transaksi->genid();
+    }
     }
 }

@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\DB;
 class transaksi extends Model
 {
     use HasFactory;
-
+    
+    public function transaksiDaata($id_transaksi)
+    {
+        return DB::table('transaksis')->where('id_transaksi', $id_transaksi)->first();
+    }
     public function id()
     {
         $data = DB::table('transaksis')->orderBy('id_transaksi', 'DESC')->first();
