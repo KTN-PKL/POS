@@ -115,7 +115,7 @@
           </li>
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>AKUNTANSI</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a style="text-decoration: none"  href="#">Akun</a></li>
+              <li><a style="text-decoration: none"  href="/akuntansi">Akun</a></li>
               <li><a style="text-decoration: none"  href="#">Keuangan Lainnya</a></li>
             </ul>
           </li>
@@ -128,7 +128,7 @@
           </li>
           <li  class="dropdown"><a style="text-decoration: none"  href="#"><span id="namacok" >{{auth()->user()->name}}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a style="text-decoration: none"  href="#">Pengaturan Toko <i class="fa fa-cog" aria-hidden="true"></i></a></li>
+              <li><a style="text-decoration: none"  href="/toko">Pengaturan Toko <i class="fa fa-cog" aria-hidden="true"></i></a></li>
               <li><a style="text-decoration: none"  href="{{url('profil')}}">Profil <i class="fa fa-edit"></i></a></li>
               <li><a style="text-decoration: none"  href="{{route('user.logout')}}">Keluar <i class="fa fa-sign-out-alt" aria-label="true"></i> </a></li>
             </ul>

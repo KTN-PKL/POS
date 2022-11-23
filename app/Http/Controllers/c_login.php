@@ -52,12 +52,17 @@ class c_login extends Controller
 
     public function dashboard(){
 
-        $data = [
-            'kategori' => $this->kategori->jumlahData(),
-            'customer' => $this->customer->jumlahData(),
-            
-        ];
-        return view('v_dashboard', $data);
+        if (Auth::user()->level == 2) {
+            $data = [
+                'kategori' => $this->kategori->jumlahData(),
+                'customer' => $this->customer->jumlahData(),
+                
+            ];
+            return view('v_dashboard', $data);
+        } else {
+            return redirect()->route('kasir');
+        }
+       
     }
 
     public function logout()

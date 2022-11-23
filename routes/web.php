@@ -9,7 +9,7 @@ use App\Http\Controllers\c_stok;
 use App\Http\Controllers\c_customer;
 use App\Http\Controllers\c_kasir;
 use App\Http\Controllers\c_toko;
-use App\Http\Controllers\CrudController;
+use App\Http\Controllers\c_akuntansi;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +41,19 @@ Route::controller(c_kategori::class)->group(function () {
     Route::get('/kategori/update/{id}', 'update')->name('kategori.update');
     Route::get('/kategori/delete/{id}', 'delete')->name('kategori.delete');
     Route::get('/kategori/destroy/{id}', 'destroy')->name('kategori.destroy');
+});
+
+Route::controller(c_akuntansi::class)->group(function () {
+    Route::get('/akuntansi', 'index')->name('akuntansi');
+    Route::get('/akuntansi/read', 'read')->name('akuntansi.read');
+    Route::get('/akuntansi/table', 'table')->name('akuntansi.table');
+    Route::get('/akuntansi/cari/{cari}', 'cari')->name('akuntansi.cari');
+    Route::get('/akuntansi/store', 'store')->name('akuntansi.store');
+    Route::get('/akuntansi/create', 'create')->name('akuntansi.create');
+    Route::get('/akuntansi/edit/{id}', 'edit')->name('akuntansi.edit');
+    Route::get('/akuntansi/update/{id}', 'update')->name('akuntansi.update');
+    Route::get('/akuntansi/delete/{id}', 'delete')->name('akuntansi.delete');
+    Route::get('/akuntansi/destroy/{id}', 'destroy')->name('akuntansi.destroy');
 });
 
 Route::controller(c_item::class)->group(function () {
