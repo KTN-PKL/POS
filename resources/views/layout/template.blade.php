@@ -93,13 +93,18 @@
 
       <nav id="navbar" class="navbar">
         <ul>
+          @if (Auth::user()->level == 2)
           <li><a class="nav-link" href="{{url('/dashboard')}}">HOME</a></li>
+          @endif
+          
           <li class="dropdown"><a style="text-decoration: none" href="#"><span>DATA MASTER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a style="text-decoration: none" href="{{url('item')}}">Item <i class="fa fa-cubes"></i> </a></li>
               <li><a style="text-decoration: none"  href="{{url('kategori')}}">Kategori <i class="fa fa-tag"></i></a></li>
               <li><a style="text-decoration: none"  href="{{url('customer')}}">Customer<i class="fa fa-users"></i></a></li> 
+              @if (Auth::user()->level == 2)
               <li><a style="text-decoration: none"  href="{{url('pengguna')}}">Pengguna<i class="fa fa-user"></i></a></li>
+              @endif
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="/stok">STOK</a></li>
@@ -113,6 +118,7 @@
               <li><a style="text-decoration: none"  href="#">Blm Lunas</a></li>
             </ul>
           </li>
+          @if (Auth::user()->level == 2)
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>AKUNTANSI</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a style="text-decoration: none"  href="/akuntansi">Akun</a></li>
@@ -126,9 +132,14 @@
               <li><a  style="text-decoration: none" href="#">Cash Flow</a></li>
             </ul>
           </li>
+          @endif
+         
+         
           <li  class="dropdown"><a style="text-decoration: none"  href="#"><span id="namacok" >{{auth()->user()->name}}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
+              @if (Auth::user()->level == 2)
               <li><a style="text-decoration: none"  href="/toko">Pengaturan Toko <i class="fa fa-cog" aria-hidden="true"></i></a></li>
+              @endif
               <li><a style="text-decoration: none"  href="{{url('profil')}}">Profil <i class="fa fa-edit"></i></a></li>
               <li><a style="text-decoration: none"  href="{{route('user.logout')}}">Keluar <i class="fa fa-sign-out-alt" aria-label="true"></i> </a></li>
             </ul>

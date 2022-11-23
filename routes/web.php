@@ -10,6 +10,7 @@ use App\Http\Controllers\c_customer;
 use App\Http\Controllers\c_kasir;
 use App\Http\Controllers\c_toko;
 use App\Http\Controllers\c_akuntansi;
+use App\Http\Controllers\c_keuangan;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,20 @@ Route::controller(c_akuntansi::class)->group(function () {
     Route::get('/akuntansi/update/{id}', 'update')->name('akuntansi.update');
     Route::get('/akuntansi/delete/{id}', 'delete')->name('akuntansi.delete');
     Route::get('/akuntansi/destroy/{id}', 'destroy')->name('akuntansi.destroy');
+});
+
+Route::controller(c_keuangan::class)->group(function () {
+    Route::get('/keuangan', 'index')->name('keuangan');
+    Route::get('/keuangan/read', 'read')->name('keuangan.read');
+    Route::get('/keuangan/table', 'table')->name('keuangan.table');
+    Route::get('/keuangan/cari/{cari}', 'cari')->name('keuangan.cari');
+    Route::get('/keuangan/store', 'store')->name('keuangan.store');
+    Route::get('/keuangan/create', 'create')->name('keuangan.create');
+    Route::get('/keuangan/edit/{id}', 'edit')->name('keuangan.edit');
+    Route::get('/keuangan/update/{id}', 'update')->name('keuangan.update');
+    Route::get('/keuangan/delete/{id}', 'delete')->name('keuangan.delete');
+    Route::get('/keuangan/destroy/{id}', 'destroy')->name('keuangan.destroy');
+    Route::get('/keuangan/jenis/{id}', 'jenis')->name('keuangan.jenis');
 });
 
 Route::controller(c_item::class)->group(function () {
