@@ -153,15 +153,18 @@
                     "jenis": jenis,
                 },
                 success: function(response) {
-                    // if (response.required1 == 2) {
-                    //     document.getElementById("required1").style.display = "block";
-                    // } else {
-                    //     if (response.unique == 2) {
-                    //     document.getElementById("unique").style.display = "block";}}
-                    // if (response.required2 == 2) {
-                    //     document.getElementById("required2").style.display = "block";}
-                    // if (response.required1 == 1) {
-                    //     if (response.unique == 1 && response.required2 == 1) {
+                    if (response.required1 == 2) {
+                        document.getElementById("required1").style.display = "block";
+                    } else {
+                        document.getElementById("required1").style.display = "none";
+                        if (response.unique == 2) {
+                        document.getElementById("unique").style.display = "block";}
+                        else{
+                            document.getElementById("unique").style.display = "none"; 
+                        }
+                    }
+                    if (response.required1 == 1) {
+                        if (response.unique == 1) {
                             $(".btn-close").click();
                             read()
                             Swal.fire({
@@ -169,7 +172,8 @@
                             text: "Anda Telah Berhasil Mengedit Akun",
                             type: 'success'
                     }) 
-                // }}
+                    }
+                    }
                 }
             });
         }

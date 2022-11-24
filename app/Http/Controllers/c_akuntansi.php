@@ -125,11 +125,36 @@ class c_akuntansi extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'akun' => $request->akun,
-            'jenis' => $request->jenis,
-        ];
-        $this->akuntansi->editData($id, $data);
+        if ($request->akun <> null) {
+            $b = 1;
+            $test = $this->akuntansi->jumlahData();
+        if ($test <> 1) {
+            $cek = $this->akuntansi->exallData($id);
+            foreach ($cek as $ceks) {
+               if ($ceks->akun == $request->akun) {
+                   $a = 2;
+                   break;
+               } else {
+                   $a = 1;
+               }
+            }    
+        } else {
+        $a = 1;
+        }
+        } else {$b = 2;}
+        if ($b == 1) {
+            if ($a == 1) {
+                $data = [
+                    'akun' => $request->akun,
+                    'jenis' => $request->jenis,
+                ];
+                $this->akuntansi->editData($id, $data);
+            }
+            $data['unique'] = $a;
+        }
+        $data['required1'] = $b;
+        return response()->json($data);
+        
     }
 
     /**

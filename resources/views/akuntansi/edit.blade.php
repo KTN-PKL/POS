@@ -2,6 +2,8 @@
     <div class="form-group">
         <label class="form-label">Akun</label>
         <input type="text" name="akun" id="akun" class="form-control" placeholder="Masukan Akun" value="{{ $akuntansi->akun }}">
+        <small style="display: none" class="text-danger" id="required1">Akun Harus Diisi!</small>
+        <small style="display: none" class="text-danger" id="unique">Akun Sudah Ada!</small>
         <br>
         <label class="form-label">Jenis</label>
         <select class="form-select" id="jenis">

@@ -14,6 +14,11 @@ class akuntansi extends Model
     {
         return DB::table('akuntansis')->get();
     }
+
+    public function exallData($id_akun)
+    {
+        return DB::table('akuntansis')->whereNot('id_akun', $id_akun)->get();
+    }
     public function addData($data)
     {
         DB::table('akuntansis')->insert($data);
