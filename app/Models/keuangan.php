@@ -12,7 +12,7 @@ class keuangan extends Model
 
     public function allData()
     {
-        return DB::table('keuangans')->get();
+        return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->get();
     }
     public function addData($data)
     {
@@ -20,7 +20,7 @@ class keuangan extends Model
     }
     public function detailData($id_keuangan)
     {
-        return DB::table('keuangans')->where('id_keuangan', $id_keuangan)->first();
+        return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('id_keuangan', $id_keuangan)->first();
     }
 
     public function jumlahData()

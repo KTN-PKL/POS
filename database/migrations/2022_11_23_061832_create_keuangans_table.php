@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('id_akun');
             $table->string('uang');
             $table->string('keterangan');
+            $table->timestamp('waktu');
             $table->timestamps();
         });
     }

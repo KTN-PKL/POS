@@ -72,33 +72,23 @@ class c_keuangan extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->id_ <> null) {
-            $b = 1;
-            $test = $this->keuangan->jumlahData();
-        if ($test <> 0) {
-            $cek = $this->keuangan->allData();
-            foreach ($cek as $ceks) {
-               if ($ceks->akun == $request->akun) {
-                   $a = 2;
-                   break;
-               } else {
-                   $a = 1;
-               }
-            }    
-        } else {
-        $a = 1;
-        }
+        if ($request->id_akun <> null) {$b = 1;
+            if ($request->uang <> null) {$a = 1;} else {$a = 2;}
         } else {$b = 2;}
-        if ($request->jenis <> null) {$c = 1;} else {$c = 2;}
+        if ($request->keterangan <> null) {$c = 1;} else {$c = 2;}
         if ($b == 1) {
             if ($a == 1 && $c == 1) {
+                date_default_timezone_set("Asia/Jakarta");
+                $d = date("Y-m-d H:i:s");
                 $data = [
-                    'akun' => $request->akun,
-                    'jenis' => $request->jenis,
+                    'id_akun' => $request->id_akun,
+                    'uang' => $request->uang,
+                    'keterangan' => $request->keterangan,
+                    'waktu' => $d,
                 ];
                 $this->keuangan->addData($data);
                }
-                $data['unique'] = $a;
+                $data['required3'] = $a;
         }
 
         $data['required1'] = $b;
@@ -137,8 +127,8 @@ class c_keuangan extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'akun' => $request->akun,
-            'jenis' => $request->jenis,
+            'uang' => $request->uang,
+            'keterangan' => $request->keterangan,
         ];
         $this->keuangan->editData($id, $data);
     }

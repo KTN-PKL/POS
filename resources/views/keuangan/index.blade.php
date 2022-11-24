@@ -57,7 +57,7 @@
         });
         // Read Database
         function read() {
-            $.get("{{ url('akuntansi/read') }}", {}, function(data, status) {
+            $.get("{{ url('keuangan/read') }}", {}, function(data, status) {
                 $("#read").html(data);
             });
         }
@@ -77,20 +77,21 @@
             var keterangan = $("#keterangan").val();
             $.ajax({
                 type: "get",
-                url: "{{ url('akuntansi/store') }}",
+                url: "{{ url('keuangan/store') }}",
                 data: {
-                    "akun": akun,
-                    "jenis": jenis,
+                    "id_akun": jenis,
+                    "uang": uang,
+                    "keterangan": keterangan,
                 },
                 success: function(response) {
                     if (response.required1 == 2) {
                         document.getElementById("required1").style.display = "block";
                     } else {
                         document.getElementById("required1").style.display = "none";
-                        if (response.unique == 2) {
-                        document.getElementById("unique").style.display = "block";}
+                        if (response.required3 == 2) {
+                        document.getElementById("required3").style.display = "block";}
                         else{
-                            document.getElementById("unique").style.display = "none"; 
+                            document.getElementById("required3").style.display = "none"; 
                         }
                     }
                     if (response.required2 == 2) {
@@ -99,7 +100,7 @@
                             document.getElementById("required2").style.display = "none";
                         }
                     if (response.required1 == 1) {
-                        if (response.unique == 1 && response.required2 == 1) {
+                        if (response.required3 == 1 && response.required2 == 1) {
                             $(".btn-close").click();
                             read()
                             Swal.fire({
@@ -114,7 +115,7 @@
 
         // Untuk modal halaman edit show
         function edit(id) {
-            $.get("{{ url('akuntansi/edit') }}/" + id, {}, function(data, status) {
+            $.get("{{ url('keuangan/edit') }}/" + id, {}, function(data, status) {
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -136,7 +137,7 @@
                 destroy(id)
                 Swal.fire({
                 title: 'Terhapus',
-                text: "Anda Telah Menghapus akuntansi ",
+                text: "Anda Telah Menghapus Aktivitas",
                 type: 'success'
                 })}
                 })
@@ -144,14 +145,14 @@
 
         // untuk proses update data
         function update(id) {
-            var akun = $("#akun").val();
-            var jenis = $("#jenis").val();
+            var uang = $("#uang").val();
+            var keterangan = $("#keterangan").val();
             $.ajax({
                 type: "get",
-                url: "{{ url('akuntansi/update') }}/" + id,
+                url: "{{ url('keuangan/update') }}/" + id,
                 data: {
-                    "akun": akun,
-                    "jenis": jenis,
+                    "uang": uang,
+                    "keterangan": keterangan,
                 },
                 success: function(response) {
                     // if (response.required1 == 2) {
@@ -179,7 +180,7 @@
         function destroy(id) {
             $.ajax({
                 type: "get",
-                url: "{{ url('akuntansi/destroy') }}/" + id,
+                url: "{{ url('keuangan/destroy') }}/" + id,
                 success: function(data) {
                     $(".btn-close").click();
                     read()

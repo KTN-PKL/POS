@@ -12,8 +12,10 @@
         <label style="display: none" id="keluar" class="form-label">Masukan Pengeluaran</label>
         <label style="display: none" id="masuk" class="form-label">Masukan Pemasukan</label>
         <input style="display: none" type="text" name="uang" id="uang" class="form-control" placeholder="Masukan Uang">
+        <small style="display: none" class="text-danger" id="required3">Harus Memasukan Uang!</small>
         <br>
         <label class="form-label">Keterangan</label>
+        <small style="display: none" class="text-danger" id="required2">Keterangan Harus Diisi!</small>
         <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="3"></textarea>
     </div>
     <div class="form-group mt-2">
