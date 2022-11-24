@@ -122,6 +122,21 @@
             });
         }
 
+        function uang() {
+            var uang = $("#uang").val();
+            var number_string = uang.replace(/[^,\d]/g, '').toString(),
+	        split = number_string.split(','),
+	        sisa  = split[0].length % 3,
+	        rupiah  = split[0].substr(0, sisa),
+	        ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
+            if(ribuan){
+	    	separator = sisa ? '.' : '';
+		    rupiah += separator + ribuan.join('.');
+	        }
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            $("#uang").val(rupiah)
+    }
+
         function hapus(id) {
             Swal.fire({
             title: 'Apakah Anda Yakin?',
@@ -155,26 +170,21 @@
                     "keterangan": keterangan,
                 },
                 success: function(response) {
-                    // if (response.required1 == 2) {
-                    //     document.getElementById("required1").style.display = "block";
-                    // } else {
-                    //     if (response.unique == 2) {
-                    //     document.getElementById("unique").style.display = "block";}}
-                    // if (response.required2 == 2) {
-                    //     document.getElementById("required2").style.display = "block";}
-                    // if (response.required1 == 1) {
-                    //     if (response.unique == 1 && response.required2 == 1) {
+                    if (response.required1 == 2) {
+                        document.getElementById("required1").style.display = "block";
+                    } else {document.getElementById("required1").style.display = "none";}
+                    if (response.required2 == 2) {
+                        document.getElementById("required2").style.display = "block";}
+                    else {  document.getElementById("required2").style.display = "none";}
+                        if (response.required1 == 1 && response.required2 == 1) {
                             $(".btn-close").click();
                             read()
                             Swal.fire({
                             title: 'Berhasil',
                             text: "Anda Telah Berhasil Mengedit Akun",
                             type: 'success'
-                    }) 
-                // }}
-                }
-            });
-        }
+                    }) }} })
+    }
 
         // untuk delete atau destroy data
         function destroy(id) {

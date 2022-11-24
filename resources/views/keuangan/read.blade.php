@@ -28,7 +28,7 @@
             if (cari == "") {
                 table()
             } else {
-                $.get("{{ url('akuntansi/cari') }}/" + cari, {}, function(data, status) {
+                $.get("{{ url('keuangan/cari') }}/" + cari, {}, function(data, status) {
                 $("#table").html(data);
             });
             }

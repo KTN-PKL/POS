@@ -11,7 +11,7 @@
         <br>
         <label style="display: none" id="keluar" class="form-label">Masukan Pengeluaran</label>
         <label style="display: none" id="masuk" class="form-label">Masukan Pemasukan</label>
-        <input style="display: none" type="text" name="uang" id="uang" class="form-control" placeholder="Masukan Uang">
+        <input style="display: none" type="text" name="uang" id="uang" class="form-control" placeholder="Masukan Uang" onkeyup="uang()">
         <small style="display: none" class="text-danger" id="required3">Harus Memasukan Uang!</small>
         <br>
         <label class="form-label">Keterangan</label>

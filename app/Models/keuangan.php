@@ -28,18 +28,50 @@ class keuangan extends Model
         return DB::table('keuangans')->count('id_keuangan');
     }
 
+    public function pengeluaran()
+    {
+        return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('jenis', 'Pengeluaran')->sum('uang');
+    }
+
+    public function pemasukan()
+    {
+        return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('jenis', 'Pemasukan')->sum('uang');
+    }
+
+    public function pengeluarancari($cari)
+    {
+        $j = count($cari);
+        $uang = 0;
+        for ($i=0; $i < $j; $i++) { 
+            $plus = DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('akun', 'like', '%'.$cari[$i].'%')->where('jenis', 'Pengeluaran')->sum('uang');
+            $uang = $uang + $plus;
+        }
+        return $uang;
+    }
+
+    public function pemasukancari($cari)
+    {
+        $j = count($cari);
+        $uang = 0;
+        for ($i=0; $i < $j; $i++) { 
+            $plus = DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('akun', 'like', '%'.$cari[$i].'%')->where('jenis', 'Pemasukan')->sum('uang');
+            $uang = $uang + $plus;
+        }
+        return $uang;
+    }
+
     public function cariData($cari)
     {
         $j = count($cari);
         if ($j == 1) {
-            return DB::table('keuangans')->where('keuangan', 'like', '%'.$cari[0].'%')->get();
+            return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('akun', 'like', '%'.$cari[0].'%')->get();
         } else { 
-            return DB::table('keuangans')->where('keuangan', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+            return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('akun', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
                 $j = count($cari);
                 $j = $j - 1;
                 for ($i=0; $i < $j;) { 
                     $i = $i + 1;
-                    $queri->orWhere('keuangan', 'like', '%'.$cari[$i].'%'); 
+                    $queri->orWhere('akun', 'like', '%'.$cari[$i].'%'); 
                 }
             })->get();
         }

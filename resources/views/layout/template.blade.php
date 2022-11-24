@@ -122,7 +122,7 @@
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>AKUNTANSI</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a style="text-decoration: none"  href="/akuntansi">Akun</a></li>
-              <li><a style="text-decoration: none"  href="#">Keuangan Lainnya</a></li>
+              <li><a style="text-decoration: none"  href="/keuangan">Aktivitas Keuangan Lainnya</a></li>
             </ul>
           </li>
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>LAPORAN</span> <i class="bi bi-chevron-down"></i></a>

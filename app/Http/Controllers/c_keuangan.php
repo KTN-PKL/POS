@@ -33,6 +33,8 @@ class c_keuangan extends Controller
     {
         $data = [
             'keuangan' => $this->keuangan->allData(),
+            'pengeluaran' => $this->keuangan->pengeluaran(),
+            'pemasukan' => $this->keuangan->pemasukan(),
         ];
         return view('keuangan.table', $data);
     }
@@ -48,6 +50,8 @@ class c_keuangan extends Controller
         $cari = explode(" " , $cari);
             $data = [
                 'keuangan' => $this->keuangan->cariData($cari),
+                'pengeluaran' => $this->keuangan->pengeluarancari($cari),
+                'pemasukan' => $this->keuangan->pemasukancari($cari),
             ];
         return view('keuangan.table', $data);
     }
@@ -80,9 +84,15 @@ class c_keuangan extends Controller
             if ($a == 1 && $c == 1) {
                 date_default_timezone_set("Asia/Jakarta");
                 $d = date("Y-m-d H:i:s");
+                $run = explode("." , $request->uang);
+                $go = count($run);
+                $uang = $run[0];
+                for ($i=1; $i < $go; $i++) { 
+                    $uang = $uang.$run[$i];
+                }
                 $data = [
                     'id_akun' => $request->id_akun,
-                    'uang' => $request->uang,
+                    'uang' => $uang,
                     'keterangan' => $request->keterangan,
                     'waktu' => $d,
                 ];
@@ -126,11 +136,24 @@ class c_keuangan extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->uang <> null) {$a = 1;} else {$a = 2;}
+        if ($request->keterangan <> null) {$c = 1;} else {$c = 2;}
+        if ($a == 1 && $c == 1) {
+        $run = explode("." , $request->uang);
+                $go = count($run);
+                $uang = $run[0];
+                for ($i=1; $i < $go; $i++) { 
+                    $uang = $uang.$run[$i];
+                }
         $data = [
-            'uang' => $request->uang,
+            'uang' => $uang,
             'keterangan' => $request->keterangan,
         ];
         $this->keuangan->editData($id, $data);
+        }
+        $data['required1'] = $a;
+        $data['required2'] = $c;
+        return response()->json($data);
     }
 
     /**
