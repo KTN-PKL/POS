@@ -7,8 +7,8 @@
         <td>
             <select type="text" id="status" class="form-select" onchange="tampil()">
               <option selected disabled>-- Status Pembayaran --</option>
-              <option value="1">Lunas</option>
-              <option value="2">Bayar Nanti</option>
+              <option value="Lunas">Lunas</option>
+              <option value="Bayar Nanti">Bayar Nanti</option>
             </select>
         </td> 
     </tr>
@@ -19,9 +19,9 @@
         <td>
             <select type="text" id="order" class="form-select">
               <option disabled>-- Kategori Order --</option>
-              <option value="1" selected>Ditempat</option>
-              <option value="2">Booking</option>
-              <option value="3">Delivery</option>
+              <option value="Ditempat" selected>Ditempat</option>
+              <option value="Booking">Booking</option>
+              <option value="Delivery">Delivery</option>
             </select>
         </td> 
     </tr>
@@ -142,7 +142,7 @@
     }
     function tampil(){
         var status = $("#status").val();
-        if (status == 1) {
+        if (status == "Lunas") {
             $("#bayar").html(`
         <table border="0" cellpadding="5" cellspacing="2" width="100%">
         <tr> 
