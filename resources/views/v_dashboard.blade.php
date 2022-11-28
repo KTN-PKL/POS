@@ -72,29 +72,29 @@
                <div id="container">
                 <script src="https://code.highcharts.com/highcharts.js"> </script> 
                 <script> 
-                    var customer<=?php echo json_encode($customer)?>;
-                    Highcharts.chart('container',{
-                        chart:{
-                            type:'column'
-                        },
-                        title :{
-                            text:'Laporan Penjualan'
-                        },
-                        xAxis:{
-                            categories: 
-                            ['January', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus','September','Oktober','November','Desember']
-                        },
-                        yAxis:{
-                            title:{
-                                text:"Number"
-                            }
-                        },
-                        series:[{
-                            name:"New User",
-                            data:['1','1','1','1','1','1','1','100','1','1','1','100'
-                            ]
-                        }],
-                    });
+                    // var customerphp echo json_encode($customer);
+                    // Highcharts.chart('container',{
+                    //     chart:{
+                    //         type:'column'
+                    //     },
+                    //     title :{
+                    //         text:'Laporan Penjualan'
+                    //     },
+                    //     xAxis:{
+                    //         categories: 
+                    //         ['January', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus','September','Oktober','November','Desember']
+                    //     },
+                    //     yAxis:{
+                    //         title:{
+                    //             text:"Number"
+                    //         }
+                    //     },
+                    //     series:[{
+                    //         name:"New User",
+                    //         data:['1','1','1','1','1','1','1','100','1','1','1','100'
+                    //         ]
+                    //     }],
+                    // });
                 </script>
 
                </div>
@@ -104,6 +104,15 @@
 </div>
 </div>
 </div>
+<script src="{{ asset('template') }}/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="{{ asset('template') }}/assets/vendor/aos/aos.js"></script>
+<script src="{{ asset('template') }}/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="{{ asset('template') }}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="{{ asset('template') }}/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="{{ asset('template') }}/assets/vendor/php-email-form/validate.js"></script>
+
+ <!-- Template Main JS File -->
+ <script src="{{ asset('template') }}/assets/js/main.js"></script>
 @endsection
 
 

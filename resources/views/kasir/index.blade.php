@@ -18,15 +18,6 @@
             <div class="row">
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
                 <div class="card card-rounded ">
-                    {{-- <div id="message" style="display: none" class="alert-success"><b>Sukses!</b> Profil Berhasil di update
-                    <button></button>
-                    </div> --}}
-                    <div style="display:none" id="message">
-                        <strong>Sukses!</strong> Akun Berhasil di update
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
                 <div style="background-color:#0c4e68" class="card-header text-white">
                     <h4 style="width:200px" > <i class="fa fa-cubes"></i> Daftar Menu</h4>
                 </div>
@@ -61,19 +52,6 @@
             </div>
             <div class="modal-body">
                 <div id="page" class="p-2"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 500px;height: 500px">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="p-2">Berhasil</div>
-                <img src="{{asset('success.gif')}}" alt="" style="display:block; margin:auto;">
             </div>
         </div>
     </div>
@@ -181,8 +159,7 @@
                     if (response.success == 1) {
                         document.getElementById("erorr1").style.display = "block";
                     } else {
-                    nota(),
-                    transaksi()
+                    nota()
                     }
                 }
             });
@@ -195,6 +172,7 @@
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
+            transaksi()
         }
    </script>
 </body>
