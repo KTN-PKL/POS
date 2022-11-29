@@ -11,6 +11,7 @@ use App\Http\Controllers\c_kasir;
 use App\Http\Controllers\c_toko;
 use App\Http\Controllers\c_akuntansi;
 use App\Http\Controllers\c_keuangan;
+use App\Http\Controllers\c_order;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,19 @@ Route::controller(c_akuntansi::class)->group(function () {
     Route::get('/akuntansi/update/{id}', 'update')->name('akuntansi.update');
     Route::get('/akuntansi/delete/{id}', 'delete')->name('akuntansi.delete');
     Route::get('/akuntansi/destroy/{id}', 'destroy')->name('akuntansi.destroy');
+});
+
+Route::controller(c_order::class)->group(function () {
+    Route::get('/order', 'index')->name('order');
+    Route::get('/order/read', 'read')->name('order.read');
+    Route::get('/order/table', 'table')->name('order.table');
+    Route::get('/order/cari/{cari}', 'cari')->name('order.cari');
+    Route::get('/order/store', 'store')->name('order.store');
+    Route::get('/order/create', 'create')->name('order.create');
+    Route::get('/order/edit/{id}', 'edit')->name('order.edit');
+    Route::get('/order/update/{id}', 'update')->name('order.update');
+    Route::get('/order/delete/{id}', 'delete')->name('order.delete');
+    Route::get('/order/destroy/{id}', 'destroy')->name('order.destroy');
 });
 
 Route::controller(c_keuangan::class)->group(function () {

@@ -158,7 +158,12 @@
                 success: function(response) {
                     if (response.success == 1) {
                         document.getElementById("erorr1").style.display = "block";
-                    } else {
+                    }
+                    if (response.success1 == 1) {
+                        document.getElementById("erorr2").style.display = "block";
+                    }
+                    if (response.success == 1 || response.success1 == 1) {}
+                    else {
                     nota()
                     }
                 }

@@ -30,15 +30,23 @@
     <div class="row">
         <div class="col-md-3">{{ $item->item }}</div>
         <div class="col-md-3">{{ $item->qty }}</div>
-        <div class="col-md-3">{{ $item->jual }}</div>
-        <div class="col-md-3">{{ $item->subtotal }}</div>
+        @php
+                $jual = number_format($item->jual,0,",",".");
+                $subtotal = number_format($item->subtotal,0,",",".");
+        @endphp
+        <div class="col-md-3">Rp.{{ $jual }},-</div>
+        <div class="col-md-3">Rp.{{ $subtotal}},-</div>
     </div>
     @endforeach
  </div>
  <div class="card-body" style="border-bottom:1px solid grey">
+    @php
+                $total = number_format($transaksi->total,0,",",".");
+                $grandtotal = number_format($transaksi->grandtotal,0,",",".");
+        @endphp
     <div class="row">
         <div class="col-md-3 offset-md-6">Total</div>
-        <div class="col-md-3">{{ $transaksi->total }}</div>
+        <div class="col-md-3">Rp.{{ $total }},-</div>
     </div>
     @if ($pengaturan->tdiskonpersen == "enable")
          
@@ -46,7 +54,8 @@
         <div class="col-md-3 offset-md-6">Discount {{ $transaksi->discountrate }}%</div>
         <div class="col-md-3">@php
             $d = ($transaksi->discountrate / 100) * $transaksi->total;
-            echo $d;
+            $di = number_format($d,0,",",".");
+            echo "Rp.".$di.",-";
         @endphp</div>
     </div>
     @endif
@@ -55,25 +64,26 @@
         <div class="col-md-3 offset-md-6">Pajak {{ $transaksi->pajakrate }}%</div>
         <div class="col-md-3">@php
             $d = ($transaksi->pajakrate / 100) * $transaksi->total;
-            echo $d;
+            $di = number_format($d,0,",",".");
+            echo "Rp.".$di.",-";
         @endphp</div>
     </div>  
     @endif
     @if ($pengaturan->tdiskonrp == "enable")
     <div class="row">
         <div class="col-md-3 offset-md-6">Discount</div>
-        <div class="col-md-3">{{ $transaksi->discount }}</div>
+        <div class="col-md-3">Rp.{{ $transaksi->discount }},-</div>
     </div>  
     @endif
     @if ($pengaturan->tpajakrp == "enable")
     <div class="row">
         <div class="col-md-3 offset-md-6">Pajak</div>
-        <div class="col-md-3">{{ $transaksi->pajak }}</div>
+        <div class="col-md-3">Rp.{{ $transaksi->pajak }},-</div>
     </div>
     @endif
     <div class="row">
         <div class="col-md-3 offset-md-6">Grand Total</div>
-        <div class="col-md-3">{{ $transaksi->grandtotal }}</div>
+        <div class="col-md-3">Rp.{{ $grandtotal }},-</div>
     </div>
     @if ($transaksi->status == 1)
     <div class="row">

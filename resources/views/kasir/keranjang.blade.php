@@ -39,7 +39,7 @@
                             </td> 
                             <td>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" id="nama1" aria-describedby="basic-addon2" required>
+                                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" id="nama1" aria-describedby="basic-addon2" onchange="noeror()" required>
                                   </div>
                                   <small style="display: none" class="text-danger" id="erorr1">Atas Nama Harus Diisi!</small>
                             </td> 
@@ -64,6 +64,9 @@
            barang(),
            hitung()
        });
+    function noeror(){
+        document.getElementById("erorr1").style.display = "none";
+    }
     function barang(){
         var id = $("#id").val();
         $.get("{{ url('kasir/keranjang') }}/" + id, {}, function(data, status) {

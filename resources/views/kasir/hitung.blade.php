@@ -10,6 +10,7 @@
               <option value="Lunas">Lunas</option>
               <option value="Bayar Nanti">Bayar Nanti</option>
             </select>
+            <small style="display: none" class="text-danger" id="erorr2">Status Pembayaran Harus Dipilih!</small>
         </td> 
     </tr>
     <tr> 
@@ -25,7 +26,20 @@
             </select>
         </td> 
     </tr>
-    <tr id="total"></tr>
+    <tr>
+        <td>
+            <label for="FirstName">TOTAL BAYAR</label>
+            <small class="text-danger"></small>
+        </td> 
+        <td>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rp</span>
+                </div>
+                <input type="text" id="total1" class="form-control" readonly>   
+            </div>
+        </td> 
+    </tr>
     @if ($pengaturan->tdiskonpersen == "enable")
     <tr> 
         <td>
@@ -98,7 +112,20 @@
     </tr>
     @endif
     
-    <tr id="grandtotal"></tr>
+    <tr>
+        <td>
+            <label for="FirstName">GRAND TOTAL</label>
+            <small class="text-danger"></small>
+            </td> 
+            <td>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp</span>
+                    </div>
+                    <input type="text" id="grandtotal1" class="form-control" aria-describedby="basic-addon2" readonly>
+                  </div>
+            </td> 
+    </tr>
 </table>
 <div id="bayar"></div>
 
@@ -111,10 +138,9 @@
     {
         var id = $("#id").val();
         $.get("{{ url('kasir/total') }}/" + id, {}, function(data, status) {
-               $("#total").html(data);  
+               $("#total1").val(data);  
                grandtotal()
         });
-       
     }
 
     function grandtotal()
@@ -135,7 +161,7 @@
                 "pajak": pajak,
                 },
                 success: function(data) {
-                    $("#grandtotal").html(data); 
+                    $("#grandtotal1").val(data); 
                     bayar()
                 }
             });
@@ -180,6 +206,7 @@
         } else {
             $("#bayar").html("")
         }
+        document.getElementById("erorr2").style.display = "none";
         
     }
     function rupiah(id){

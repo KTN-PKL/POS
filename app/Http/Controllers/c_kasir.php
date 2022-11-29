@@ -101,10 +101,9 @@ class c_kasir extends Controller
 
     public function total($id)
     {
-        $data = [
-            'total' => $this->keranjang->total($id),
-        ];
-        return view('kasir.total', $data);
+        $total = $this->keranjang->total($id);
+        $isi = number_format($total,0,",",".");
+        return $isi;
     }
 
     public function transaksi()
@@ -194,10 +193,8 @@ class c_kasir extends Controller
         $d = (int) str_replace(".","",$request->discount);
         $p = (int) str_replace(".","",$request->pajak);
         $gt = $t - $dr + $pr - $d + $p;
-        $data = [
-            'grandtotal' => $gt,
-        ];
-        return view('kasir.grandtotal', $data);
+        $isi = number_format($gt,0,",",".");
+        return $isi;
     }
 
     public function kembalian(Request $request)
@@ -233,13 +230,22 @@ class c_kasir extends Controller
     {
         if ($request->atasnama ==null) {
             $data['success'] = 1;
+        } 
+        if ($request->atasnama ==null) {
+            $data['success1'] = 1;
+        } 
+        if ($request->atasnama ==null || $request->atasnama ==null) {
             return response()->json($data);
-        } else {
+        }else{
+            $t = (int) str_replace(".","",$request->total);
+            $gt = (int) str_replace(".","",$request->grandtotal);
+            date_default_timezone_set("Asia/Jakarta");
+                $d = date("Y-m-d H:i:s");
         $data = [
-            'total' => $request->total,
+            'total' => $t,
             'id_customer' => $request->id_customer,
             'atasnama' => $request->atasnama,
-            'grandtotal' => $request->grandtotal,
+            'grandtotal' => $gt,
             'discountrate' => $request->discountrate,
             'pajakrate' => $request->pajakrate,
             'discount' => $request->discount,
@@ -248,6 +254,7 @@ class c_kasir extends Controller
             'order' => $request->order,
             'bayar' => $request->bayar,
             'kembali' => $request->kembali,
+            'waktut' => $d,
         ];
         $this->transaksi->updateData($request->id_transaksi, $data);
         $this->transaksi->genid();
