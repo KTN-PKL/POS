@@ -6,6 +6,7 @@
         <th>Customer</th>
         <th>Kasir</th>
         <th>Grandtotal</th>
+        <th>Tanggal</th>
         <th>Status</th>
         <th>Order</th>
         <th>Action</th>
@@ -21,11 +22,20 @@
             @endphp</td>
             <td>{{ $item->id_transaksi }}</td>
             <td>{{ $item->atasnama }}</td>
-            <td>{{ $item->id_customer }}</td>
-            <td>kosong</td>
+            <td>{{ $item->nama }}</td>
+            <td>{{ $item->kasir }}</td>
+            <td>@php
+                $grandtotal = number_format($item->grandtotal,0,",",".");
+                echo "Rp.".$grandtotal.",-";
+            @endphp</td>
+            <td>{{ $item->status }}</td>
+            <td>{{ $item->order }}</td>
             <td>
-                <button style="background-color: #0c4e68" class="btn text-white btn-sm" onClick="edit({{ $item->id_transaksi }})">Edit</button>
-                <button class="btn btn-danger btn-sm" onClick="hapus({{ $item->id_transaksi }})">Delete</button>
+                <span class="btn btn-outline-primary btn-sm"><i class="fa fa-eye"></i></span>
+                @if ($item->status == "Bayar Nanti")
+                <span class="btn btn-outline-success btn-sm"><i class="fa fa-money"></i></span>
+                @endif
+                <span class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></span>
             </td>
         </tr>
     @endforeach

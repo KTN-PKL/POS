@@ -13,7 +13,7 @@ class transaksi extends Model
 
     public function allData()
     {
-        return DB::table('transaksis')->get();
+        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->get();
     }
     
     public function transaksiDaata($id_transaksi)
