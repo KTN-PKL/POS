@@ -120,7 +120,7 @@ class c_laporan extends Controller
         $id_transaksi = $huruf . sprintf("%03s", $id);
         $data = [
             'transaksi' => $this->transaksi->transaksiDaata($id_transaksi),
-            'keranjang' => $this->keranjang->Data($id),
+            'keranjang' => $this->keranjang->Data($id_transaksi),
 
         ];
         return view('laporan.edit', $data);

@@ -22,7 +22,7 @@
             @endphp</td>
             <td>{{ $laporan->id_transaksi }}</td>
             <td>{{ $laporan->atasnama }}</td>
-            <td>{{$laporan->nama}}</td>
+            <td>{{$laporan->atasnama}}</td>
             <td>{{$laporan->kasir}}</td>
             <td>{{$laporan->waktut}}</td>
             <td>

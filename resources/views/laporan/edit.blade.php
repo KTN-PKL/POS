@@ -6,27 +6,33 @@
                 <table class="table table-striped">
                     <tr>        
                         <td>No BON</td>
-                        <td>TRS001</td>
+                        <td>{{$transaksi->id_transaksi}}</td>
                     </tr>
                     <tr>        
                         <td>Customer</td>
-                        <td>Customer 1</td>
+                        <td>{{$transaksi->atasnama}}</td>
                     </tr>
                     <tr>        
                         <td>Atas Nama</td>
-                        <td>Customer 1</td>
+                        <td>{{$transaksi->atasnama}}</td>
                     </tr>
                     <tr>
                         <td>Status Pembayaran</td>
-                        <td>SSSS</td>
+                        <td>
+                            @if($transaksi->status == "Lunas")
+                            <span style="color: green"><i class="fa fa-check"></i> {{$transaksi->status}}</span>
+                        @else
+                            <span style="color: red"><i class="fa fa-info-circle"></i> {{$transaksi->status}}</span>
+                        @endif
+                        </td>
                     </tr>
                     <tr>
                         <td>Jenis Order</td>
-                        <td>ssss</td>
+                        <td><span style="color: green"><i class="fa fa-check"></i> {{$transaksi->order}}</span></td>
                     </tr>
                     <tr>
                         <td>Tanggal dan Waktu</td>
-                        <td>SSSSS</td>
+                        <td>{{$transaksi->waktut}}</td>
                     </tr>
                 </table>
             </div>
@@ -41,11 +47,25 @@
                     <th>Nama Item</th>
                     <th>Qty</th>
                     <th>Subtotal</th>
-                   
+                    @php
+                    $i = 0;
+                    @endphp
+                    @foreach ($keranjang as $item)
                     <tr>
-                        <td>{{$transaksi->id_transaksi}}</td>
-                       <td>ss</td>
+                        <td>
+                            @php
+                             $i = $i+1;
+                            echo $i;
+                            @endphp
+                        </td>
+                       <td>{{$item->id_item}}</td>
+                       <td>{{$item->id_kategori}}</td>
+                       <td>{{$item->item}}</td>
+                       <td>{{$item->qty}}</td>
+                       <td>{{$item->subtotal}}</td>
+                      
                     </tr>
+                    @endforeach
                 </table>
 
             </div>
