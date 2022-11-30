@@ -19,7 +19,7 @@
         table()
     });
     function table() {
-            $.get("{{ url('kategori/table') }}", {}, function(data, status) {
+            $.get("{{ url('laporan/table') }}", {}, function(data, status) {
                 $("#table").html(data);
             });
         }
@@ -28,7 +28,7 @@
             if (cari == "") {
                 table()
             } else {
-                $.get("{{ url('kategori/cari') }}/" + cari, {}, function(data, status) {
+                $.get("{{ url('laporan/cari') }}/" + cari, {}, function(data, status) {
                 $("#table").html(data);
             });
             }

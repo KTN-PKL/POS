@@ -13,11 +13,11 @@
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div style="margin-left: 1em;margin-right:1em;" class="mt-5">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <br>
-                <button class="btn btn-success" onClick="create()"> <i class="fa fa-plus"></i> <b>Tambah Kategori</b></button>
+                <button class="btn btn-success" onClick="create()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
@@ -25,7 +25,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -57,37 +57,25 @@
         });
         // Read Database
         function read() {
-            $.get("{{ url('kategori/read') }}", {}, function(data, status) {
+            $.get("{{ url('laporan/read') }}", {}, function(data, status) {
                 $("#read").html(data);
             });
         }
         // Untuk modal halaman create
         function create() {
-            $.get("{{ route('kategori.create') }}", {}, function(data, status) {
-                $("#exampleModalLabel").html('Tambah Kategori')
+            $.get("{{ route('laporan.create') }}", {}, function(data, status) {
+                $("#exampleModalLabel").html('Tambah laporan')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
         }
 
-        // untuk proses create data
-        function store() {
-            var kategori = $("#kategori").val();
-            $.ajax({
-                type: "get",
-                url: "{{ url('kategori/store') }}",
-                data: "kategori=" + kategori,
-                success: function(data) {
-                    $(".btn-close").click();
-                    read()
-                }
-            });
-        }
+        
 
         // Untuk modal halaman edit show
         function edit(id) {
-            $.get("{{ url('kategori/edit') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Edit Product')
+            $.get("{{ url('laporan/edit') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('Detail Penjualan')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
@@ -96,7 +84,7 @@
         function hapus(id) {
             Swal.fire({
             title: 'Apakah Anda Yakin?',
-            text: "Anda Ingin Menghapus Kategori ",
+            text: "Anda Ingin Menghapus laporan ",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -108,7 +96,7 @@
                 destroy(id)
                 Swal.fire({
                 title: 'Terhapus',
-                text: "Anda Telah Menghapus Kategori ",
+                text: "Anda Telah Menghapus laporan ",
                 type: 'success'
                 })}
                 })
@@ -116,11 +104,11 @@
 
         // untuk proses update data
         function update(id) {
-            var kategori = $("#kategori").val();
+            var laporan = $("#laporan").val();
             $.ajax({
                 type: "get",
-                url: "{{ url('kategori/update') }}/" + id,
-                data: "kategori=" + kategori,
+                url: "{{ url('laporan/update') }}/" + id,
+                data: "laporan=" + laporan,
                 success: function(data) {
                     $(".btn-close").click();
                     read()
@@ -135,7 +123,7 @@
         function destroy(id) {
             $.ajax({
                 type: "get",
-                url: "{{ url('kategori/destroy') }}/" + id,
+                url: "{{ url('laporan/destroy') }}/" + id,
                 success: function(data) {
                     $(".btn-close").click();
                     read()
