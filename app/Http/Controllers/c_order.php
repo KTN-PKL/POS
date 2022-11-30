@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\transaksi;
 
 class c_order extends Controller
 {
     public function __construct()
     {
         $this->order = new order();
+        $this->transaksi = new transaksi();
     }
 
     /**
@@ -30,7 +32,7 @@ class c_order extends Controller
     public function table()
     {
         $data = [
-            'order' => $this->order->allData(),
+            'transaksi' => $this->transaksi->allData(),
         ];
         return view('order.table', $data);
     }

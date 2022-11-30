@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="width: 1100px">
     <div style="background-color:#0c4e68" class="card-header">
         <h5 class="text-white" > <i class="fa fa-tag"></i> <b>Daftar Order</b></h5>
     </div>
@@ -19,7 +19,7 @@
         table()
     });
     function table() {
-            $.get("{{ url('akuntansi/table') }}", {}, function(data, status) {
+            $.get("{{ url('order/table') }}", {}, function(data, status) {
                 $("#table").html(data);
             });
         }

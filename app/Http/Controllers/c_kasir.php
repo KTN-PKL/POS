@@ -11,6 +11,7 @@ use App\Models\transaksi;
 use App\Models\customer;
 use App\Models\pengaturan;
 use App\Models\toko;
+use Auth;
 
 class c_kasir extends Controller
 {
@@ -241,6 +242,7 @@ class c_kasir extends Controller
             $gt = (int) str_replace(".","",$request->grandtotal);
             date_default_timezone_set("Asia/Jakarta");
                 $d = date("Y-m-d H:i:s");
+            $kasir = Auth::user()->name;
         $data = [
             'total' => $t,
             'id_customer' => $request->id_customer,
@@ -255,6 +257,8 @@ class c_kasir extends Controller
             'bayar' => $request->bayar,
             'kembali' => $request->kembali,
             'waktut' => $d,
+            'kasir' => $kasir,
+            'dikirim' => "ya",
         ];
         $this->transaksi->updateData($request->id_transaksi, $data);
         $this->transaksi->genid();

@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('order')->nullable();
             $table->string('bayar')->nullable();
             $table->string('kembali')->nullable();
+            $table->string('kasir')->nullable();
+            $table->string('dikirim')->nullable();
             $table->timestamp('waktut')->nullable();
             $table->timestamps();
         });

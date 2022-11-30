@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 class transaksi extends Model
 {
     use HasFactory;
+
+    public function allData()
+    {
+        return DB::table('transaksis')->get();
+    }
     
     public function transaksiDaata($id_transaksi)
     {
