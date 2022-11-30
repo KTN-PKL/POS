@@ -16,25 +16,37 @@
     @endphp
     @foreach ($transaksi as $laporan)
         <tr>
-            @if($laporan->dikirim <> null)
             <td>@php
                 $i = $i+1;
                 echo $i;
             @endphp</td>
             <td>{{ $laporan->id_transaksi }}</td>
             <td>{{ $laporan->atasnama }}</td>
-            <td>Admin</td>
-            <td>Admin</td>
+            <td>{{$laporan->nama}}</td>
+            <td>{{$laporan->kasir}}</td>
             <td>{{$laporan->waktut}}</td>
-            <td>{{$laporan->order}}</td>
-            <td>{{$laporan->status}}</td>
-            <td>{{$laporan->grandtotal}}</td>
             <td>
-                <a href="#" class="btn btn-outline-primary"><i class="fa fa-eye" ></i></a>
+                @if($laporan->order == "Ditempat")
+                <span class="badge badge-primary"><i class="fa fa-home"></i> {{$laporan->order}}</span>
+                @elseif($laporan->order == "Booking")
+                <span class="badge badge-warning"><i class="fa fa-ticket-alt"></i> {{$laporan->order}}</span>
+                @else
+                <span class="badge badge-success"><i class="fa fa-motorcycle"></i> {{$laporan->order}}</span>
+                @endif
             </td>
-            @endif
-                {{-- <button style="background-color: #0c4e68" class="btn text-white" onClick="edit({{ $item->id_kategori }})">Edit</button>
-                <button class="btn btn-danger" onClick="hapus({{ $item->id_kategori }})">Delete</button> --}}
+            <td>
+                @if($laporan->status == "Lunas")
+                <span class="badge badge-success"><i class="fa fa-check"></i> {{$laporan->status}}</span>
+                @else
+                <span class="badge badge-danger"><i class="fa fa-info-circle"></i> {{$laporan->status}}</span>  
+                @endif
+            </td>
+            <td>Rp. {{$laporan->grandtotal}}</td>
+            <td>
+                @php
+                     $urutan = (int) substr($laporan->id_transaksi, 3, 3);
+                @endphp
+                <a onClick="edit({{ $urutan }})" class="btn btn-outline-primary"><i class="fa fa-eye" ></i></a>
             </td>
         </tr>
     @endforeach

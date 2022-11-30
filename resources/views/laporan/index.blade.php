@@ -25,7 +25,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -70,24 +70,12 @@
             });
         }
 
-        // untuk proses create data
-        function store() {
-            var laporan = $("#laporan").val();
-            $.ajax({
-                type: "get",
-                url: "{{ url('laporan/store') }}",
-                data: "laporan=" + laporan,
-                success: function(data) {
-                    $(".btn-close").click();
-                    read()
-                }
-            });
-        }
+        
 
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('laporan/edit') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Edit Product')
+                $("#exampleModalLabel").html('Detail Penjualan')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });

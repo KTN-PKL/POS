@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\transaksi;
+use App\Models\keranjang;
 
 
 
@@ -12,6 +13,7 @@ class c_laporan extends Controller
     public function __construct()
     {
         $this->transaksi = new transaksi();
+        $this->keranjang = new keranjang();
     }
 
     /**
@@ -114,10 +116,14 @@ class c_laporan extends Controller
      */
     public function edit($id)
     {
+        $huruf = "TRS";
+        $id_transaksi = $huruf . sprintf("%03s", $id);
         $data = [
-            'kategori' => $this->kategori->detailData($id),
+            'transaksi' => $this->transaksi->transaksiDaata($id_transaksi),
+            'keranjang' => $this->keranjang->Data($id),
+
         ];
-        return view('kategori.edit', $data);
+        return view('laporan.edit', $data);
     }
 
     /**
