@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\kategori;
+use App\Models\transaksi;
 
 
 
-class c_kategori extends Controller
+class c_laporan extends Controller
 {
     public function __construct()
     {
-        $this->kategori = new kategori();
+        $this->transaksi = new transaksi();
     }
 
     /**
@@ -21,29 +21,29 @@ class c_kategori extends Controller
      */
     public function index()
     {
-        return view('kategori.index');
+        return view('laporan.index');
     }
 
     public function read()
     {
-        return view('kategori.read');
+        return view('laporan.read');
     }
 
     public function table()
     {
         $data = [
-            'kategori' => $this->kategori->allData(),
+            'transaksi' => $this->transaksi->allData(),
         ];
-        return view('kategori.table', $data);
+        return view('laporan.table', $data);
     }
 
     public function cari($cari)
     {
         $cari = explode(" " , $cari);
             $data = [
-                'kategori' => $this->kategori->cariData($cari),
+                'transaksi' => $this->transaksi->cariData($cari),
             ];
-        return view('kategori.table', $data);
+        return view('laporan.table', $data);
     }
     /**
      * Show the form for creating a new resource.
@@ -61,36 +61,36 @@ class c_kategori extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $test = $this->kategori->jumlahData();
-        if ($test <> 0) {
-            $cek = $this->kategori->allData();
-            foreach ($cek as $ceks) {
-               if ($ceks->kategori == $request->kategori) {
-                   $a = 2;
-                   break;
-               } else {
-                   $a = 1;
-               }
-            }
-               if ($a == 1) {
-                $data = [
-                    'kategori' => $request->kategori,
-                ];
-                $this->kategori->addData($data);
-               }
-        } else {
-        $a = 1;
-        $data = [
-            'kategori' => $request->kategori,
-        ];
-        $this->kategori->addData($data);
-        };
+    // public function store(Request $request)
+    // {
+    //     $test = $this->kategori->jumlahData();
+    //     if ($test <> 0) {
+    //         $cek = $this->kategori->allData();
+    //         foreach ($cek as $ceks) {
+    //            if ($ceks->kategori == $request->kategori) {
+    //                $a = 2;
+    //                break;
+    //            } else {
+    //                $a = 1;
+    //            }
+    //         }
+    //            if ($a == 1) {
+    //             $data = [
+    //                 'kategori' => $request->kategori,
+    //             ];
+    //             $this->kategori->addData($data);
+    //            }
+    //     } else {
+    //     $a = 1;
+    //     $data = [
+    //         'kategori' => $request->kategori,
+    //     ];
+    //     $this->kategori->addData($data);
+    //     };
 
-        $data = $a;
-        return response()->json($data);
-    }
+    //     $data = $a;
+    //     return response()->json($data);
+    // }
 
     /**
      * Display the specified resource.
@@ -98,13 +98,13 @@ class c_kategori extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
-    {
-        $data = [
-            'kategori' => $this->kategori->detailData($id),
-        ];
-        return view('kategori.delete', $data);
-    }
+    // public function delete($id)
+    // {
+    //     $data = [
+    //         'kategori' => $this->kategori->detailData($id),
+    //     ];
+    //     return view('kategori.delete', $data);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -127,22 +127,22 @@ class c_kategori extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $data = [
-            'kategori' => $request->kategori,
-        ];
-        $this->kategori->editData($id, $data);
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     $data = [
+    //         'kategori' => $request->kategori,
+    //     ];
+    //     $this->kategori->editData($id, $data);
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $this->kategori->deleteData($id);
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy($id)
+    // {
+    //     $this->kategori->deleteData($id);
+    // }
 }
