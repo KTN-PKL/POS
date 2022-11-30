@@ -167,6 +167,8 @@ class c_order extends Controller
      */
     public function destroy($id)
     {
-        $this->order->deleteData($id);
+        $huruf = "TRS";
+        $id_transaksi = $huruf . sprintf("%03s", $id);
+        $this->order->deleteData($id_transaksi);
     }
 }

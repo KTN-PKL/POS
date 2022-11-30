@@ -83,6 +83,6 @@ class item extends Model
     }
     public function deleteData($id_item)
     {
-        return DB::table('items')->where('id_item', $id_item)->delete();
+        DB::table('items')->where('id_item', $id_item)->delete();
     }
 }

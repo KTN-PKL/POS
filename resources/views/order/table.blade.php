@@ -27,7 +27,9 @@
             <td>@php
                 $grandtotal = number_format($item->grandtotal,0,",",".");
                 echo "Rp.".$grandtotal.",-";
+                $d = strtotime($item->waktut);
             @endphp</td>
+            <td>{{ date("d-m-Y", $d) }}</td>
             <td>{{ $item->status }}</td>
             <td>{{ $item->order }}</td>
             <td>
@@ -35,7 +37,11 @@
                 @if ($item->status == "Bayar Nanti")
                 <span class="btn btn-outline-success btn-sm"><i class="fa fa-money"></i></span>
                 @endif
-                <span class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></span>
+                @php
+                    $kode = $item->id_transaksi;
+                    $urutan = (int) substr($kode, 3, 3);
+                @endphp
+                <span class="btn btn-outline-danger btn-sm" onclick="hapus({{ $urutan }})"><i class="fa fa-trash"></i></span>
             </td>
         </tr>
     @endforeach

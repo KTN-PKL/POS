@@ -140,7 +140,7 @@
         function hapus(id) {
             Swal.fire({
             title: 'Apakah Anda Yakin?',
-            text: "Anda Ingin Menghapus akuntansi ",
+            text: "Anda Ingin Menghapus Aktivitas Keuangan? ",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',

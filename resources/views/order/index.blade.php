@@ -16,8 +16,6 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8">
-                <br>
-                <button class="btn btn-success" onClick="create()"> <i class="fa fa-plus"></i> <b>Tambah Akun</b></button>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
@@ -113,7 +111,7 @@
 
         // Untuk modal halaman edit show
         function edit(id) {
-            $.get("{{ url('akuntansi/edit') }}/" + id, {}, function(data, status) {
+            $.get("{{ url('order/edit') }}/" + id, {}, function(data, status) {
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -123,7 +121,7 @@
         function hapus(id) {
             Swal.fire({
             title: 'Apakah Anda Yakin?',
-            text: "Anda Ingin Menghapus akuntansi ",
+            text: "Anda Ingin Menghapus Transaksi? ",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -135,7 +133,7 @@
                 destroy(id)
                 Swal.fire({
                 title: 'Terhapus',
-                text: "Anda Telah Menghapus akuntansi ",
+                text: "Anda Telah Menghapus Transaksi ",
                 type: 'success'
                 })}
                 })
@@ -182,9 +180,8 @@
         function destroy(id) {
             $.ajax({
                 type: "get",
-                url: "{{ url('akuntansi/destroy') }}/" + id,
+                url: "{{ url('order/destroy') }}/" + id,
                 success: function(data) {
-                    $(".btn-close").click();
                     read()
                 }
             });
