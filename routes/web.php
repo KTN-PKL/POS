@@ -12,6 +12,7 @@ use App\Http\Controllers\c_toko;
 use App\Http\Controllers\c_akuntansi;
 use App\Http\Controllers\c_keuangan;
 use App\Http\Controllers\c_order;
+use App\Http\Controllers\c_laporan;
 
 /*
 |--------------------------------------------------------------------------
@@ -174,6 +175,19 @@ Route::controller(c_toko::class)->group(function () {
     Route::post('/toko/updatepengaturan/{id}', 'updatePengaturan')->name('toko.updatepengaturan');
 
    
+});
+
+Route::controller(c_laporan::class)->group(function () {
+    Route::get('/laporan', 'index')->name('laporan');
+    Route::get('/laporan/read', 'read')->name('laporan.read');
+    Route::get('/laporan/table', 'table')->name('laporan.table');
+    Route::get('/laporan/cari/{cari}', 'cari')->name('laporan.cari');
+    Route::get('/laporan/store', 'store')->name('laporan.store');
+    Route::get('/laporan/create', 'create')->name('laporan.create');
+    Route::get('/laporan/edit/{id}', 'edit')->name('laporan.edit');
+    Route::get('/laporan/update/{id}', 'update')->name('laporan.update');
+    Route::get('/laporan/delete/{id}', 'delete')->name('laporan.delete');
+    Route::get('/laporan/destroy/{id}', 'destroy')->name('laporan.destroy');
 });
 
 
