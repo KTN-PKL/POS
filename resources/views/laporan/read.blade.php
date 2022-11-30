@@ -25,6 +25,7 @@
         }
     function cari() {
             var cari = $("#cari").val();
+       
             if (cari == "") {
                 table()
             } else {
@@ -33,4 +34,14 @@
             });
             }
         }
+        function cari2() {
+            var fromDate = $("#fromDate").val();
+            var toDate = $("#toDate").val();
+                $.get("{{ url('laporan/cari2') }}" , {}, function(data, status) {
+                $("#table").html(data);
+            });
+        }
+
+       
 </script>
+

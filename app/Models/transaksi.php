@@ -70,5 +70,10 @@ class transaksi extends Model
             })->get();
         }
     }
+
+    public function cariData2($fromDate, $toDate)
+    {
+        return DB::table('transaksis')->whereBetween('waktut',[$fromDate, $toDate])->get();
+    }
     
 }

@@ -24,7 +24,12 @@
             <td>{{ $laporan->atasnama }}</td>
             <td>{{$laporan->atasnama}}</td>
             <td>{{$laporan->kasir}}</td>
-            <td>{{$laporan->waktut}}</td>
+           
+            <td>
+                @php
+                $waktu = strtotime($laporan->waktut);
+                @endphp
+                {{ date("d-m-Y", $waktu) }}</td>
             <td>
                 @if($laporan->order == "Ditempat")
                 <span class="badge badge-primary"><i class="fa fa-home"></i> {{$laporan->order}}</span>
@@ -41,7 +46,12 @@
                 <span class="badge badge-danger"><i class="fa fa-info-circle"></i> {{$laporan->status}}</span>  
                 @endif
             </td>
-            <td>Rp. {{$laporan->grandtotal}}</td>
+            <td>
+            @php
+            $grandtotal = number_format($laporan->grandtotal,0,",",".");
+                echo "Rp.".$grandtotal.",-";
+            @endphp    
+            </td>
             <td>
                 @php
                      $urutan = (int) substr($laporan->id_transaksi, 3, 3);

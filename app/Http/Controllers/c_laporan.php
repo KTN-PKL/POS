@@ -47,6 +47,16 @@ class c_laporan extends Controller
             ];
         return view('laporan.table', $data);
     }
+
+    public function cari2(Request $request)
+    {
+            
+            $data = [
+                'transaksi' => $this->transaksi->cariData2($fromDate, $toDate),
+            ];
+            return $data;
+        return view('laporan.table', $data);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +64,7 @@ class c_laporan extends Controller
      */
     public function create()
     {
-        return view('kategori.create');
+        return view('laporan.create');
     }
 
     /**
