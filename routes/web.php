@@ -71,6 +71,7 @@ Route::controller(c_order::class)->group(function () {
     Route::get('/order/store', 'store')->name('order.store');
     Route::get('/order/create', 'create')->name('order.create');
     Route::get('/order/edit/{id}', 'edit')->name('order.edit');
+    Route::get('/order/show/{id}', 'show')->name('order.show');
     Route::get('/order/update/{id}', 'update')->name('order.update');
     Route::get('/order/delete/{id}', 'delete')->name('order.delete');
     Route::get('/order/destroy/{id}', 'destroy')->name('order.destroy');
