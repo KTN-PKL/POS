@@ -30,6 +30,11 @@ class transaksi extends Model
     {
         return DB::table('transaksis')->sum('grandtotal');
     }
+
+    public function jumlahDuitFilter($ex, $to)
+    {
+        return DB::table('transaksis')->whereBetween('waktut',[$ex, $to])->sum('grandtotal');
+    }
     
     public function transaksiDaata($id_transaksi)
     {

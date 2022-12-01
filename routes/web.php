@@ -114,6 +114,7 @@ Route::controller(c_customer::class)->group(function () {
     Route::post('/customer/store', 'store')->name('customer.store');
     Route::get('/customer/create', 'create')->name('customer.create');
     Route::get('/customer/edit/{id}', 'edit')->name('customer.edit');
+    Route::get('/customer/show/{id}', 'show')->name('customer.show');
     Route::get('/customer/delete/{id}', 'delete')->name('customer.delete');
     Route::post('/customer/update/{id}', 'update')->name('customer.update');
     Route::get('/customer/destroy/{id}', 'destroy')->name('customer.destroy');
