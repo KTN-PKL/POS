@@ -68,6 +68,7 @@ Route::controller(c_order::class)->group(function () {
     Route::get('/order/read', 'read')->name('order.read');
     Route::get('/order/table/{id}', 'table')->name('order.table');
     Route::get('/order/cari', 'cari')->name('order.cari');
+    Route::get('/order/tanggal', 'tanggal')->name('order.tanggal');
     Route::get('/order/store', 'store')->name('order.store');
     Route::get('/order/create', 'create')->name('order.create');
     Route::get('/order/edit/{id}', 'edit')->name('order.edit');

@@ -96,10 +96,21 @@ class c_order extends Controller
     {
         $id = $request->id;
         $cari = explode(" " , $request->cari);
-        
-        $cek = $this->transaksi->cariDatao($id, $cari);
+        switch ($id) {
+            case 'all':
+            $cek = $this->transaksi->cariData($cari);
+                break;
+
+            case 'bayarnanti':
+            $cek = $this->transaksi->cariDatab($cari);
+                break;
+            
+            default:
+            $cek = $this->transaksi->cariDatao($id, $cari);
+                break;
+        }
         $data = [
-            'item' => $cek,
+            'transaksi' => $cek,
         ];
         return view('order.table', $data);
     }

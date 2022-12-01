@@ -78,9 +78,9 @@ class transaksi extends Model
     {
         $j = count($cari);
         if ($j == 1) {
-            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->get();
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->get();
         } else { 
-            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
                 $j = count($cari);
                 $j = $j - 1;
                 for ($i=0; $i < $j;) { 
@@ -95,9 +95,9 @@ class transaksi extends Model
     {
         $j = count($cari);
         if ($j == 1) {
-            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->where('order', $id)->get();
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->where('order', $id)->get();
         } else { 
-            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
                 $j = count($cari);
                 $j = $j - 1;
                 for ($i=0; $i < $j;) { 
@@ -112,16 +112,16 @@ class transaksi extends Model
     {
         $j = count($cari);
         if ($j == 1) {
-            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->where('status', "Bayar Nanti")->get();
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->where('status', 'Bayar Nanti')->get();
         } else { 
-            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
                 $j = count($cari);
                 $j = $j - 1;
                 for ($i=0; $i < $j;) { 
                     $i = $i + 1;
                     $queri->orWhere('atasnama', 'like', '%'.$cari[$i].'%'); 
                 }
-            })->where('status', "Bayar Nanti")->get();
+            })->where('status', 'Bayar Nanti')->get();
         }
     }
 
