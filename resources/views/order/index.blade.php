@@ -139,43 +139,64 @@
                 })
         }
 
-        // untuk proses update data
-        function update(id) {
-            var akun = $("#akun").val();
-            var jenis = $("#jenis").val();
-            $.ajax({
+        function rupiah()
+        {
+            var bayar = $("#bayar").val();
+            var number_string = bayar.replace(/[^,\d]/g, '').toString(),
+	        split = number_string.split(','),
+	        sisa  = split[0].length % 3,
+	        rupiah  = split[0].substr(0, sisa),
+	        ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
+            if(ribuan){
+	    	separator = sisa ? '.' : '';
+		    rupiah += separator + ribuan.join('.');
+	        }
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            $("#bayar").val(rupiah)
+        }
+
+        function bayar(){
+        var gt = $("#grandtotal").val();
+        var bayar = $("#bayar").val();
+        $.ajax({
                 type: "get",
-                url: "{{ url('akuntansi/update') }}/" + id,
+                url: "{{ url('kasir/kembalian') }}",
                 data: {
-                    "akun": akun,
-                    "jenis": jenis,
+                "gt": gt,
+                "bayar": bayar,
                 },
-                success: function(response) {
-                    if (response.required1 == 2) {
-                        document.getElementById("required1").style.display = "block";
+                success: function(data) {
+                    $("#kembalian").val(data); 
+                }
+            });
+            rupiah()
+    }
+
+    function updated(id) {
+        var bayar = $("#bayar").val();
+        var kembalian = $("#kembalian").val(); 
+        $.ajax({
+                type: "get",
+                url: "{{ url('order/update') }}/" + id,
+                data: {
+                "kembalian": kembalian,
+                "bayar": bayar,
+                },
+                success: function(data) {
+                    if (data == 1) {
+                        document.getElementById("kurang").style.display = "block";
                     } else {
-                        document.getElementById("required1").style.display = "none";
-                        if (response.unique == 2) {
-                        document.getElementById("unique").style.display = "block";}
-                        else{
-                            document.getElementById("unique").style.display = "none"; 
-                        }
-                    }
-                    if (response.required1 == 1) {
-                        if (response.unique == 1) {
-                            $(".btn-close").click();
-                            read()
+                        $(".btn-close").click();
+                            table()
                             Swal.fire({
                             title: 'Berhasil',
-                            text: "Anda Telah Berhasil Mengedit Akun",
+                            text: "Anda Telah Berhasil Menambah Akun",
                             type: 'success'
                     }) 
                     }
-                    }
                 }
             });
-        }
-
+    }
         // untuk delete atau destroy data
         function destroy(id) {
             $.ajax({

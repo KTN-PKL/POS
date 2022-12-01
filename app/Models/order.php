@@ -14,4 +14,8 @@ class order extends Model
     {
         DB::table('transaksis')->where('id_transaksi', $id_transaksi)->delete();
     }
+    public function detailData($id_transaksi)
+    {
+        return DB::table('transaksis')->where('id_transaksi', $id_transaksi)->first();
+    }
 }

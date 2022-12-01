@@ -112,8 +112,10 @@ class c_order extends Controller
      */
     public function edit($id)
     {
+        $huruf = "TRS";
+        $id_transaksi = $huruf . sprintf("%03s", $id);
         $data = [
-            'order' => $this->order->detailData($id),
+            'transaksi' => $this->order->detailData($id_transaksi),
         ];
         return view('order.edit', $data);
     }
@@ -127,36 +129,18 @@ class c_order extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->akun <> null) {
-            $b = 1;
-            $test = $this->order->jumlahData();
-        if ($test <> 1) {
-            $cek = $this->order->exallData($id);
-            foreach ($cek as $ceks) {
-               if ($ceks->akun == $request->akun) {
-                   $a = 2;
-                   break;
-               } else {
-                   $a = 1;
-               }
-            }    
+        if ($request->kembalian >= 0) {
+            $huruf = "TRS";
+        $id_transaksi = $huruf . sprintf("%03s", $id);
+        $data = [
+            'bayar' => $request->bayar,
+            'kembali' => $request->kembalian,
+            'status' => "Lunas",
+        ];
+        $this->transaksi->updateData($id_transaksi, $data);
         } else {
-        $a = 1;
+            return 1;
         }
-        } else {$b = 2;}
-        if ($b == 1) {
-            if ($a == 1) {
-                $data = [
-                    'akun' => $request->akun,
-                    'jenis' => $request->jenis,
-                ];
-                $this->order->editData($id, $data);
-            }
-            $data['unique'] = $a;
-        }
-        $data['required1'] = $b;
-        return response()->json($data);
-        
     }
 
     /**

@@ -33,14 +33,14 @@
             <td>{{ $item->status }}</td>
             <td>{{ $item->order }}</td>
             <td>
+                @php
+                $kode = $item->id_transaksi;
+                $urutan = (int) substr($kode, 3, 3);
+            @endphp
                 <span class="btn btn-outline-primary btn-sm"><i class="fa fa-eye"></i></span>
                 @if ($item->status == "Bayar Nanti")
-                <span class="btn btn-outline-success btn-sm"><i class="fa fa-money"></i></span>
+                <span class="btn btn-outline-success btn-sm" onclick="edit({{ $urutan }})"><i class="fa fa-money"></i></span>
                 @endif
-                @php
-                    $kode = $item->id_transaksi;
-                    $urutan = (int) substr($kode, 3, 3);
-                @endphp
                 <span class="btn btn-outline-danger btn-sm" onclick="hapus({{ $urutan }})"><i class="fa fa-trash"></i></span>
             </td>
         </tr>
