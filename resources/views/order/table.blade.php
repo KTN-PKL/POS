@@ -30,7 +30,11 @@
                 $d = strtotime($item->waktut);
             @endphp</td>
             <td>{{ date("d-m-Y", $d) }}</td>
-            <td>{{ $item->status }}</td>
+            <td> @if($item->status == "Lunas")
+                <span class="badge badge-success"><i class="fa fa-check"></i> {{$item->status}}</span>
+                @else
+                <span class="badge badge-danger"><i class="fa fa-info-circle"></i> {{$item->status}}</span>  
+                @endif</td>
             <td> @if($item->order == "Ditempat")
                 <span class="badge badge-primary"><i class="fa fa-home"></i> {{$item->order}}</span>
                 @elseif($item->order == "Booking")
@@ -43,7 +47,7 @@
                 $kode = $item->id_transaksi;
                 $urutan = (int) substr($kode, 3, 3);
             @endphp
-                <span class="btn btn-outline-primary btn-sm"><i class="fa fa-eye"></i></span>
+                <span class="btn btn-outline-primary btn-sm" onclick="show({{ $urutan }})"><i class="fa fa-eye"></i></span>
                 @if ($item->status == "Bayar Nanti")
                 <span class="btn btn-outline-success btn-sm" onclick="edit({{ $urutan }})"><i class="fa fa-money"></i></span>
                 @endif

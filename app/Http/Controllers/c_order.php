@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\order;
 use App\Models\transaksi;
+use App\Models\keranjang;
 
 class c_order extends Controller
 {
     public function __construct()
     {
-        $this->order = new order();
+        $this->keranjang = new keranjang();
         $this->transaksi = new transaksi();
     }
 
@@ -19,9 +19,40 @@ class c_order extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index1()
     {
-        return view('order.index');
+        $data = [
+            'view' => "all",
+        ];
+        return view('order.index', $data);
+    }
+    public function index2()
+    {
+        $data = [
+            'view' => "booking",
+        ];
+        return view('order.index', $data);
+    }
+    public function index3()
+    {
+        $data = [
+            'view' => "ditempat",
+        ];
+        return view('order.index', $data);
+    }
+    public function index4()
+    {
+        $data = [
+            'view' => "delivery",
+        ];
+        return view('order.index', $data);
+    }
+    public function index5()
+    {
+        $data = [
+            'view' => "bayarnanti",
+        ];
+        return view('order.index', $data);
     }
 
     public function read()
@@ -31,7 +62,7 @@ class c_order extends Controller
 
     public function table($id)
     {
-        switch ($variable) {
+        switch ($id) {
             case 'all':
                 $data = [
                     'transaksi' => $this->transaksi->allData(),
@@ -80,55 +111,6 @@ class c_order extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        if ($request->akun <> null) {
-            $b = 1;
-            $test = $this->order->jumlahData();
-        if ($test <> 0) {
-            $cek = $this->order->allData();
-            foreach ($cek as $ceks) {
-               if ($ceks->akun == $request->akun) {
-                   $a = 2;
-                   break;
-               } else {
-                   $a = 1;
-               }
-            }    
-        } else {
-        $a = 1;
-        }
-        } else {$b = 2;}
-        if ($request->jenis <> null) {$c = 1;} else {$c = 2;}
-        if ($b == 1) {
-            if ($a == 1 && $c == 1) {
-                $data = [
-                    'akun' => $request->akun,
-                    'jenis' => $request->jenis,
-                ];
-                $this->order->addData($data);
-               }
-                $data['unique'] = $a;
-        }
-
-        $data['required1'] = $b;
-        $data['required2'] = $c;
-        return response()->json($data);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -139,7 +121,7 @@ class c_order extends Controller
         $huruf = "TRS";
         $id_transaksi = $huruf . sprintf("%03s", $id);
         $data = [
-            'transaksi' => $this->order->detailData($id_transaksi),
+            'transaksi' => $this->transaksi->detailData($id_transaksi),
         ];
         return view('order.edit', $data);
     }
@@ -177,6 +159,17 @@ class c_order extends Controller
     {
         $huruf = "TRS";
         $id_transaksi = $huruf . sprintf("%03s", $id);
-        $this->order->deleteData($id_transaksi);
+        $this->transaksi->deleteData($id_transaksi);
+    }
+
+    public function show($id)
+    {
+        $huruf = "TRS";
+        $id_transaksi = $huruf . sprintf("%03s", $id);
+        $data = [
+            'transaksi' => $this->transaksi->transaksiDaata($id_transaksi),
+            'keranjang' => $this->keranjang->Data($id_transaksi),
+        ];
+        return view('order.show', $data);
     }
 }

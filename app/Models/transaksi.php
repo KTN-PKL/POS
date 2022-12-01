@@ -16,6 +16,16 @@ class transaksi extends Model
         return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->get();
     }
 
+    public function orderData($data)
+    {
+        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('order', $data)->where('dikirim', 'ya')->get();
+    }
+
+    public function nantiData()
+    {
+        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('status', 'Bayar Nanti')->where('dikirim', 'ya')->get();
+    }
+
     public function jumlahDuit()
     {
         return DB::table('transaksis')->sum('grandtotal');
@@ -80,5 +90,12 @@ class transaksi extends Model
     {
         return DB::table('transaksis')->whereBetween('waktut',[$ex, $to])->get();
     }
-    
+    public function deleteData($id_transaksi)
+    {
+        DB::table('transaksis')->where('id_transaksi', $id_transaksi)->delete();
+    }
+    public function detailData($id_transaksi)
+    {
+        return DB::table('transaksis')->where('id_transaksi', $id_transaksi)->first();
+    }
 }

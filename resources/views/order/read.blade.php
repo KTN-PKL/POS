@@ -13,17 +13,13 @@
 </div>
 </div>
 
-@php
-    $cek = "hallo";
-@endphp
-<input type="text" id="cek" value="{{ $cek }}" hidden>
 <script>
      $(document).ready(function() {
         var id =  $("#cek").val();
         table(id)
     });
     function table(id) {
-            $.get("{{ url('order/table') }}", {}, function(data, status) {
+            $.get("{{ url('order/table') }}/"+id, {}, function(data, status) {
                 $("#table").html(data);
                 $("#cek2").html(id);
             });

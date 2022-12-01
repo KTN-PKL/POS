@@ -16,7 +16,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8">
-                <div id="cek2"></div>
+                <input type="text" id="cek" value="{{ $view }}" hidden>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
@@ -32,6 +32,19 @@
                 </div>
                 <div class="modal-body">
                     <div id="page" class="p-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="page1" class="p-2"></div>
                 </div>
             </div>
         </div>
@@ -116,6 +129,13 @@
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
+            });
+        }
+        function show(id) {
+            $.get("{{ url('order/show') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel1").html('Detail Penjualan')
+                $("#page1").html(data);
+                $("#exampleModal1").modal('show');
             });
         }
 
