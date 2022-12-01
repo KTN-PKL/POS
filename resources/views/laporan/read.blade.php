@@ -44,6 +44,10 @@
                     "ex": ex,
                     "to": to,
                 },
+                success: function(data) {
+                    $(".btn-close").click();
+                    $("#table").html(data);
+                }
             })
         }
 

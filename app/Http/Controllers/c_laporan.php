@@ -51,11 +51,15 @@ class c_laporan extends Controller
     
     public function carix(Request $request)
     {
-        return $request->to;
-            // $data = [
-            //     'transaksi' => $this->transaksi->cariData2($fromDate, $toDate),
-            // ];
-            // return $data;
+            $ex = $request->ex;
+            $to = $request->to;
+            $waktuex = ($ex." 00:00:00");
+            $waktuto = ($to." 23:59:59");
+           
+            $data = [
+                'transaksi' => $this->transaksi->cariData2($waktuex, $waktuto),
+            ];
+          
         return view('laporan.table', $data);
     }
     /**
