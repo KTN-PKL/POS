@@ -92,22 +92,16 @@ class c_order extends Controller
         return view('order.table', $data);
     }
 
-    public function cari($cari)
+    public function cari(Request $request)
     {
-        $cari = explode(" " , $cari);
-            $data = [
-                'order' => $this->order->cariData($cari),
-            ];
+        $id = $request->id;
+        $cari = explode(" " , $request->cari);
+        
+        $cek = $this->transaksi->cariDatao($id, $cari);
+        $data = [
+            'item' => $cek,
+        ];
         return view('order.table', $data);
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('order.create');
     }
 
     /**
