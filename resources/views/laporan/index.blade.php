@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <br>
                 <button class="btn btn-secondary" onClick="modalSearch()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
-                <button class="btn btn-success" onClick="create()"> <i class="fa fa-download"></i> <b>File Excel</b></button>
+                <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>File Excel</b></a>
 
                 <div id="read" class="mt-3"></div> 
             </div>
