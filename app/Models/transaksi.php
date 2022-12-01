@@ -91,6 +91,40 @@ class transaksi extends Model
         }
     }
 
+    public function cariDatao($id, $cari)
+    {
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->where('order', $id)->get();
+        } else { 
+            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('atasnama', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->where('order', $id)->get();
+        }
+    }
+
+    public function cariDatab($cari)
+    {
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->where('status', "Bayar Nanti")->get();
+        } else { 
+            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('atasnama', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->where('status', "Bayar Nanti")->get();
+        }
+    }
+
     public function cariData2($ex, $to)
     {
         return DB::table('transaksis')->whereBetween('waktut',[$ex, $to])->get();
