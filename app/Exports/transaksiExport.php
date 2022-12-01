@@ -13,20 +13,11 @@ class transaksiExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return transaksi::all();
+        return transaksi::all()->where('dikirim');
     }
 
-    public function headings():array
-    {
-        return[
-            'No BON',
-            'Total',
-            'Customer',
-            'Kasir',
-            'Tanggal',
-            'Jenis Order',
-            'Status',
-            'Grand Total',
-        ];
-    }
+    // public function headings():array
+    // {
+    //     return[]
+    // }
 }
