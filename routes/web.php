@@ -182,9 +182,9 @@ Route::controller(c_laporan::class)->group(function () {
     Route::get('/laporan/read', 'read')->name('laporan.read');
     Route::get('/laporan/table', 'table')->name('laporan.table');
     Route::get('/laporan/cari/{cari}', 'cari')->name('laporan.cari');
-    Route::get('/laporan/cari2', 'cari2')->name('laporan.cari2');
+    Route::get('/laporan/carix', 'carix')->name('laporan.carix');
     Route::get('/laporan/store', 'store')->name('laporan.store');
-    Route::get('/laporan/create', 'create')->name('laporan.create');
+    Route::get('/laporan/search', 'search')->name('laporan.search');
     Route::get('/laporan/edit/{id}', 'edit')->name('laporan.edit');
     Route::get('/laporan/update/{id}', 'update')->name('laporan.update');
     Route::get('/laporan/delete/{id}', 'delete')->name('laporan.delete');

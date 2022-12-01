@@ -48,13 +48,15 @@ class c_laporan extends Controller
         return view('laporan.table', $data);
     }
 
-    public function cari2(Request $request)
+    
+    public function carix(Request $request)
     {
-            
-            $data = [
-                'transaksi' => $this->transaksi->cariData2($fromDate, $toDate),
-            ];
-            return $data;
+            $data = $request->ex;
+            dd($data);
+            // $data = [
+            //     'transaksi' => $this->transaksi->cariData2($fromDate, $toDate),
+            // ];
+            // return $data;
         return view('laporan.table', $data);
     }
     /**
@@ -62,9 +64,9 @@ class c_laporan extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search()
     {
-        return view('laporan.create');
+        return view('laporan.search');
     }
 
     /**

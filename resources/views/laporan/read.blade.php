@@ -34,10 +34,9 @@
             });
             }
         }
-        function cari2() {
-            var fromDate = $("#fromDate").val();
-            var toDate = $("#toDate").val();
-                $.get("{{ url('laporan/cari2') }}" , {}, function(data, status) {
+        function carix() {
+            var ex = $("#ex").val();
+                $.get("{{ url('laporan/carix') }}", {}, function(data, status) {
                 $("#table").html(data);
             });
         }

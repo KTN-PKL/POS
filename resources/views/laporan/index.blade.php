@@ -79,12 +79,13 @@
         }
         // Untuk modal halaman create
         function modalSearch() {
-            $.get("{{ route('laporan.create') }}", {}, function(data, status) {
+            $.get("{{ route('laporan.search') }}", {}, function(data, status) {
                 $("#exampleModalLabel2").html('Pencarian Data')
                 $("#page2").html(data);
                 $("#exampleModal2").modal('show');
             });
         }
+        
 
         
 
