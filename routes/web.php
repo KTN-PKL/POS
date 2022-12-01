@@ -60,9 +60,9 @@ Route::controller(c_akuntansi::class)->group(function () {
 });
 
 Route::controller(c_order::class)->group(function () {
-    Route::get('/order', 'index')->name('order');
+    Route::get('/order/{id}', 'index')->name('order');
     Route::get('/order/read', 'read')->name('order.read');
-    Route::get('/order/table', 'table')->name('order.table');
+    Route::get('/order/table/{id}', 'table')->name('order.table');
     Route::get('/order/cari/{cari}', 'cari')->name('order.cari');
     Route::get('/order/store', 'store')->name('order.store');
     Route::get('/order/create', 'create')->name('order.create');

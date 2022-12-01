@@ -31,7 +31,13 @@
             @endphp</td>
             <td>{{ date("d-m-Y", $d) }}</td>
             <td>{{ $item->status }}</td>
-            <td>{{ $item->order }}</td>
+            <td> @if($item->order == "Ditempat")
+                <span class="badge badge-primary"><i class="fa fa-home"></i> {{$item->order}}</span>
+                @elseif($item->order == "Booking")
+                <span class="badge badge-warning"><i class="fa fa-ticket-alt"></i> {{$item->order}}</span>
+                @else
+                <span class="badge badge-success"><i class="fa fa-motorcycle"></i> {{$item->order}}</span>
+                @endif</td>
             <td>
                 @php
                 $kode = $item->id_transaksi;
