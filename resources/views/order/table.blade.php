@@ -30,7 +30,11 @@
                 $d = strtotime($item->waktut);
             @endphp</td>
             <td>{{ date("d-m-Y", $d) }}</td>
-            <td>{{ $item->status }}</td>
+            <td> @if($item->status == "Lunas")
+                <span class="badge badge-success"><i class="fa fa-check"></i> {{$item->status}}</span>
+                @else
+                <span class="badge badge-danger"><i class="fa fa-info-circle"></i> {{$item->status}}</span>  
+                @endif</td>
             <td> @if($item->order == "Ditempat")
                 <span class="badge badge-primary"><i class="fa fa-home"></i> {{$item->order}}</span>
                 @elseif($item->order == "Booking")

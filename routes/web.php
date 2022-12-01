@@ -60,7 +60,11 @@ Route::controller(c_akuntansi::class)->group(function () {
 });
 
 Route::controller(c_order::class)->group(function () {
-    Route::get('/order/{id}', 'index')->name('order');
+    Route::get('/order1', 'index1')->name('order1');
+    Route::get('/order2', 'index2')->name('order2');
+    Route::get('/order3', 'index3')->name('order3');
+    Route::get('/order4', 'index4')->name('order4');
+    Route::get('/order5', 'index5')->name('order5');
     Route::get('/order/read', 'read')->name('order.read');
     Route::get('/order/table/{id}', 'table')->name('order.table');
     Route::get('/order/cari/{cari}', 'cari')->name('order.cari');

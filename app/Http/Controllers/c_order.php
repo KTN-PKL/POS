@@ -19,9 +19,40 @@ class c_order extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index1()
     {
-        return view('order.index');
+        $data = [
+            'view' => "all",
+        ];
+        return view('order.index', $data);
+    }
+    public function index2()
+    {
+        $data = [
+            'view' => "booking",
+        ];
+        return view('order.index', $data);
+    }
+    public function index3()
+    {
+        $data = [
+            'view' => "ditempat",
+        ];
+        return view('order.index', $data);
+    }
+    public function index4()
+    {
+        $data = [
+            'view' => "delivery",
+        ];
+        return view('order.index', $data);
+    }
+    public function index5()
+    {
+        $data = [
+            'view' => "bayarnanti",
+        ];
+        return view('order.index', $data);
     }
 
     public function read()
@@ -31,7 +62,7 @@ class c_order extends Controller
 
     public function table($id)
     {
-        switch ($variable) {
+        switch ($id) {
             case 'all':
                 $data = [
                     'transaksi' => $this->transaksi->allData(),
