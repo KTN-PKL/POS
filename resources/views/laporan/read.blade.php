@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <div class="input-group col-md-4 offset-8">
-            <input onkeyup="cari()" id="cari" type="search" class="form-control input-sm" placeholder="Search Kategori" aria-label="Search" aria-describedby="search-addon" />     
+            <input onkeyup="cari()" id="cari" type="search" class="form-control input-sm" placeholder="Search Berdasarkan Nama" aria-label="Search" aria-describedby="search-addon" />     
             {{-- <button type="button" class="btn btn-outline-primary">Search</button> --}}
           </div>
           <br>
@@ -25,6 +25,7 @@
         }
     function cari() {
             var cari = $("#cari").val();
+       
             if (cari == "") {
                 table()
             } else {
@@ -33,4 +34,13 @@
             });
             }
         }
+        function carix() {
+            var ex = $("#ex").val();
+                $.get("{{ url('laporan/carix') }}", {}, function(data, status) {
+                $("#table").html(data);
+            });
+        }
+
+       
 </script>
+

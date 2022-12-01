@@ -17,7 +17,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <br>
-                <button class="btn btn-success" onClick="create()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
+                <button class="btn btn-secondary" onClick="modalSearch()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
+                <button class="btn btn-success" onClick="create()"> <i class="fa fa-download"></i> <b>File Excel</b></button>
+
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
@@ -37,7 +39,21 @@
             </div>
         </div>
     </div>
-
+    
+     <!-- Modal 2 -->
+     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="page2" class="p-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -62,13 +78,14 @@
             });
         }
         // Untuk modal halaman create
-        function create() {
-            $.get("{{ route('laporan.create') }}", {}, function(data, status) {
-                $("#exampleModalLabel").html('Tambah laporan')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
+        function modalSearch() {
+            $.get("{{ route('laporan.search') }}", {}, function(data, status) {
+                $("#exampleModalLabel2").html('Pencarian Data')
+                $("#page2").html(data);
+                $("#exampleModal2").modal('show');
             });
         }
+        
 
         
 

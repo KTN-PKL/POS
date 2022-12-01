@@ -53,4 +53,27 @@ class transaksi extends Model
     {
         DB::table('transaksis')->where('id_transaksi', $id_transaksi)->update($data);
     }
+
+    public function cariData($cari)
+    {
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->get();
+        } else { 
+            return DB::table('transaksis')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('atasnama', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->get();
+        }
+    }
+
+    public function cariData2($from, $to)
+    {
+        return DB::table('transaksis')->whereBetween('waktut',[$from, $to])->get();
+    }
+    
 }

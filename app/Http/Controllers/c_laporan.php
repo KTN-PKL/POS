@@ -47,14 +47,26 @@ class c_laporan extends Controller
             ];
         return view('laporan.table', $data);
     }
+
+    
+    public function carix(Request $request)
+    {
+            $data = $request->ex;
+            dd($data);
+            // $data = [
+            //     'transaksi' => $this->transaksi->cariData2($fromDate, $toDate),
+            // ];
+            // return $data;
+        return view('laporan.table', $data);
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search()
     {
-        return view('kategori.create');
+        return view('laporan.search');
     }
 
     /**
@@ -120,7 +132,7 @@ class c_laporan extends Controller
         $id_transaksi = $huruf . sprintf("%03s", $id);
         $data = [
             'transaksi' => $this->transaksi->transaksiDaata($id_transaksi),
-            'keranjang' => $this->keranjang->Data($id),
+            'keranjang' => $this->keranjang->Data($id_transaksi),
 
         ];
         return view('laporan.edit', $data);
