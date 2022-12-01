@@ -60,4 +60,13 @@
             </td>
         </tr>
     @endforeach
+    <tfoot>
+        <th colspan="8" rowspan="1">Total</th>
+        <th>
+            @php
+            $grandtotal = number_format($total,0,",",".");
+                echo "Rp.".$grandtotal.",-";
+            @endphp    
+        </th>
+    </tfoot>
 </table>

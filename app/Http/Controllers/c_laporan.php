@@ -35,6 +35,7 @@ class c_laporan extends Controller
     {
         $data = [
             'transaksi' => $this->transaksi->allData(),
+            'total'=> $this->transaksi->jumlahDuit(),
         ];
         return view('laporan.table', $data);
     }
