@@ -73,58 +73,10 @@
                 $("#read").html(data);
             });
         }
-        // Untuk modal halaman create
-        function create() {
-            $.get("{{ route('akuntansi.create') }}", {}, function(data, status) {
-                $("#exampleModalLabel").html('Tambah akuntansi')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
-        }
-
-        // untuk proses create data
-        function store() {
-            var akun = $("#akun").val();
-            var jenis = $("#jenis").val();
-            $.ajax({
-                type: "get",
-                url: "{{ url('akuntansi/store') }}",
-                data: {
-                    "akun": akun,
-                    "jenis": jenis,
-                },
-                success: function(response) {
-                    if (response.required1 == 2) {
-                        document.getElementById("required1").style.display = "block";
-                    } else {
-                        document.getElementById("required1").style.display = "none";
-                        if (response.unique == 2) {
-                        document.getElementById("unique").style.display = "block";}
-                        else{
-                            document.getElementById("unique").style.display = "none"; 
-                        }
-                    }
-                    if (response.required2 == 2) {
-                        document.getElementById("required2").style.display = "block";}
-                        else {
-                            document.getElementById("required2").style.display = "none";
-                        }
-                    if (response.required1 == 1) {
-                        if (response.unique == 1 && response.required2 == 1) {
-                            $(".btn-close").click();
-                            read()
-                            Swal.fire({
-                            title: 'Berhasil',
-                            text: "Anda Telah Berhasil Menambah Akun",
-                            type: 'success'
-                    }) 
-                }}
-                }
-            });
-        }
 
         // Untuk modal halaman edit show
         function edit(id) {
+            $(".btn-close").click();
             $.get("{{ url('order/edit') }}/" + id, {}, function(data, status) {
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
@@ -208,10 +160,11 @@
                         document.getElementById("kurang").style.display = "block";
                     } else {
                         $(".btn-close").click();
-                            table()
+                        var id =  $("#cek").val();
+                            table(id)
                             Swal.fire({
                             title: 'Berhasil',
-                            text: "Anda Telah Berhasil Menambah Akun",
+                            text: "Anda Telah Berhasil Melakukan Pembayaran",
                             type: 'success'
                     }) 
                     }
