@@ -15,6 +15,11 @@ class transaksi extends Model
     {
         return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->get();
     }
+
+    public function jumlahDuit()
+    {
+        return DB::table('transaksis')->sum('grandtotal');
+    }
     
     public function transaksiDaata($id_transaksi)
     {
