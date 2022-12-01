@@ -26,12 +26,17 @@
         }
     function cari() {
             var cari = $("#cari").val();
-            if (cari == "") {
-                table()
-            } else {
-                $.get("{{ url('akuntansi/cari') }}/" + cari, {}, function(data, status) {
+            var id =  $("#cek").val();
+            $.ajax({
+                type: "get",
+                url: "{{ url('order/cari') }}",
+                data: {
+                "id": id,
+                "cari": cari,
+                },
+            success: function(data, status) {
                 $("#table").html(data);
+                }
             });
-            }
         }
 </script>

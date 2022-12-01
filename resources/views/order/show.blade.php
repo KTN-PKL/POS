@@ -42,6 +42,18 @@
                         <td>Tanggal dan Waktu</td>
                         <td>{{$transaksi->waktut}}</td>
                     </tr>
+                    @if ($transaksi->status == "Bayar Nanti")
+                    <tr>
+                        <td> </td>
+                        <td>
+                            @php
+                            $kode = $transaksi->id_transaksi;
+                            $urutan = (int) substr($kode, 3, 3);
+                            @endphp
+                             <span class="btn btn-outline-success btn-sm" onclick="edit({{ $urutan }})"><i class="fa fa-money"></i></span>
+                        </td>
+                    </tr>
+                    @endif
                 </table>
             </div>
         </div>
