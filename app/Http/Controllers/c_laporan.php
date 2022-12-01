@@ -59,6 +59,7 @@ class c_laporan extends Controller
            
             $data = [
                 'transaksi' => $this->transaksi->cariData2($waktuex, $waktuto),
+                'total'=> $this->transaksi->jumlahDuitFilter($waktuex, $waktuto),
             ];
           
         return view('laporan.table', $data);
