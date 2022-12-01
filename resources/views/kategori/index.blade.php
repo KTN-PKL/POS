@@ -77,9 +77,24 @@
                 type: "get",
                 url: "{{ url('kategori/store') }}",
                 data: "kategori=" + kategori,
-                success: function(data) {
+                success: function(response) {
+                    if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Menambah Kategori",
+                    type: 'success'
+                    })
+                }else{
+                    $(".btn-close").click();
+                    read()
+                    Swal.fire({
+                    title: 'Gagal',
+                    text: "Kategori Sudah Ada",
+                    type: 'warning'
+                    })
+                }
                 }
             });
         }
@@ -121,9 +136,16 @@
                 type: "get",
                 url: "{{ url('kategori/update') }}/" + id,
                 data: "kategori=" + kategori,
-                success: function(data) {
+                success: function(response) {
+                    if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Mengedit Kategori",
+                    type: 'success'
+                    })
+                }
                 }
             });
         }

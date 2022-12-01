@@ -72,11 +72,24 @@
         }
 
         function hapus(id) {
-            $.get("{{ url('customer/delete') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('delete Product')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
+            Swal.fire({
+            title: 'Apakah Anda Yakin?',
+            text: "Anda Ingin Menghapus Customer ",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Iya Saya Yakin!',
+            cancelButtonText: 'Tidak'
+            }).then((result) => {
+            if (result.value) {
+                destroy(id)
+                Swal.fire({
+                title: 'Terhapus',
+                text: "Anda Telah Menghapus Customer ",
+                type: 'success'
+                })}
+                })
         }
 
         // untuk proses create data
@@ -100,6 +113,11 @@
                 if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Menambah Customer",
+                    type: 'success'
+                    })
                 }
                 }
             });
@@ -140,9 +158,14 @@
                  processData: false,
                  dataType: 'json',
                 success: function(response) {
-                if(response.success == 1){ 
+                    if(response.success == 1){ 
                     $(".btn-close").click();
                     read()
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Mengedit Customer",
+                    type: 'success'
+                    })
                 }
                 }
             });

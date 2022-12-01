@@ -79,6 +79,8 @@ class c_kategori extends Controller
                     'kategori' => $request->kategori,
                 ];
                 $this->kategori->addData($data);
+                $data['success'] = 1;
+                return response()->json($data);
                }
         } else {
         $a = 1;
@@ -90,6 +92,7 @@ class c_kategori extends Controller
 
         $data = $a;
         return response()->json($data);
+
     }
 
     /**
@@ -133,6 +136,8 @@ class c_kategori extends Controller
             'kategori' => $request->kategori,
         ];
         $this->kategori->editData($id, $data);
+        $data['success'] = 1;
+        return response()->json($data);
     }
 
     /**
