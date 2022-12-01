@@ -29,11 +29,35 @@ class c_order extends Controller
         return view('order.read');
     }
 
-    public function table()
+    public function table($id)
     {
-        $data = [
-            'transaksi' => $this->transaksi->allData(),
-        ];
+        switch ($variable) {
+            case 'all':
+                $data = [
+                    'transaksi' => $this->transaksi->allData(),
+                ];
+                break;
+            case 'ditempat':
+                $data = [
+                    'transaksi' => $this->transaksi->orderData("Ditempat"),
+                ];
+                break;
+            case 'booking':
+                $data = [
+                    'transaksi' => $this->transaksi->orderData("Booking"),
+                ];
+                break;
+            case 'delivery':
+                $data = [
+                    'transaksi' => $this->transaksi->orderData("Delivery"),
+                ];
+                break;
+            default:
+                $data = [
+                    'transaksi' => $this->transaksi->nantiData(),
+                ];
+                break;
+        }
         return view('order.table', $data);
     }
 

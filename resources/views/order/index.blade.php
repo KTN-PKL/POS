@@ -16,6 +16,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8">
+                <div id="cek2"></div>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
