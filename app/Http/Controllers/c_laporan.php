@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\transaksiExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 use App\Models\transaksi;
 use App\Models\keranjang;
 
@@ -143,29 +146,7 @@ class c_laporan extends Controller
         return view('laporan.edit', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function update(Request $request, $id)
-    // {
-    //     $data = [
-    //         'kategori' => $request->kategori,
-    //     ];
-    //     $this->kategori->editData($id, $data);
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy($id)
-    // {
-    //     $this->kategori->deleteData($id);
-    // }
+   public function transaksiExport(){
+    return Excel::download(new transaksiExport,'transaksi.xlsx');
+   }
 }
