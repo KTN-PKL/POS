@@ -36,9 +36,15 @@
         }
         function carix() {
             var ex = $("#ex").val();
-                $.get("{{ url('laporan/carix') }}", {}, function(data, status) {
-                $("#table").html(data);
-            });
+            var to = $("#to").val();
+            $.ajax({
+                type: "get",
+                url: "{{ url('laporan/carix') }}",
+                data: {
+                    "ex": ex,
+                    "to": to,
+                },
+            })
         }
 
        
