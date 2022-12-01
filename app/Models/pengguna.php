@@ -12,7 +12,7 @@ class pengguna extends Model
 
     public function allData()
     {
-        return DB::table('users')->get();
+        return DB::table('users')->whereNot('level', [2])->get();
     }
 
     public function cariData($cari)
