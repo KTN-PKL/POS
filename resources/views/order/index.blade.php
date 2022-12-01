@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <input type="text" id="cek" value="{{ $view }}" hidden>
+                <button class="btn btn-secondary" onClick="modalSearch()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
