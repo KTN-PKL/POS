@@ -39,6 +39,25 @@
                 }
             });
         }
+        function tanggal() {
+            var ex = $("#ex").val();
+            var to = $("#to").val();
+            var id =  $("#cek").val();
+            $.ajax({
+                type: "get",
+                url: "{{ url('order/tanggal') }}",
+                data: {
+                    "ex": ex,
+                    "to": to,
+                    "id": id,
+                },
+                success: function(data) {
+                    $(".btn-close").click();
+                    $("#table").html(data);
+                }
+            })
+        }
+
         function modalSearch() {
                 $("#exampleModalLabel").html('Pencarian Data')
                 $("#page").html(`<div class="p2">
@@ -51,7 +70,7 @@
         <input type="date" name="to" id="to" class="form-control" placeholder="Masukan toDate">
         </div>
         <div class="form-group mt-2">
-        <button class="btn btn-success" onclick="carix()">Cari</button>
+        <button class="btn btn-success" onclick="tanggal()">Cari</button>
         </div>
         </div>`);
             $("#exampleModal").modal('show');
