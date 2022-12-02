@@ -107,11 +107,11 @@
           <li><a class="nav-link scrollto" href="/kasir">KASIR</a></li>
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>ORDER</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a style="text-decoration: none"  href="#">All Order <i class="badge badge primary float-right"></i> </a></li>
-              <li><a style="text-decoration: none"  href="#">Ditempat</a></li>
-              <li><a style="text-decoration: none"  href="#">Booking</a></li>
-              <li><a style="text-decoration: none"  href="#">Delivery</a></li>
-              <li><a style="text-decoration: none"  href="#">Blm Lunas</a></li>
+              <li><a style="text-decoration: none"  href="/order1">All Order <i class="badge badge primary float-right"></i> </a></li>
+              <li><a style="text-decoration: none"  href="/order3">Ditempat</a></li>
+              <li><a style="text-decoration: none"  href="/order2">Booking</a></li>
+              <li><a style="text-decoration: none"  href="/order4">Delivery</a></li>
+              <li><a style="text-decoration: none"  href="/order5">Blm Lunas</a></li>
             </ul>
           </li>
           @if (Auth::user()->level == 2)
