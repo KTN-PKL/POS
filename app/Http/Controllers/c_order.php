@@ -177,4 +177,36 @@ class c_order extends Controller
         ];
         return view('order.show', $data);
     }
+
+    public function tanggal(Request $request)
+    {
+            $ex = $request->ex;
+            $to = $request->to;
+            $waktuex = ($ex." 00:00:00");
+            $waktuto = ($to." 23:59:59");
+
+            switch ($request->id) {
+                case 'all':
+                    $data = [
+                        'transaksi' => $this->transaksi->cariData2($waktuex, $waktuto),
+                        // 'total'=> $this->transaksi->jumlahDuitFilter($waktuex, $waktuto),
+                    ];
+                    break;
+                case 'bayarnanti':
+                    $data = [
+                        'transaksi' => $this->transaksi->cariData3($waktuex, $waktuto),
+                        // 'total'=> $this->transaksi->jumlahDuitFilter($waktuex, $waktuto),
+                    ];
+                    break;
+                
+                default:
+                    $data = [
+                        'transaksi' => $this->transaksi->cariData4($request->id,$waktuex, $waktuto),
+                        // 'total'=> $this->transaksi->jumlahDuitFilter($waktuex, $waktuto),
+                    ];
+                    break;
+            }
+          
+        return view('order.table', $data);
+    }
 }

@@ -127,7 +127,15 @@ class transaksi extends Model
 
     public function cariData2($ex, $to)
     {
-        return DB::table('transaksis')->whereBetween('waktut',[$ex, $to])->get();
+        return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->whereBetween('waktut',[$ex, $to])->get();
+    }
+    public function cariData3($ex, $to)
+    {
+        return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('status', 'Bayar Nanti')->whereBetween('waktut',[$ex, $to])->get();
+    }
+    public function cariData4($id, $ex, $to)
+    {
+        return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('order', $id)->whereBetween('waktut',[$ex, $to])->get();
     }
     public function deleteData($id_transaksi)
     {
