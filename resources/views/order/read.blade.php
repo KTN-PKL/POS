@@ -40,8 +40,8 @@
             });
         }
         function modalSearch() {
-                $("#exampleModalLabel2").html('Pencarian Data')
-                $("#page2").html(`<div class="p2">
+                $("#exampleModalLabel").html('Pencarian Data')
+                $("#page").html(`<div class="p2">
         <div class="form-group">
         <label for="tanggal1">Tanggal Awal</label>
         <input type="date" name="ex" id="ex" class="form-control" placeholder="Masukan fromData">
@@ -54,6 +54,6 @@
         <button class="btn btn-success" onclick="carix()">Cari</button>
         </div>
         </div>`);
-            $("#exampleModal2").modal('show');
+            $("#exampleModal").modal('show');
         }
 </script>
