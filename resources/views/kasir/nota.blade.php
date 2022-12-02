@@ -1,4 +1,4 @@
-
+<div id="bodys">
  <div class="card-body" style="border-bottom:1px solid grey">
     <div class="col-md-4 offset-md-4">
         <img src="{{asset('/fototoko/'. $pengaturan->tgambar)}}" style="display:block; margin:auto;"  alt="Gambar" width="100px" height="80px">
@@ -98,7 +98,7 @@
     
  </div>
  <div class="card-body"> {{ $pengaturan->tfooter }} </div>
-
+</div>
 
 
 
