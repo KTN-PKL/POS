@@ -18,7 +18,9 @@
             <div class="col-lg-12">
                 <br>
                 <button class="btn btn-secondary" onClick="modalSearch()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
-                <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>File Excel</b></a>
+                <button class="btn btn-success" onclick="modalExcel()"> <i class="fa fa-plus"></i> <b>File Excel</b></button>
+                {{-- <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Semua</b></a>
+                <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Sebagian</b></a> --}}
 
                 <div id="read" class="mt-3"></div> 
             </div>
@@ -55,6 +57,42 @@
         </div>
     </div>
 
+    {{--  Start Modal Excel --}}
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">File Excel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Semua</b></a>
+                        <a id="btn2" href="#" onclick="downloadSebagian()" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Sebagian</b></a>
+                    </center>
+                    <div class="p2" id="p2" style="display: none">
+                        <form action="/laporan/exportfilter" method="GET">
+                        <div class="form-group">
+                            <label for="tanggal1">Tanggal Awal</label>
+                            <input type="date" name="ex" id="ex" class="form-control" placeholder="Masukan fromData">
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggal2">Tanggal Akhir</label>
+                            <input type="date" name="to" id="to" class="form-control" placeholder="Masukan toDate">
+                        </div>
+                        <div class="form-group mt-2">
+                            <center>
+                            <button class="btn btn-success" type="submit">Download</button>
+                            </center>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal Excel --}}
+
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -85,7 +123,17 @@
                 $("#exampleModal2").modal('show');
             });
         }
+
+        // Untuk modal halaman Download Excel
+        function modalExcel() {
+            $.get("{{ route('laporan') }}", {}, function(data, status) {
+                $("#exampleModalLabel3").html('File Excel')
+                $("#page3").html(data);
+                $("#exampleModal3").modal('show');
+            });
+        }
         
+      
 
         
 
@@ -132,6 +180,29 @@
                 }
             });
         }
+
+        // Function download excel filter
+        function downloadSebagian(){
+            document.getElementById("p2").style.display = "block";
+            document.getElementById("btn2").style.color = "grey";
+        }
+
+        // function downloadExcel(){
+        //     var ex = $("#ex").val();
+        //     var to = $("#to").val();
+        //     $.ajax({
+        //         type: "get",
+        //         url: "{{ url('laporan/exportfilter') }}",
+        //         data: {
+        //             "ex": ex,
+        //             "to": to,
+        //         },
+        //         success: function(data) {
+        //             $(".btn-close").click();
+        //         }
+        //     })
+        // }
+        //end download filter excel
 
         
 

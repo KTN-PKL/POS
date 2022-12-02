@@ -60,7 +60,7 @@
             </td>
         </tr>
     @endforeach
-    {{-- <tfoot>
+    <tfoot>
         <th colspan="8" rowspan="1">Total</th>
         <th>
             @php
@@ -68,5 +68,5 @@
                 echo "Rp.".$grandtotal.",-";
             @endphp    
         </th>
-    </tfoot> --}}
+    </tfoot>
 </table>

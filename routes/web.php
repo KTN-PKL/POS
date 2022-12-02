@@ -197,6 +197,7 @@ Route::controller(c_laporan::class)->group(function () {
     Route::get('/laporan/delete/{id}', 'delete')->name('laporan.delete');
     Route::get('/laporan/destroy/{id}', 'destroy')->name('laporan.destroy');
     Route::get('/laporan/export', 'transaksiExport')->name('laporan.export');
+    Route::get('/laporan/exportfilter', 'transaksifilterExport')->name('laporan.filter.export');
 });
 
 

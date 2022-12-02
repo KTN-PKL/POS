@@ -97,7 +97,12 @@
             success: function(response) {
                 if(response.success == 1){ 
                     $(".btn-close").click();
-                    read()
+                    read();
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Menambahkan Pengguna",
+                    type: 'success'
+                    })
                 }
                 }
             });
@@ -113,11 +118,29 @@
         }
 
         function hapus(id) {
-            $.get("{{ url('pengguna/delete') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('delete Product')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
+            // $.get("{{ url('pengguna/delete') }}/" + id, {}, function(data, status) {
+            //     $("#exampleModalLabel").html('delete Product')
+            //     $("#page").html(data);
+            //     $("#exampleModal").modal('show');
+            // });
+            Swal.fire({
+            title: 'Apakah Anda Yakin?',
+            text: "Anda Ingin Menghapus Pengguna ",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Iya Saya Yakin!',
+            cancelButtonText: 'Tidak'
+            }).then((result) => {
+            if (result.value) {
+                destroy(id)
+                Swal.fire({
+                title: 'Terhapus',
+                text: "Anda Telah Menghapus Pengguna ",
+                type: 'success'
+                })}
+                })
         }
 
         function show(id) {
@@ -154,7 +177,12 @@
                 success: function(response) {
                 if(response.success == 1){ 
                     $(".btn-close").click();
-                    read()
+                    read();
+                    Swal.fire({
+                    title: 'Berhasil',
+                    text: "Anda Telah Berhasil Mengedit Pengguna",
+                    type: 'success'
+                    })
                 }
                 }
             });

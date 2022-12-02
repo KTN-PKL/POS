@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exports\transaksiExport;
+use App\Exports\transaksifilterExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Models\transaksi;
@@ -148,5 +149,14 @@ class c_laporan extends Controller
 
    public function transaksiExport(){
     return Excel::download(new transaksiExport,'transaksi.xlsx');
+   }
+
+   public function transaksifilterExport(Request $request){
+    $ex = $request->ex;
+    $to = $request->to;
+    $waktuex = ($ex." 00:00:00");
+    $waktuto = ($to." 23:59:59");
+    
+    return Excel::download(new transaksifilterExport($waktuex, $waktuto),'transaksifilter.xlsx');
    }
 }
