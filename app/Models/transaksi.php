@@ -35,6 +35,8 @@ class transaksi extends Model
     {
         return DB::table('transaksis')->whereBetween('waktut',[$ex, $to])->sum('grandtotal');
     }
+
+   
     
     public function transaksiDaata($id_transaksi)
     {
@@ -79,6 +81,23 @@ class transaksi extends Model
         $j = count($cari);
         if ($j == 1) {
             return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->get();
+        } else { 
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
+                $j = count($cari);
+                $j = $j - 1;
+                for ($i=0; $i < $j;) { 
+                    $i = $i + 1;
+                    $queri->orWhere('atasnama', 'like', '%'.$cari[$i].'%'); 
+                }
+            })->get();
+        }
+    }
+
+    public function jumlahDuitFilter2($cari)
+    {
+        $j = count($cari);
+        if ($j == 1) {
+            return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->sum('grandtotal');
         } else { 
             return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->where('atasnama', 'like', '%'.$cari[0].'%')->when($cari, function($queri, $cari) {
                 $j = count($cari);
