@@ -1,7 +1,7 @@
 <div class="p2">
     <div class="form-group">
         <label for="tanggal1">Tanggal Awal</label>
-        <input type="date" name="ex" id="ex" class="form-control" placeholder="Masukan fromData">
+        <input type="date" name="ex" id="ex" class="form-control" placeholder="Masukan fromData" value="">
     </div>
     <div class="form-group">
         <label for="tanggal2">Tanggal Akhir</label>
