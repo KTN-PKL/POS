@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-body">
                             <h4 style="text-align: center">Cahs Flow Usaha</h4>
-                            <h4 style="text-align: center" id="">Cahs Flow Usaha</h4>
+                            <h4 style="text-align: center" id="bulan"></h4>
                         <div id="table"></div>
                         </div>
                     </div>
@@ -114,6 +114,7 @@
             var hasil = tanggal.split("-");
             var bulan = months[hasil[1]-1];
             $("#pala").html('Cash Flow Periode '+bulan+' '+hasil[0]);
+            $("#bulan").html('Periode '+bulan+' '+hasil[0]);
             $.ajax({
                 type: "get",
                 url: "{{ url('order/cari') }}",
