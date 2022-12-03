@@ -14,6 +14,10 @@ class keranjang extends Model
     {
         return DB::table('keranjangs')->join('items', 'keranjangs.id_item', '=', 'items.id_item')->join('kategoris','items.id_kategori','=','kategoris.id_kategori')->where('id_transaksi', $id_transaksi)->get();
     }
+    public function jumlahmodal($data)
+    {
+        return DB::table('keranjangs')->join('items', 'keranjangs.id_item', '=', 'items.id_item')->join('transaksis', 'keranjangs.id_transaksi', '=', 'transaksis.id_transaksi')->where('waktut', 'like', $data.'%')->get();
+    }
     public function addData($data)
     {
         DB::table('keranjangs')->insert($data);

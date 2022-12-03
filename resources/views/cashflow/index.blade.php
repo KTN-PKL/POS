@@ -22,7 +22,7 @@
                 @endphp
                 <input class="form-control" type="text" id="cek" value="{{ $view }}" hidden>
                 <div id="testing"></div>
-                <input type="month" id="cekws" class="form-control col-md-3"  value="{{ $d }}" onchange="tanggal()">
+                <input type="month" id="cekws" class="form-control col-md-3"  value="{{ $d }}" onchange="read()">
                 <div class="mt-3">
                     <div class="card" style="width: 1100px">
                         <div style="background-color:#0c4e68" class="card-header">
@@ -82,9 +82,7 @@
 
     <script>
         $(document).ready(function() {
-            var id =  $("#cek").val();
-        table(id),
-        tanggal()
+        read()
         });
         // Read Database
         function table(id) {
@@ -108,7 +106,7 @@
                 }
             });
         }
-        function tanggal() {
+        function read() {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             var tanggal = $("#cekws").val();
             var hasil = tanggal.split("-");
@@ -117,7 +115,7 @@
             $("#bulan").html('Periode '+bulan+' '+hasil[0]);
             $.ajax({
                 type: "get",
-                url: "{{ url('order/cari') }}",
+                url: "{{ url('cashflow/read') }}",
                 data: {
                 "tanggal": tanggal,
                 },
