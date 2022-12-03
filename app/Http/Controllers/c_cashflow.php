@@ -21,6 +21,12 @@ class c_cashflow extends Controller
         ];
         return view('cashflow.index', $data);
     }
+    public function read(Request $request)
+    {
+        $data = [
+            
+        ]
+    }
 
 
 }
