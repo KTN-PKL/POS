@@ -12,7 +12,7 @@ class keranjang extends Model
 
     public function Data($id_transaksi)
     {
-        return DB::table('keranjangs')->join('items', 'keranjangs.id_item', '=', 'items.id_item')->where('id_transaksi', $id_transaksi)->get();
+        return DB::table('keranjangs')->join('items', 'keranjangs.id_item', '=', 'items.id_item')->join('kategoris','items.id_kategori','=','kategoris.id_kategori')->where('id_transaksi', $id_transaksi)->get();
     }
     public function addData($data)
     {

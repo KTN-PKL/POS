@@ -18,6 +18,7 @@ class c_laporan extends Controller
     {
         $this->transaksi = new transaksi();
         $this->keranjang = new keranjang();
+        
     }
 
     /**
@@ -49,6 +50,7 @@ class c_laporan extends Controller
         $cari = explode(" " , $cari);
             $data = [
                 'transaksi' => $this->transaksi->cariData($cari),
+                'total'=> $this->transaksi->jumlahDuitFilter2($cari),
             ];
         return view('laporan.table', $data);
     }
@@ -64,6 +66,7 @@ class c_laporan extends Controller
             $data = [
                 'transaksi' => $this->transaksi->cariData2($waktuex, $waktuto),
                 'total'=> $this->transaksi->jumlahDuitFilter($waktuex, $waktuto),
+                'view'=>"Ditempat",
             ];
           
         return view('laporan.table', $data);

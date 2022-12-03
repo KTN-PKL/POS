@@ -67,7 +67,7 @@
                             @endphp
                         </td>
                        <td>{{$item->id_item}}</td>
-                       <td>{{$item->id_kategori}}</td>
+                       <td>{{$item->kategori}}</td>
                        <td>{{$item->item}}</td>
                        <td>{{$item->qty}}</td>
                        <td>{{$item->subtotal}}</td>
