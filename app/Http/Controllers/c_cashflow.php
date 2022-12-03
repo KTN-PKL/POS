@@ -24,8 +24,8 @@ class c_cashflow extends Controller
     public function read(Request $request)
     {
         $data = [
-            
-        ]
+
+        ];
     }
 
 
