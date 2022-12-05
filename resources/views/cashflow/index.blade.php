@@ -20,7 +20,6 @@
                     date_default_timezone_set("Asia/Jakarta");
                     $d = date("Y-m");
                 @endphp
-                <input class="form-control" type="text" id="cek" value="{{ $view }}" hidden>
                 <div id="testing"></div>
                 <input type="month" id="cekws" class="form-control col-md-3"  value="{{ $d }}" onchange="read()">
                 <div class="mt-3">
@@ -84,28 +83,7 @@
         $(document).ready(function() {
         read()
         });
-        // Read Database
-        function table(id) {
-            $.get("{{ url('order/table') }}/"+id, {}, function(data, status) {
-                $("#table").html(data);
-                $("#cek2").html(id);
-            });
-        }
-    function cari() {
-            var cari = $("#cari").val();
-            var id =  $("#cek").val();
-            $.ajax({
-                type: "get",
-                url: "{{ url('order/cari') }}",
-                data: {
-                "id": id,
-                "cari": cari,
-                },
-            success: function(data, status) {
-                $("#table").html(data);
-                }
-            });
-        }
+    
         function read() {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             var tanggal = $("#cekws").val();
@@ -121,115 +99,8 @@
                 },
             success: function(data, status) {
                 $("#table").html(data);
-                }
-            });
-        }
-
-        // Untuk modal halaman edit show
-        function edit(id) {
-            $(".btn-close").click();
-            $.get("{{ url('order/edit') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Edit Product')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
-        }
-        function show(id) {
-            var test = $("#cekws").val();
-            $.get("{{ url('order/show') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel1").html('Detail Penjualan')
-                $("#page1").html(test);
-                $("#exampleModal1").modal('show');
-            });
-        }
-
-        function hapus(id) {
-            Swal.fire({
-            title: 'Apakah Anda Yakin?',
-            text: "Anda Ingin Menghapus Transaksi? ",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Iya Saya Yakin!',
-            cancelButtonText: 'Tidak'
-            }).then((result) => {
-            if (result.value) {
-                destroy(id)
-                Swal.fire({
-                title: 'Terhapus',
-                text: "Anda Telah Menghapus Transaksi ",
-                type: 'success'
-                })}
-                })
-        }
-
-        function rupiah()
-        {
-            var bayar = $("#bayar").val();
-            var number_string = bayar.replace(/[^,\d]/g, '').toString(),
-	        split = number_string.split(','),
-	        sisa  = split[0].length % 3,
-	        rupiah  = split[0].substr(0, sisa),
-	        ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
-            if(ribuan){
-	    	separator = sisa ? '.' : '';
-		    rupiah += separator + ribuan.join('.');
-	        }
-            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            $("#bayar").val(rupiah)
-        }
-
-        function bayar(){
-        var gt = $("#grandtotal").val();
-        var bayar = $("#bayar").val();
-        $.ajax({
-                type: "get",
-                url: "{{ url('kasir/kembalian') }}",
-                data: {
-                "gt": gt,
-                "bayar": bayar,
-                },
-                success: function(data) {
-                    $("#kembalian").val(data); 
-                }
-            });
-            rupiah()
-    }
-
-    function updated(id) {
-        var bayar = $("#bayar").val();
-        var kembalian = $("#kembalian").val(); 
-        $.ajax({
-                type: "get",
-                url: "{{ url('order/update') }}/" + id,
-                data: {
-                "kembalian": kembalian,
-                "bayar": bayar,
-                },
-                success: function(data) {
-                    if (data == 1) {
-                        document.getElementById("kurang").style.display = "block";
-                    } else {
-                        $(".btn-close").click();
-                        var id =  $("#cek").val();
-                            table(id)
-                            Swal.fire({
-                            title: 'Berhasil',
-                            text: "Anda Telah Berhasil Melakukan Pembayaran",
-                            type: 'success'
-                    }) 
-                    }
-                }
-            });
-    }
-        // untuk delete atau destroy data
-        function destroy(id) {
-            $.ajax({
-                type: "get",
-                url: "{{ url('order/destroy') }}/" + id,
-                success: function(data) {
-                    read()
+                $("#untung").html('Keuntungan Bersih Periode '+bulan+' '+hasil[0]);
+                $("#rugi").html('Kerugian Bersih Periode '+bulan+' '+hasil[0]);
                 }
             });
         }

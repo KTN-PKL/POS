@@ -5,21 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\transaksi;
 use App\Models\keranjang;
+use App\Models\keuangan;
 
 class c_cashflow extends Controller
 {
     public function __construct()
     {
-        $this->keranjang = new keranjang();
+        $this->keuangan = new keuangan();
         $this->transaksi = new transaksi();
+        $this->keranjang = new keranjang();
     }
 
-    public function index1()
+    public function index()
     {
-        $data = [
-            'view' => "all",
-        ];
-        return view('cashflow.index', $data);
+        return view('cashflow.index');
     }
     public function read(Request $request)
     {
@@ -31,12 +30,16 @@ class c_cashflow extends Controller
         }
         $gt = $this->transaksi->jumlahgt($request->tanggal);
         $operasional = $gt - $modal;
-        $pemasukan =  $this->keuangan->pemasukantgl($request->tanggal);
-        $pengeluaran =  $this->keuangan->pengeluarantgl($request->tanggal);
+        $pemasukan =  $this->keuangan->pemasukantngl($request->tanggal);
+        $pengeluaran =  $this->keuangan->pengeluarantngl($request->tanggal);
+        $pendapatan = ($operasional + $pemasukan) - $pengeluaran;
         $data = [
             'gt' => $gt,
             'modal' => $modal,
             'operasional' => $operasional,
+            'pemasukan' => $pemasukan,
+            'pengeluaran' => $pengeluaran,
+            'pendapatan' => $pendapatan,
         ];
         return view('cashflow.read', $data);
     }

@@ -80,22 +80,8 @@ Route::controller(c_order::class)->group(function () {
 });
 
 Route::controller(c_cashflow::class)->group(function () {
-    Route::get('/cashflow1', 'index1')->name('cashflow1');
-    Route::get('/cashflow2', 'index2')->name('cashflow2');
-    Route::get('/cashflow3', 'index3')->name('cashflow3');
-    Route::get('/cashflow4', 'index4')->name('cashflow4');
-    Route::get('/cashflow5', 'index5')->name('cashflow5');
+    Route::get('/cashflow', 'index')->name('cashflow');
     Route::get('/cashflow/read', 'read')->name('cashflow.read');
-    Route::get('/cashflow/table/{id}', 'table')->name('cashflow.table');
-    Route::get('/cashflow/cari', 'cari')->name('cashflow.cari');
-    Route::get('/cashflow/tanggal', 'tanggal')->name('cashflow.tanggal');
-    Route::get('/cashflow/store', 'store')->name('cashflow.store');
-    Route::get('/cashflow/create', 'create')->name('cashflow.create');
-    Route::get('/cashflow/edit/{id}', 'edit')->name('cashflow.edit');
-    Route::get('/cashflow/show/{id}', 'show')->name('cashflow.show');
-    Route::get('/cashflow/update/{id}', 'update')->name('cashflow.update');
-    Route::get('/cashflow/delete/{id}', 'delete')->name('cashflow.delete');
-    Route::get('/cashflow/destroy/{id}', 'destroy')->name('cashflow.destroy');
 });
 
 Route::controller(c_keuangan::class)->group(function () {
