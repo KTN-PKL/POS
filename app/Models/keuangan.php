@@ -49,6 +49,15 @@ class keuangan extends Model
         return $uang;
     }
 
+    public function pemasukantngl($data)
+    {
+        return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('jenis', 'Pemasukan')->where('waktu', 'like', $data.'%')->sum('uang');
+    }
+    public function pengeluarantngl($data)
+    {
+        return DB::table('keuangans')->join('akuntansis', 'keuangans.id_akun', '=', 'akuntansis.id_akun')->where('jenis', 'pengeluaran')->where('waktu', 'like', $data.'%')->sum('uang');
+    }
+
     public function pemasukancari($cari)
     {
         $j = count($cari);

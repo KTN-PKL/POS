@@ -164,4 +164,8 @@ class transaksi extends Model
     {
         return DB::table('transaksis')->where('id_transaksi', $id_transaksi)->first();
     }
+    public function jumlahgt($data)
+    {
+        return DB::table('transaksis')->where('waktut', 'like', $data.'%')->sum('grandtotal');
+    }
 }
