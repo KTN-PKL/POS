@@ -2,6 +2,39 @@
 @extends('layout.template')
 @section('content')
 
+<style>
+    @media print {
+		body * {
+			visibility: hidden;
+		}
+		.modal-content * {
+			visibility: visible;
+			overflow: visible;
+		}
+		.main-page * {
+			display: none;
+		}
+		.modal {
+			position: absolute;
+			left: 0;
+			top: 0;
+			margin: 0;
+			padding: 0;
+			min-height: 550px;   
+			visibility: visible;
+			overflow: visible !important; 
+		}
+		.modal-dialog {
+			visibility: visible !important;
+			overflow: visible !important; 
+            font-size:14px!important;
+		}
+        #print{
+            visibility: hidden;
+        }
+	}
+	</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -39,8 +72,24 @@
             </div>
         
         </div>
+       
         
         </div>
+       
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="page" class="p-2"></div>
+                            <button id="print" onclick="printNota()">Print Nota</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 <!-- Modal -->
 
@@ -161,7 +210,7 @@
         function nota(){
             var id = $("#id").val();
             $.get("{{ url('kasir/nota') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Daftar Customer')
+                $("#exampleModalLabel").html('Struk Penjualan')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
@@ -169,24 +218,24 @@
         }
 
         function printNota(){
-            var modal = document.getElementById('exampleModal').innerHTML;
-            document.getElementById('exampleModal');
-            window.print();
+
+        window.print();
+    
+        // var contentOfDiv = document.getElementById("exampleModal").innerHTML;
+        //     var newWin = window.open('', '', 'height=650, width=650');
+        //     newWin.document.write('');
+        //     newWin.document.write('<title>Print Content of Div element by  using Javascript</title>');
+        //     newWin.document.write(' <h1>Content of Div element: <br>');
+        //     newWin.document.write(contentOfDiv);
+        //     newWin.document.write('');
+        //     newWin.document.close();
+        //     newWin.print();
+       
         }
+            
+            
+        
    </script>
 </body>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="page" class="p-2"></div>
-                <button onclick="printNota()">Print Nota</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection

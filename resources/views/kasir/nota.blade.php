@@ -1,4 +1,4 @@
-<div id="bodys">
+<div id="printf" style="display: block">
  <div class="card-body" style="border-bottom:1px solid grey">
     <div class="col-md-4 offset-md-4">
         <img src="{{asset('/fototoko/'. $pengaturan->tgambar)}}" style="display:block; margin:auto;"  alt="Gambar" width="100px" height="80px">
@@ -6,17 +6,17 @@
         <p style="text-align: center">{{ $toko->talamat }}</p>
     </div>
     <div class="row">
-        <div class="col-md-2">No Struk</div>
-        <div class="col-md-2">: {{ $transaksi->id_transaksi }}</div>
+        <div class="col-md-3">No Struk</div>
+        <div class="col-md-3">: {{ $transaksi->id_transaksi }}</div>
     </div>
     <div class="row">
-        <div class="col-md-2">Atas Nama</div>
-        <div class="col-md-2">: {{ $transaksi->atasnama }}</div>
+        <div class="col-md-3">Atas Nama</div>
+        <div class="col-md-3">: {{ $transaksi->atasnama }}</div>
     </div>
     <div class="row">
-        <div class="col-md-2">Kasir</div>
-        <div class="col-md-2">: {{ Auth::user()->name }}</div>
-        <div class="col-md-3 offset-md-5">{{ $transaksi->order }}({{ $transaksi->status }})</div>
+        <div class="col-md-3">Kasir</div>
+        <div class="col-md-3">: {{ Auth::user()->name }}</div>
+        <div class="col-md-3 offset-md-8">{{ $transaksi->order }}({{ $transaksi->status }})</div>
     </div>     
  </div>
  <div class="card-body" style="border-bottom:1px solid grey">
@@ -98,7 +98,8 @@
     
  </div>
  <div class="card-body"> {{ $pengaturan->tfooter }} </div>
-</div>
+</>
+
 
 
 

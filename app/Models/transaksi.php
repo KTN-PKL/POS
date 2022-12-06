@@ -13,7 +13,7 @@ class transaksi extends Model
 
     public function allData()
     {
-        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->get();
+        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->orderBy('waktut','desc')->get();
     }
 
     public function orderData($data)
@@ -35,8 +35,6 @@ class transaksi extends Model
     {
         return DB::table('transaksis')->whereBetween('waktut',[$ex, $to])->sum('grandtotal');
     }
-
-   
     
     public function transaksiDaata($id_transaksi)
     {
@@ -146,7 +144,7 @@ class transaksi extends Model
 
     public function cariData2($ex, $to)
     {
-        return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->whereBetween('waktut',[$ex, $to])->get();
+        return DB::table('transaksis')->leftjoin('customers', 'transaksis.id_customer', '=', 'customers.id_customer')->whereBetween('waktut',[$ex, $to])->orderBy('waktut','desc')->get();
     }
     public function cariData3($ex, $to)
     {
