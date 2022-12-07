@@ -24,7 +24,7 @@
                 <input type="month" id="cekws" class="form-control col-md-3"  value="{{ $d }}" onchange="read()">
                 <div class="mt-3">
                     <div class="card" style="width: 1100px">
-                        <div style="background-color:#0c4e68" class="card-header">
+                        <div class="card-header">
                             <h5 class="text-white" > <i class="fa fa-tag"></i> <b id="pala"></b></h5>
                         </div>
                         <div class="card-body">

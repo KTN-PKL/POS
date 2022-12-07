@@ -1,5 +1,5 @@
 <div class="card card-rounded mb-4 ">
-                <div style="background-color:#0c4e68" class="card-header text-white">
+                <div  class="card-header text-white">
                     <h4> <i class="fa fa-shopping-cart"></i> Keranjang</h4>
                 </div>
                     <div class="card-body">
@@ -26,7 +26,7 @@
                                     <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Recipient's username" aria-describedby="basic-addon2" id="nama" readonly>
                                     <input type="text" id="id_customer" hidden>
                                     <div class="input-group-append">
-                                      <button style="background-color: #0c4e68" class="btn text-white" type="button" onclick="customer()"><i class="fa fa-search"></i></button>
+                                      <button style="background-color: #00642d" class="btn text-white" type="button" onclick="customer()"><i class="fa fa-search"></i></button>
                                       <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
                                     </div>
                                   </div>
@@ -55,7 +55,7 @@
                        
                        <div id="hitung"></div>
                   
-                       <button class="btn btn-xl" style="background-color: #0c4e68; border:none;width:100%"> <i class="fa fa-save text-white" style="font-size: 18px" onclick="menyimpan()"> <b>Simpan Transaksi</b></i></button>
+                       <button class="btn btn-xl" style="background-color: #00642d; border:none;width:100%"> <i class="fa fa-save text-white" style="font-size: 18px" onclick="menyimpan()"> <b>Simpan Transaksi</b></i></button>
                    </div>    
                     </div>    
             </div>

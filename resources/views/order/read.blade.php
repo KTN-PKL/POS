@@ -1,5 +1,5 @@
 <div class="card" style="width: 1100px">
-    <div style="background-color:#0c4e68" class="card-header">
+    <div  class="card-header">
         <h5 class="text-white" > <i class="fa fa-tag"></i> <b>Daftar Order</b></h5>
     </div>
     <div class="card-body">

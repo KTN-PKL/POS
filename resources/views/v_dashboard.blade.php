@@ -12,7 +12,7 @@
                 <h3 style="font-size:36px; text-align:center;" data-purecounter-start="0" data-purecounter-end="{{$kategori}}" data-purecounter-duration="1" class="purecounter"></h3>
             </div> 
             <div style="background-color: white" class="card-footer">
-                <a style="text-decoration: none" href="#"><h5 class="lihat" >Lihat Selengkapnya
+                <a style="text-decoration: none" href="{{url('kategori')}}"><h5 class="lihat" >Lihat Selengkapnya
                     <i class="fa fa-arrow-right"></i></h5></a>
             </div>       
     </div>
@@ -27,7 +27,7 @@
                 <h3 style="font-size:36px; text-align:center;" data-purecounter-start="0" data-purecounter-end="{{$item}}" data-purecounter-duration="1" class="purecounter"></h3>
             </div>    
             <div style="background-color: white" class="card-footer">
-                <a style="text-decoration: none" href="#"><h5 class="lihat" >Lihat Selengkapnya
+                <a style="text-decoration: none" href="{{url('item')}}"><h5 class="lihat" >Lihat Selengkapnya
                     <i class="fa fa-arrow-right"></i></h5></a>
             </div>    
     </div>
@@ -42,7 +42,7 @@
                 <h3 style="font-size:36px; text-align:center;" data-purecounter-start="0" data-purecounter-end="{{$customer}}" data-purecounter-duration="1" class="purecounter"></h3>
             </div>    
              <div style="background-color: white" class="card-footer">
-                <a style="text-decoration: none" href="#"><h5 class="lihat" >Lihat Selengkapnya
+                <a style="text-decoration: none" href="{{url('customer')}}"><h5 class="lihat" >Lihat Selengkapnya
                     <i class="fa fa-arrow-right"></i></h5></a>
             </div>    
     </div>
@@ -57,7 +57,7 @@
                 <h3 style="font-size:36px; text-align:center;" data-purecounter-start="0" data-purecounter-end="{{$transaksi}}" data-purecounter-duration="1" class="purecounter"></h3>
             </div>   
             <div style="background-color: white" class="card-footer">
-                <a style="text-decoration: none" href="#"><h5 class="lihat" >Lihat Selengkapnya
+                <a style="text-decoration: none" href="{{url('laporan')}}"><h5 class="lihat" >Lihat Selengkapnya
                     <i class="fa fa-arrow-right"></i></h5></a>
             </div>     
     </div>

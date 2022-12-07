@@ -1,5 +1,5 @@
 <div class="card card-rounded mb-4 ">
-    <div style="background-color:#0c4e68" class="card-header text-white">
+    <div  class="card-header text-white">
         <h4>Foto Profil</h4>
     </div>
         <div class="card-body">

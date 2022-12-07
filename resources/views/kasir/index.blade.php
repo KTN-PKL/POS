@@ -51,7 +51,7 @@
             <div class="row">
              <div style="background-color: rgb(240, 240, 240)  ;box-shadow:none; border:none;" class="card col-sm-8" >
                 <div class="card card-rounded ">
-                <div style="background-color:#0c4e68" class="card-header text-white">
+                <div  class="card-header text-white">
                     <h4 style="width:200px" > <i class="fa fa-cubes"></i> Daftar Menu</h4>
                 </div>
                     <div class="card-body">

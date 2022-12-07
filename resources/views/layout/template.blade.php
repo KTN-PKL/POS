@@ -84,7 +84,7 @@
     
 
       <a href="index.html" style="text-decoration: none" class="logo d-flex align-items-center">
-        <span>POS RESTO</span>
+        <span>POS</span>
       </a>
 
       <nav id="navbar" class="navbar">
