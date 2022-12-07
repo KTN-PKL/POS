@@ -79,4 +79,9 @@ class item extends Model
     {
         DB::table('items')->where('id_item', $id_item)->delete();
     }
+
+    public function jumlahData()
+    {
+        return DB::table('items')->count('id_item');
+    }
 }

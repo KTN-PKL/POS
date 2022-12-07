@@ -166,4 +166,8 @@ class transaksi extends Model
     {
         return DB::table('transaksis')->where('waktut', 'like', $data.'%')->sum('grandtotal');
     }
+    public function jumlahData()
+    {
+        return DB::table('transaksis')->where('dikirim','ya')->count('id_transaksi');
+    }
 }

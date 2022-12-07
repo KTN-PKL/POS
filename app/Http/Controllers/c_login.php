@@ -56,6 +56,8 @@ class c_login extends Controller
             $data = [
                 'kategori' => $this->kategori->jumlahData(),
                 'customer' => $this->customer->jumlahData(),
+                'transaksi' => $this->transaksi->jumlahData(),
+                'item' => $this->item->jumlahData(),
                 
             ];
             return view('v_dashboard', $data);

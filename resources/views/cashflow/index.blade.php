@@ -28,7 +28,7 @@
                             <h5 class="text-white" > <i class="fa fa-tag"></i> <b id="pala"></b></h5>
                         </div>
                         <div class="card-body">
-                            <h4 style="text-align: center">Cahs Flow Usaha</h4>
+                            <h4 style="text-align: center">Cash Flow Usaha</h4>
                             <h4 style="text-align: center" id="bulan"></h4>
                         <div id="table"></div>
                         </div>
