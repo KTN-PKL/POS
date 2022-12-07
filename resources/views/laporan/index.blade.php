@@ -21,7 +21,12 @@
                 <button class="btn btn-success" onclick="modalExcel()"> <i class="fa fa-plus"></i> <b>File Excel</b></button>
                 {{-- <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Semua</b></a>
                 <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Sebagian</b></a> --}}
-
+                @php
+                    date_default_timezone_set("Asia/Jakarta");
+                    $d = date("Y-m");
+                @endphp
+                <div id="testing"></div>
+                <input type="month" id="cekws" class="form-control col-md-3"  value="{{ $d }}" readonly hidden>
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
@@ -111,6 +116,7 @@
         });
         // Read Database
         function read() {
+
             $.get("{{ url('laporan/read') }}", {}, function(data, status) {
                 $("#read").html(data);
             });
@@ -132,8 +138,6 @@
                 $("#exampleModal3").modal('show');
             });
         }
-        
-      
 
         
 

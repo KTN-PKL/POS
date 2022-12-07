@@ -193,7 +193,7 @@ Route::controller(c_toko::class)->group(function () {
 Route::controller(c_laporan::class)->group(function () {
     Route::get('/laporan', 'index')->name('laporan');
     Route::get('/laporan/read', 'read')->name('laporan.read');
-    Route::get('/laporan/table', 'table')->name('laporan.table');
+    Route::get('/laporan/table/{tanggal}', 'table')->name('laporan.table');
     Route::get('/laporan/cari/{cari}', 'cari')->name('laporan.cari');
     Route::get('/laporan/carix', 'carix')->name('laporan.carix');
     Route::get('/laporan/store', 'store')->name('laporan.store');

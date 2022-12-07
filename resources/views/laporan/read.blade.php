@@ -1,6 +1,6 @@
 <div class="card">
     <div  class="card-header">
-        <h5 id="heads" class="text-white" > <i class="fa fa-tag"></i> <b>Laporan Transaksi</b></h5>
+        <h5 id="heads" class="text-white" > <i class="fa fa-tag"></i> <b id="pala"></b></h5>
     </div>
     <div class="card-body">
         <div class="input-group col-md-4 offset-8">
@@ -19,7 +19,12 @@
         table()
     });
     function table() {
-            $.get("{{ url('laporan/table') }}", {}, function(data, status) {
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var tanggal = $("#cekws").val();
+            var hasil = tanggal.split("-");
+            var bulan = months[hasil[1]-1];
+            $("#pala").html('Laporan Transaksi Periode '+bulan+' '+hasil[0]);
+            $.get("{{ url('laporan/table') }}/"+ tanggal, {}, function(data, status) {
                 $("#table").html(data);
             });
         }
