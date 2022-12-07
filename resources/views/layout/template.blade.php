@@ -124,8 +124,7 @@
           <li class="dropdown"><a style="text-decoration: none"  href="#"><span>LAPORAN</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a  style="text-decoration: none" href="/laporan">Transaksi Penjualan</a></li>
-              <li><a  style="text-decoration: none" href="#">History Per Menu</a></li>
-              <li><a  style="text-decoration: none" href="#">Cash Flow</a></li>
+              <li><a  style="text-decoration: none" href="{{url('cashflow')}}">Cash Flow</a></li>
             </ul>
           </li>
           @endif
