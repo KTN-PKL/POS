@@ -92,14 +92,17 @@ class c_item extends Controller
         $jumlah = $this->item->jumlahdata();
         $a = 1;
         if ($jumlah <> 0) {
-            $cek = $this->allData();
+            $cek = $this->item->allData();
             foreach ($cek as $test) {
-                if ($test = $reques->item) {
+                if ($test = $request->item) {
                     $a = 2;
                     break;
                 }
             }
         }
+        if ($a == 2) {
+            # code...
+        } else {
         $file  = $request->foto;
         $filename = $id.'.'.$file->extension();
         $file->move(public_path('foto'),$filename);
@@ -118,8 +121,8 @@ class c_item extends Controller
             'minim' => $request->minim,
         ];
         $this->stok->addData($data);
-        $data['unique'] = $a;
-        $data['success'] = 1;
+        }
+        $data['success'] = $a;
         return response()->json($data);
     }
 
