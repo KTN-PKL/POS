@@ -103,6 +103,12 @@
                     text: "Anda Telah Berhasil Menambahkan Item",
                     type: 'success'
                     })
+                } else {
+                    Swal.fire({
+                    title: 'Gagal',
+                    text: "Nama Item Telah Digunakan!",
+                    type: 'warning'
+                    })
                 }
                 }
             });
