@@ -28,11 +28,7 @@ class c_laporan extends Controller
      */
     public function index()
     {
-        $data = [
-            'transaksi' => $this->transaksi->allData(),
-            'total'=> $this->transaksi->jumlahDuit(),
-        ];
-        return view('laporan.index', $data);
+        return view('laporan.index');
     }
 
     public function read()
@@ -40,11 +36,11 @@ class c_laporan extends Controller
         return view('laporan.read');
     }
 
-    public function table($tanggal)
+    public function table()
     {
         $data = [
-            'transaksi' => $this->transaksi->tglData($tanggal),
-            'total'=> $this->transaksi->jumlahDuit($tanggal),
+            'transaksi' => $this->transaksi->allData(),
+            'total'=> $this->transaksi->jumlahDuit(),
         ];
         return view('laporan.table', $data);
     }
