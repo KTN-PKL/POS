@@ -16,6 +16,11 @@ class transaksi extends Model
         return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->orderBy('waktut','desc')->paginate(10);
     }
 
+    public function tglData($data)
+    {
+        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->where('waktut', 'like', $data.'%')->orderBy('waktut','desc')->get();
+    }
+
     public function orderData($data)
     {
         return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('order', $data)->where('dikirim', 'ya')->get();
@@ -26,9 +31,9 @@ class transaksi extends Model
         return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('status', 'Bayar Nanti')->where('dikirim', 'ya')->get();
     }
 
-    public function jumlahDuit()
+    public function jumlahDuit($data)
     {
-        return DB::table('transaksis')->sum('grandtotal');
+        return DB::table('transaksis')->where('waktut', 'like', $data.'%')->sum('grandtotal');
     }
 
     public function jumlahDuitFilter($ex, $to)

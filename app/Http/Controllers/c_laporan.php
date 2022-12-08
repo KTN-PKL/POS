@@ -40,11 +40,11 @@ class c_laporan extends Controller
         return view('laporan.read');
     }
 
-    public function table()
+    public function table($tanggal)
     {
         $data = [
-            'transaksi' => $this->transaksi->allData(),
-            'total'=> $this->transaksi->jumlahDuit(),
+            'transaksi' => $this->transaksi->tglData($tanggal),
+            'total'=> $this->transaksi->jumlahDuit($tanggal),
         ];
         return view('laporan.table', $data);
     }
