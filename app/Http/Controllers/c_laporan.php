@@ -41,6 +41,7 @@ class c_laporan extends Controller
         $data = [
             'transaksi' => $this->transaksi->tglData($tanggal),
             'total'=> $this->transaksi->jumlahDuit($tanggal),
+            'jumlah'=> $this->transaksi->jumlahtgl($tanggal),
         ];
         return view('laporan.table', $data);
     }

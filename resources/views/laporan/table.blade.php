@@ -1,4 +1,17 @@
-<table class="table table-bordered table-hover">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CRUD Laravel 8</title>
+        <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<!-- Jquery DataTables -->
+<script type="text/javascript" language="javascript" src="http:////cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<!-- Bootstrap dataTables Javascript -->
+<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+</head>
+<body>
+
+<table class="table table-striped table-bordered data" width="1200px" cellspacing="0">
   <thead>
     <tr>
         <th>No</th>
@@ -18,11 +31,11 @@
         $i = 0;
     @endphp
     @foreach ($transaksi as $laporan)
-        <tr>
-            <td>@php
+    @php
                 $i = $i+1;
-                echo $i;
-            @endphp</td>
+            @endphp
+        <tr>
+            <td>{{ $i }}</td>
             <td>{{ $laporan->id_transaksi }}</td>
             <td>{{ $laporan->atasnama }}</td>
             <td>{{$laporan->atasnama}}</td>
@@ -75,18 +88,11 @@
         </th>
     </tfoot>
 
-  
 </table>
-<nav aria-label="Page">
-    <ul class="pagination justify-content-end">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
+</body>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('.data').DataTable();
+            document.getElementById("DataTables_Table_0_filter").style.display = "none";
+    });
+</script>

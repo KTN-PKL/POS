@@ -21,6 +21,11 @@ class transaksi extends Model
         return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->where('waktut', 'like', $data.'%')->orderBy('waktut','desc')->get();
     }
 
+    public function jumlahtgl($data)
+    {
+        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->where('waktut', 'like', $data.'%')->orderBy('waktut','desc')->count();
+    }
+
     public function orderData($data)
     {
         return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('order', $data)->where('dikirim', 'ya')->get();

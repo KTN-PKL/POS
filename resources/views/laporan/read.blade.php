@@ -16,7 +16,9 @@
 
 <script>
      $(document).ready(function() {
-        table()
+        table(),
+        $('.data').DataTable();
+            document.getElementById("DataTables_Table_0_filter").style.display = "none";
     });
     function table() {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
