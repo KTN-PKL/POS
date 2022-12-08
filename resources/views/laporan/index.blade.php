@@ -16,6 +16,11 @@
     <div style="margin-left: 1em;margin-right:1em;" class="mt-5">
         <div class="row">
             <div class="col-lg-12">
+                @php
+                date_default_timezone_set("Asia/Jakarta");
+                $d = date("Y-m");
+                @endphp
+                <input type="month" id="cekws" class="form-control col-md-3"  value="{{ $d }}" onchange="read()" hidden>
                 <br>
                 <button class="btn btn-secondary" onClick="modalSearch()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
                 <button class="btn btn-success" onclick="modalExcel()"> <i class="fa fa-plus"></i> <b>File Excel</b></button>

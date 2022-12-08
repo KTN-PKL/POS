@@ -1,5 +1,5 @@
 <table class="table table-bordered table-hover">
-  
+  <thead>
     <tr>
         <th>No</th>
         <th>No BON</th>
@@ -12,6 +12,8 @@
         <th>Grand Total</th>
         <th>Aksi</th>
     </tr>
+  </thead>
+  <tbody>
     @php
         $i = 0;
     @endphp
@@ -60,7 +62,9 @@
                 <a onClick="edit({{ $urutan }})" class="btn btn-outline-primary"><i class="fa fa-eye" ></i></a>
             </td>
         </tr>
+    
     @endforeach
+</tbody>
     <tfoot>
         <th colspan="8" rowspan="1">Total</th>
         <th>
@@ -70,12 +74,19 @@
             @endphp    
         </th>
     </tfoot>
-    <table style="width: 100%;margin-left:auto;margin-right:auto">
-        <tr>
-          <td style="width: 40%"></td>
-          <td> {{ $transaksi->links('vendor.pagination.bootstrap-4') }}</td>
-          <td style="width: 40%"></td>
-        </tr>
-      </table>
 
+  
 </table>
+<nav aria-label="Page">
+    <ul class="pagination justify-content-end">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
