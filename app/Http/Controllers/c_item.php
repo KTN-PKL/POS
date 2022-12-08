@@ -89,6 +89,17 @@ class c_item extends Controller
     public function store(Request $request)
     {
         $id = $this->item->id();
+        $jumlah = $this->item->jumlahdata();
+        $a = 1;
+        if ($jumlah <> 0) {
+            $cek = $this->allData();
+            foreach ($cek as $test) {
+                if ($test = $reques->item) {
+                    $a = 2;
+                    break;
+                }
+            }
+        }
         $file  = $request->foto;
         $filename = $id.'.'.$file->extension();
         $file->move(public_path('foto'),$filename);
@@ -107,6 +118,7 @@ class c_item extends Controller
             'minim' => $request->minim,
         ];
         $this->stok->addData($data);
+        $data['unique'] = $a;
         $data['success'] = 1;
         return response()->json($data);
     }
