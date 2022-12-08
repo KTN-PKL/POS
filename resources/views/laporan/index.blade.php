@@ -22,9 +22,12 @@
                 {{-- <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Semua</b></a>
                 <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Sebagian</b></a> --}}
 
-                <div id="read" class="mt-3"></div> 
+                <div id="read" class="mt-3">
+                 
+                </div> 
             </div>
         </div>
+
     </div>
 
     <!-- Modal -->

@@ -13,7 +13,7 @@ class transaksi extends Model
 
     public function allData()
     {
-        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->orderBy('waktut','desc')->get();
+        return DB::table('transaksis')->leftjoin('customers', 'customers.id_customer', '=', 'transaksis.id_customer')->where('dikirim', 'ya')->orderBy('waktut','desc')->paginate(10);
     }
 
     public function orderData($data)

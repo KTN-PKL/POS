@@ -28,7 +28,11 @@ class c_laporan extends Controller
      */
     public function index()
     {
-        return view('laporan.index');
+        $data = [
+            'transaksi' => $this->transaksi->allData(),
+            'total'=> $this->transaksi->jumlahDuit(),
+        ];
+        return view('laporan.index', $data);
     }
 
     public function read()
