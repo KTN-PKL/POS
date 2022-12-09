@@ -64,6 +64,7 @@
         // Untuk modal halaman create
         function create() {
             $.get("{{ route('kategori.create') }}", {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Tambah Kategori')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -102,6 +103,7 @@
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('kategori/edit') }}/" + id, {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');

@@ -79,6 +79,7 @@
         function edit(id) {
             $(".btn-close").click();
             $.get("{{ url('order/edit') }}/" + id, {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -86,6 +87,7 @@
         }
         function show(id) {
             $.get("{{ url('order/show') }}/" + id, {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel1").html('Detail Penjualan')
                 $("#page1").html(data);
                 $("#exampleModal1").modal('show');

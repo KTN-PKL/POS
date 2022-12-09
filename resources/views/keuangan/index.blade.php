@@ -64,6 +64,7 @@
         // Untuk modal halaman create
         function create() {
             $.get("{{ route('keuangan.create') }}", {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Tambah keuangan')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -116,6 +117,7 @@
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('keuangan/edit') }}/" + id, {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
