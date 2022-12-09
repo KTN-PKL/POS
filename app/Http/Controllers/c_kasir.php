@@ -203,7 +203,8 @@ class c_kasir extends Controller
         $gt = (int) str_replace(".","",$request->gt);
         $bayar = (int) str_replace(".","",$request->bayar);
         $hasil = $bayar - $gt;
-        return $hasil;
+        $isi = number_format($hasil,0,",",".");
+        return $isi;
     }
 
     public function customer()
@@ -235,7 +236,13 @@ class c_kasir extends Controller
         if ($request->atasnama ==null) {
             $data['success1'] = 1;
         } 
-        if ($request->atasnama ==null || $request->atasnama ==null) {
+        if ($request->status == "Lunas") {
+        $kembali = (int) str_replace(".","",$request->kembali);
+        if ($kembali < 0) {
+            $data['success2'] = 1;
+        }
+        }
+        if ($request->atasnama ==null || $request->atasnama == null || $kembali < 0) {
             return response()->json($data);
         }else{
             $t = (int) str_replace(".","",$request->total);

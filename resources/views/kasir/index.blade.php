@@ -199,7 +199,10 @@
                     if (response.success1 == 1) {
                         document.getElementById("erorr2").style.display = "block";
                     }
-                    if (response.success == 1 || response.success1 == 1) {}
+                    if (response.success2 == 1) {
+                        document.getElementById("erorr3").style.display = "block";
+                    }
+                    if (response.success == 1 || response.success1 == 1 || response.success2 == 1) {}
                     else {
                     nota()
                     }
@@ -220,17 +223,6 @@
         function printNota(){
 
         window.print();
-    
-        // var contentOfDiv = document.getElementById("exampleModal").innerHTML;
-        //     var newWin = window.open('', '', 'height=650, width=650');
-        //     newWin.document.write('');
-        //     newWin.document.write('<title>Print Content of Div element by  using Javascript</title>');
-        //     newWin.document.write(' <h1>Content of Div element: <br>');
-        //     newWin.document.write(contentOfDiv);
-        //     newWin.document.write('');
-        //     newWin.document.close();
-        //     newWin.print();
-       
         }
             
             
