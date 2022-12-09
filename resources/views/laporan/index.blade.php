@@ -3,18 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CRUD Laravel 8</title>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<!-- Jquery DataTables -->
-<script type="text/javascript" language="javascript" src="http:////cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-<!-- Bootstrap dataTables Javascript -->
-<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 </head>
 
 <body>
@@ -29,9 +24,6 @@
                 <br>
                 <button class="btn btn-secondary" onClick="modalSearch()"> <i class="fa fa-plus"></i> <b>Pencarian</b></button>
                 <button class="btn btn-success" onclick="modalExcel()"> <i class="fa fa-plus"></i> <b>File Excel</b></button>
-                {{-- <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Semua</b></a>
-                <a href="{{route('laporan.export')}}" class="btn btn-success" > <i class="fa fa-download"></i> <b>Download Sebagian</b></a> --}}
-
                 <div id="read" class="mt-3">
                  
                 </div> 
@@ -106,17 +98,16 @@
     </div>
     {{-- End Modal Excel --}}
 
-    <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-    </script>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+</script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -131,6 +122,7 @@
         // Untuk modal halaman create
         function modalSearch() {
             $.get("{{ route('laporan.search') }}", {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel2").html('Pencarian Data')
                 $("#page2").html(data);
                 $("#exampleModal2").modal('show');
@@ -140,57 +132,10 @@
         // Untuk modal halaman Download Excel
         function modalExcel() {
             $.get("{{ route('laporan') }}", {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel3").html('File Excel')
                 $("#page3").html(data);
                 $("#exampleModal3").modal('show');
-            });
-        }
-        
-      
-
-        
-
-        // Untuk modal halaman edit show
-        function edit(id) {
-            $.get("{{ url('laporan/edit') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Detail Penjualan')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
-        }
-
-        function hapus(id) {
-            Swal.fire({
-            title: 'Apakah Anda Yakin?',
-            text: "Anda Ingin Menghapus laporan ",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Iya Saya Yakin!',
-            cancelButtonText: 'Tidak'
-            }).then((result) => {
-            if (result.value) {
-                destroy(id)
-                Swal.fire({
-                title: 'Terhapus',
-                text: "Anda Telah Menghapus laporan ",
-                type: 'success'
-                })}
-                })
-        }
-
-        // untuk proses update data
-        function update(id) {
-            var laporan = $("#laporan").val();
-            $.ajax({
-                type: "get",
-                url: "{{ url('laporan/update') }}/" + id,
-                data: "laporan=" + laporan,
-                success: function(data) {
-                    $(".btn-close").click();
-                    read()
-                }
             });
         }
 
@@ -200,37 +145,6 @@
             document.getElementById("btn2").style.color = "grey";
         }
 
-        // function downloadExcel(){
-        //     var ex = $("#ex").val();
-        //     var to = $("#to").val();
-        //     $.ajax({
-        //         type: "get",
-        //         url: "{{ url('laporan/exportfilter') }}",
-        //         data: {
-        //             "ex": ex,
-        //             "to": to,
-        //         },
-        //         success: function(data) {
-        //             $(".btn-close").click();
-        //         }
-        //     })
-        // }
-        //end download filter excel
-
-        
-
-
-        // untuk delete atau destroy data
-        function destroy(id) {
-            $.ajax({
-                type: "get",
-                url: "{{ url('laporan/destroy') }}/" + id,
-                success: function(data) {
-                    $(".btn-close").click();
-                    read()
-                }
-            });
-        }
     </script>
 </body>
 
