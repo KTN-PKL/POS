@@ -199,6 +199,7 @@
                     <input type="text" class="form-control" id="kembalian" aria-describedby="basic-addon2" readonly>
                    
                   </div>
+                  <small style="display: none" class="text-danger" id="erorr3">Jumlah Pembayaran Kurang!</small>
             </td> 
         </tr>
         </table>`);

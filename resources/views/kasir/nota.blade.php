@@ -85,19 +85,19 @@
         <div class="col-md-3 offset-md-6">Grand Total</div>
         <div class="col-md-3">Rp.{{ $grandtotal }},-</div>
     </div>
-    @if ($transaksi->status == 1)
+    @if ($transaksi->status == "Lunas")
     <div class="row">
         <div class="col-md-3 offset-md-6">Bayar</div>
-        <div class="col-md-3">{{ $transaksi->bayar }}</div>
+        <div class="col-md-3">Rp.{{ $transaksi->bayar }},-</div>
     </div>
     <div class="row">
         <div class="col-md-3 offset-md-6">Kembalian</div>
-        <div class="col-md-3">{{ $transaksi->kembali }}</div>
+        <div class="col-md-3">Rp.{{ $transaksi->kembali }},-</div>
     </div>
     @endif
     
  </div>
- <div class="card-body"> {{ $pengaturan->tfooter }} </div>
+ <div class="card-body" style="text-align: center"> {{ $pengaturan->tfooter }} </div>
 </>
 
 
