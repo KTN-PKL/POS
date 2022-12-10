@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <table id="kategori" class="table table-striped table-bordered">
+    <table id="tablekategori" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>No</th>
@@ -45,7 +45,7 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        $('#kategori').DataTable();
-            document.getElementById("kategori_filter").style.display = "none";
+        $('#tablekategori').DataTable();
+            document.getElementById("tablekategori_filter").style.display = "none";
     });
 </script>
