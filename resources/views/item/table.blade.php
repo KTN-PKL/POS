@@ -14,7 +14,7 @@
 
 </head>
 
-<table id="item" class="table table-bordered table-hover" style="width: 100%">
+<table id="tableitem" class="table table-bordered table-hover" style="width: 100%">
     <thead>
         <tr>
             <th>No</th>
@@ -60,7 +60,7 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        $('#item').DataTable();
-            document.getElementById("item_filter").style.display = "none";
+        $('#tableitem').DataTable();
+            document.getElementById("tableitem_filter").style.display = "none";
     });
 </script>
