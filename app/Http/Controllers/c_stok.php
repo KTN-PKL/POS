@@ -19,6 +19,33 @@ class c_stok extends Controller
         return view('stok.index');
     }
 
+    public function cekstok()
+    {
+        $k = 0;
+        $cek = $this->stok->allData();
+        foreach ($cek as $test) {
+            if ($test->stok < $test->min) {
+               $k = $k + 1;
+            }
+        }
+        return $k;
+    }
+
+    public function stokmin()
+    {
+        $k = 0;
+        $cek = $this->stok->allData();
+        foreach ($cek as $test) {
+            if ($test->stok < $test->min) {
+               $isi[$k] = $test;
+            }
+        }
+        $data = [
+            'stok' => $isi,
+        ];
+        return view('stok.table', $data);
+    }
+
     public function read()
     {
         $data = [
