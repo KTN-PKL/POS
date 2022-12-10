@@ -14,8 +14,10 @@
 
 <body>
     <div class="container mt-5">
+        <div id="cekstok"></div>
         <div class="row">
             <div class="col-lg-8">
+                
                 <div id="read" class="mt-3"></div> 
             </div>
         </div>
@@ -35,7 +37,7 @@
             </div>
         </div>
     </div>
-
+    
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -51,7 +53,8 @@
 
     <script>
         $(document).ready(function() {
-            read()
+            read(),
+            cekstok()
         });
         // Read Database
         function read() {
@@ -59,11 +62,30 @@
                 $("#read").html(data);
             });
         }
-    
+        function cekstok()
+        {
+            $.get("{{ url('stok/cekstok') }}", {}, function(data, status) {
+                if (data > 0) {
+                    $("#cekstok").html(`
+                 <div class="alert alert-warning alert-block" id="alert">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <strong>Ada `+data+` Item dibawah Stok Minimal <a type="button" href="#" onclick="stokmin()" style="color: black; text-decoration: none;">Cek di Sini</a></strong>
+                </div>
+                `); 
+                }
+            });
+        }
+        
+        function stokmin() {
+            $.get("{{ url('stok/stokmin') }}", {}, function(data, status) {
+                $("#table").html(data);
+            });
+        }
 
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('stok/edit') }}/" + id, {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Tambah Stok')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');

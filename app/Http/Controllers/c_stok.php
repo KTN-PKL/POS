@@ -24,7 +24,7 @@ class c_stok extends Controller
         $k = 0;
         $cek = $this->stok->allData();
         foreach ($cek as $test) {
-            if ($test->stok < $test->min) {
+            if ($test->stok < $test->minim) {
                $k = $k + 1;
             }
         }
@@ -33,17 +33,10 @@ class c_stok extends Controller
 
     public function stokmin()
     {
-        $k = 0;
-        $cek = $this->stok->allData();
-        foreach ($cek as $test) {
-            if ($test->stok < $test->min) {
-               $isi[$k] = $test;
-            }
-        }
         $data = [
-            'stok' => $isi,
+            'stok' => $this->stok->allData(),
         ];
-        return view('stok.table', $data);
+        return view('stok.tablemin', $data);
     }
 
     public function read()

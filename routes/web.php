@@ -155,6 +155,8 @@ Route::controller(c_stok::class)->group(function () {
     Route::get('/stok/edit/{id}', 'edit')->name('stok.edit');
     Route::get('/stok/tambah/{id}', 'tambah')->name('stok.tambah');
     Route::get('/stok/cari', 'cari')->name('stok.cari');
+    Route::get('/stok/cekstok', 'cekstok')->name('stok.cekstok');
+    Route::get('/stok/stokmin', 'stokmin')->name('stok.stokmin');
     Route::get('/stok/kategori/{id}', 'kategori')->name('stok.kategori');
 });
 

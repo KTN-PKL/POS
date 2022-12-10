@@ -14,6 +14,7 @@ class stok extends Model
     {
         return DB::table('stoks')->join('items', 'stoks.id_item', '=', 'items.id_item')->join('kategoris', 'items.id_kategori', '=', 'kategoris.id_kategori')->get();
     }
+    
     public function addData($data)
     {
         DB::table('stoks')->insert($data);
