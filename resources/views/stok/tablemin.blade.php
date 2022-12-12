@@ -14,7 +14,7 @@
 
 </head>
 
-<table id="stok" class="table table-bordered table-hover" style="width: 100%">
+<table id="tablestok" class="table table-bordered table-hover" style="width: 100%">
     <thead>
         <tr>
             <th>No</th>
@@ -57,7 +57,7 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        $('#stok').DataTable();
-            document.getElementById("stok_filter").style.display = "none";
+        $('#tablestok').DataTable();
+            document.getElementById("tablestok_filter").style.display = "none";
     });
 </script>

@@ -181,7 +181,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rp</span>
                     </div>
-                    <input type="text" class="form-control" id="bayaru" value="0" aria-describedby="basic-addon2" onchange="bayar()" onkeyup="rupiah(3)">
+                    <input type="text" class="form-control" id="bayaru" value="0" aria-describedby="basic-addon2" onkeyup="bayar()">
                    
                   </div>
             </td> 
@@ -257,6 +257,7 @@
     function bayar(){
         var gt = $("#grandtotal1").val();
         var bayar = $("#bayaru").val();
+
         $.ajax({
                 type: "get",
                 url: "{{ url('kasir/kembalian') }}",
@@ -268,5 +269,6 @@
                     $("#kembalian").val(data); 
                 }
             });
+    rupiah(3)
     }
 </script>

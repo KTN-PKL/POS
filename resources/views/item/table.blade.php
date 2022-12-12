@@ -35,19 +35,18 @@
     @foreach ($item as $items)
         <tr>
             <td>@php
+                 $urutan = (int) substr($items->id_item, 3, 3);
                 $i = $i+1;
                 echo $i;
             @endphp</td>
             <td>{{ $items->id_item }}</td>
             <td>{{ $items->kategori }}</td>
-            <td>{{ $items->item }}</td>
+            <td id="item{{$urutan}}">{{ $items->item }}</td>
             <td>{{ $items->beli }}</td>
             <td>{{ $items->jual }}</td>
             <td><img src="{{asset('/foto/'. $items->foto)}}"  alt="Gambar" width="100px" height="100px"></td>
             <td>
-                @php
-                     $urutan = (int) substr($items->id_item, 3, 3);
-                @endphp
+                
                 <button style="background-color:#0c4e68" class="btn text-white" onClick="show({{ $urutan }})">Detail</button>
                 <button class="btn btn-warning" onClick="edit({{ $urutan }})">Edit</button>
                 <button class="btn btn-danger" onClick="hapus({{ $urutan }})">Delete</button>

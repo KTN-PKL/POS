@@ -242,9 +242,21 @@ class c_kasir extends Controller
             $data['success2'] = 1;
         }
         }
-        if ($request->atasnama ==null || $request->atasnama == null || $kembali < 0) {
+        if ($request->status == "Lunas") {
+            if ($request->atasnama ==null || $request->atasnama == null || $kembali < 0) {
+                return response()->json($data);
+                $success = 0;
+            }
+            else {
+                $success = 1;
+            }
+        } elseif ($request->atasnama ==null || $request->atasnama == null) {
             return response()->json($data);
-        }else{
+            $success = 0;
+        } else {
+            $success = 1;
+        }
+        if ($success == 1) {
             $t = (int) str_replace(".","",$request->total);
             $gt = (int) str_replace(".","",$request->grandtotal);
             date_default_timezone_set("Asia/Jakarta");
