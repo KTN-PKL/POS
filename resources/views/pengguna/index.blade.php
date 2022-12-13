@@ -65,6 +65,7 @@
         // Untuk modal halaman create
         function create() {
             $.get("{{ route('pengguna.create') }}", {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Tambah pengguna')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -111,6 +112,7 @@
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('pengguna/edit') }}/" + id, {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Edit Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -145,6 +147,7 @@
 
         function show(id) {
             $.get("{{ url('pengguna/show') }}/" + id, {}, function(data, status) {
+                jQuery.noConflict();
                 $("#exampleModalLabel").html('Detail Product')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
