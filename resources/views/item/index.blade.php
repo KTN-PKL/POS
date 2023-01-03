@@ -101,7 +101,7 @@
                     read()
                     Swal.fire({
                     title: 'Berhasil',
-                    text: "Anda Telah Berhasil Menambahkan Item",
+                    text: "Anda Telah Berhasil Menambahkan Item"+response.success,
                     type: 'success'
                     })
                 } else {

@@ -94,7 +94,7 @@ class c_item extends Controller
         if ($jumlah <> 0) {
             $cek = $this->item->allData();
             foreach ($cek as $test) {
-                if ($test = $request->item) {
+                if ($test == $request->item) {
                     $a = 2;
                     break;
                 }
